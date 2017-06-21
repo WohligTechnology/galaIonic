@@ -1,0 +1,412 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+*/
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";
+@import "www/lib/font-awesome/scss/font-awesome.scss";
+
+
+$font-family-sans-serif: "AvenirNext",
+"AvenirNext-Bold",
+"savoyeplain",
+"fontawesome",
+"Roboto",
+"Segoe UI",
+sans-serif !default;
+$font-family-light-sans-serif: "AvenirNext",
+"AvenirNext-Bold",
+"savoyeplain",
+"fontawesome",
+"Segoe UI-Light",
+sans-serif-light !default;
+
+@font-face {
+    font-family: 'fontawesome';
+    src:url('../fonts/fontawesome-webfont.eot');
+    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+        url('../fonts/fontawesome-webfont.woff') format('woff'),
+        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('../fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+  font-family: 'savoyeplain';
+  src: url("../fonts/savoyeplain.ttf");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'AvenirNext';
+  src: url("../fonts/AvenirNext-Regular.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'AvenirNext-Bold';
+  src: url("../fonts/AvenirNext-Bold.otf");
+  font-weight: 400;
+}
+
+.sigupIconLeft {
+  color: #091b27!important;
+  font-size: 24px!important;
+  color: #77bf4f!important;
+  padding: 0 0 0 0px !important;
+}
+
+.disblock {
+  display: inline-block!important;
+   padding-left: 5px!important;
+  margin-right: 10px;
+}
+
+.header-bellFont {
+  color: #091b27 !important;
+  font-size: 30px !important;
+  padding: 0 !important;
+  display: block;
+  color: #77bf4f!important;
+}
+
+.bgHeader{
+    background-color: white!important;
+}
+
+.logoImage{
+    margin-top: 10px;
+}
+
+.box1,
+.box2,
+.box3 {
+  height: 230px;
+  img{
+    height: 100%;
+    width: 100%;
+    margin-top: 15px
+  }
+}
+
+.ionSlider {
+  .ion-record:before {
+    font-size: 10px!important;
+  }
+}
+
+.slider-pager {
+    position: absolute;
+    bottom: 20px;
+    z-index: 1;
+    width: 100%;
+    height: 15px;
+    text-align: center;
+    display: none;
+}
+
+.browse-text {
+  margin: 0 15px;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  color: #77bf4f!important;
+}
+
+.browse-grid {
+  padding: 20px 0 0;
+  text-align: center;
+  background: white;
+}
+
+.yes-title {
+  .title {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../img/logo.png");
+    max-height: 40px;
+    max-width: 40px;
+    margin: 0 auto;
+    padding: 0px!important;
+    background-size: contain;
+    color: transparent!important;
+  }
+  // span {
+  //   margin-top: 5px;
+  //   color: #000;
+  // }
+}
+
+.browse-card1 {
+  padding: 1.5px;
+  margin: 1.5px;
+  overflow: hidden;
+  position: relative;
+  .icondiv {
+    height: auto;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    
+    overflow: hidden;
+    img {
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  label {
+    position: absolute;
+    display: block;
+    font-size: 11px;
+    /* box-shadow: 0 2px 0 0 lightgrey; */
+    /* font-weight: 500 !important; */
+    background: rgba(241, 240, 236, 0.8);
+    /* width: 50%; */
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 86%;
+    width: 100%;
+    /* width: 139%; */
+    /* margin: 0 auto; */
+    line-height: 30px;
+    text-align: center;
+    font-family: "AvenirNext"
+  }
+}
+
+.browse-card2 {
+  padding: 1.5px;
+  margin: 1.5px;
+  position: relative;
+  .icondiv {
+    height: auto;
+    width: 100%;
+    // padding: 15px 0;
+    display: block;
+    
+   
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+  label {
+    position: absolute;
+    display: block;
+    font-size: 11px;
+    /* box-shadow: 0 2px 0 0 lightgrey; */
+    /* font-weight: 500 !important; */
+    background: rgba(241, 240, 236, 0.8);
+    /* width: 50%; */
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 86%;
+    width: 100%;
+    /* width: 139%; */
+    /* margin: 0 auto; */
+    line-height: 30px;
+    text-align: center;
+     font-family: "AvenirNext"
+  }
+}
+
+.aboutUs{
+  width: 100%;
+  img{
+    width: 100%;
+  }
+  label{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 40%;
+    left: 50%;
+    color: white;
+    font-size: 35px;
+    font-family: "AvenirNext"
+  }
+}
+
+.rel{
+  position: relative
+}
+
+
+.description{
+  background: #75c04f;
+  div{
+    padding: 20px
+  }
+  label{
+    font-size: 20px;
+    font-family: "savoyeplain";
+    color: white;
+  }
+  p{
+    color: white;
+    font-family: "AvenirNext";
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.contactusDiv{
+  margin: 20px
+}
+.contactdiv{
+label{
+  color: #78be4f;
+    font-size: 25px;
+    font-family: "AvenirNext";
+}
+}
+
+.address{
+  margin: 10px;
+  p{
+    font-size: 15px;
+    font-family: "AvenirNext";
+    color: #a3a3a3;
+  }
+}
+
+.numberDiv{
+  margin: 10px 0 0 0;
+label{
+  color: #78be4f;
+    font-size: 15px;
+    font-family: "AvenirNext";
+}
+}
+
+.emailDiv{
+label{
+  color: #78be4f;
+    font-size: 15px;
+    font-family: "AvenirNext";
+}
+}
+
+.dribbleimage{
+  font-family: "fontawesome"
+
+}
+
+.social{
+  margin-bottom: 10px;
+  i{
+    padding-right: 20px;
+    font-size: 18px;
+    color: #c9c9c9;
+  }
+}
+
+//category
+.categoryTitle{
+      position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-family: "AvenirNext-Bold";
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+.category-card1 {
+  padding: 1.5px;
+  margin: 1.5px;
+  overflow: hidden;
+  position: relative;
+  .icondiv {
+    height: auto;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    
+    overflow: hidden;
+    img {
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  label {
+    position: absolute;
+    display: block;
+    font-size: 11px;
+    /* box-shadow: 0 2px 0 0 lightgrey; */
+    /* font-weight: 500 !important; */
+    background: rgba(241, 240, 236, 0.8);
+    /* width: 50%; */
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    padding: 5px 0px;
+    // width: 100%;
+    /* width: 139%; */
+    /* margin: 0 auto; */
+     width: 60%;
+    // line-height: 0px;
+    text-align: center;
+    font-family: "AvenirNext"
+  }
+}
+
+
+.category-card2 {
+  padding: 1.5px;
+  margin: 1.5px;
+  overflow: hidden;
+  position: relative;
+  .icondiv {
+    height: auto;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+    
+    overflow: hidden;
+    img {
+      height: auto;
+      width: 100%;
+      overflow: hidden;
+    }
+  }
+  label {
+    position: absolute;
+    display: block;
+    font-size: 11px;
+    /* box-shadow: 0 2px 0 0 lightgrey; */
+    /* font-weight: 500 !important; */
+    background: rgba(241, 240, 236, 0.8);
+    /* width: 50%; */
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    padding: 5px 0px;
+    width: 60%;
+    /* width: 139%; */
+    /* margin: 0 auto; */
+    // line-height: 0px;
+    text-align: center;
+    font-family: "AvenirNext"
+  }
+}
