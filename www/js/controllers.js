@@ -121,4 +121,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
+})
+
+.controller('ProductDetailsCtrl', function($scope, $stateParams) {
+    
 });

@@ -1,0 +1,61 @@
+<ion-view  title="gala" class="logo-center yes-title" >
+  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+        </button>
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
+        </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="mainImage rel"> 
+      <img src="img/maindoor.jpg" alt="">
+      <div>Door</div>
+    </div>
+    <div class = "rel">
+<button class="button button-icon icon ion-ios-arrow-left arrowbtn left-arrow" ng-click="slidePrevious('am')"></button>
+      <button class="button button-icon icon ion-ios-arrow-right rightarr right-arrow" ng-click="slideNext('am')"></button>
+    <ion-slide-box class="mart" options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
+            auto-play="false"  slide-interval="{{interval}}" show-pager="false"  on-slide-changed="slideHasChanged(index)">
+            <ion-slide  >
+                <div class="box product1 rel">
+                  <div class="row imageRow">
+                    <div class="col-30">
+<img src="img/sampledoor1.jpg" alt="">
+                    </div>
+                    <div class="col-30 marl">
+<img src="img/sampledoor2.jpg" alt="">
+                    </div>
+                    <div class="col-30 marl">
+<img src="img/sampledoor3.jpg" alt="">
+                    </div>
+                  </div>
+                </div>
+            </ion-slide>
+            
+            <!--<ion-slide  >
+                <div class="box product1">
+                <img src="img/sampledoor2.jpg" alt="">
+                </div>
+            </ion-slide>
+            <ion-slide  >
+                <div class="box product1">
+                <img src="img/sampledoor3.jpg" alt="">
+                </div>
+            </ion-slide>-->
+    </ion-slide-box>       
+    </div >
+     <div class="productdescription" >Product Description</div>
+     <p class="productinside">Century Ply brings you a new and improved version of sainik ply, to use a phrase, promises to
+                                stand longer and stronger in the face of all adversity. It is termite 8, borer resistant,weather
+                                resistant and moisture resistant, thanks to being chemically treated and bonded with melaminefortified
+                                Urea Formaldehyde. It also has the ability to withstand heavy loads. The all-new Sainik ply
+                                is being launch across markets within India with a price tag which is eminently competitive.
+                                it is indeed the most economical purchase in the category for our customers. 
+    </p>
+    <button class="enquire">Enquire Now</button>
+  </ion-content>
+</ion-view>
