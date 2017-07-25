@@ -1,17 +1,33 @@
-<ion-view  title="Gala" class="logo-center yes-title" >
-  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
+<ion-view title="Gala" class="logo-center yes-title">
+  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage">
     <ion-nav-buttons side="left">
       <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
         </button>
     </ion-nav-buttons>
-    
+
     <ion-nav-buttons side="right">
       <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
   <ion-content>
-      <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
+         <div class="browse-grid">
+    <label for="" class="product-text text-uppercase">{{CompanyBanner.name}}</label>          
+      <div class="row" ng-repeat="s1 in AllProductWithCategory" >
+                <div class="col-50" ng-repeat="s in s1" ui-sref="app.productdetails({product:s._id})">
+                    <div class="products-card1 rel">
+                        <div class="icondiv">
+                            <img ng-src="{{s.images[0].bigImage | uploadpath}}" alt="">
+                            
+                        </div>
+                        <label for="" class="text-uppercase">{{s.name}}</label>
+                    </div>
+                    
+                </div>
+            
+            </div>
+         </div>
+    <!--<ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
             auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
             <ion-slide class="rel" >
                 <div class="box box1">
@@ -50,79 +66,67 @@
                 </div>
                 <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
             </ion-slide>
-        </ion-slide-box>
-        <div class="row"  >
-                <div class="col-50">
-                    <div class="category-card1">
-                        <div class="icondiv">
-                            <img src="img/Door.jpg" alt="">
-                            
-                        </div>
-                        <label for="">Door</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="category-card2" >
-                        <div class="icondiv">
-                            <img src="img/Dupont Corian.jpg" alt="">
-                        </div>
-                        <label for="">Dupont Corian</label>
-                    </div>
+        </ion-slide-box>-->
+    <!--<div class="row">
+      <div class="col-50">
+        <div class="category-card1">
+          <div class="icondiv">
+            <img src="img/Door.jpg" alt="">
 
-                </div>
-            </div>
-             <div class="row"  >
-                <div class="col-50">
-                    <div class="category-card1">
-                        <div class="icondiv">
-                            <img src="img/Exterior Cladding.jpg" alt="">
-                            
-                        </div>
-                        <label for="">Exterior Cladding</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="category-card2" >
-                        <div class="icondiv">
-                            <img src="img/Wallpaper.jpg" alt="">
-                        </div>
-                        <label for="">Wallpaper</label>
-                    </div>
+          </div>
+          <label for="">Door</label>
+        </div>
 
-                </div>
-            </div>
-            <div class="row"  >
-                <div class="col-25">
-                    <!--<div class="category-card1">
-                        <div class="icondiv">
-                            <img src="img/Uro veneer world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">Exterior Cladding</label>
-                    </div>-->
-                    
-                </div>
-                <div class="col-50">
-                    <div class="category-card2" >
-                        <div class="icondiv">
-                            <img src="img/Decking.jpg" alt="">
-                        </div>
-                        <label for="">Decking</label>
-                    </div>
+      </div>
+      <div class="col-50">
+        <div class="category-card2">
+          <div class="icondiv">
+            <img src="img/Dupont Corian.jpg" alt="">
+          </div>
+          <label for="">Dupont Corian</label>
+        </div>
 
-                </div>
-                 <div class="col-25">
-                    <!--<div class="category-card1">
-                        <div class="icondiv">
-                            <img src="img/Uro veneer world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">Exterior Cladding</label>
-                    </div>-->
-                    
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <div class="category-card1">
+          <div class="icondiv">
+            <img src="img/Exterior Cladding.jpg" alt="">
+
+          </div>
+          <label for="">Exterior Cladding</label>
+        </div>
+
+      </div>
+      <div class="col-50">
+        <div class="category-card2">
+          <div class="icondiv">
+            <img src="img/Wallpaper.jpg" alt="">
+          </div>
+          <label for="">Wallpaper</label>
+        </div>
+
+      </div>
+    </div>-->
+    <!--<div class="row">
+      <div class="col-25">
+     
+
+      </div>
+      <div class="col-50">
+        <div class="category-card2">
+          <div class="icondiv">
+            <img src="img/Decking.jpg" alt="">
+          </div>
+          <label for="">Decking</label>
+        </div>
+
+      </div>
+      <div class="col-25">
+      
+
+      </div>
+    </div>-->
   </ion-content>
-  </ion-view>
+</ion-view>

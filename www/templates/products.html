@@ -10,26 +10,39 @@
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
-  <ion-content>
+  <ion-content class="">
     <div class="bgStrip rel"> 
-      <img src="img/Wood & Mouldingsbackground.jpg" alt="">
-      <label for="">WOOD & MOULDINGS</label>
+      <img ng-src="{{CompanyBanner.backgroundBanner | uploadpath}}" alt="">
+      <!--<label for="" class="text-uppercase">{{subcategory[0].names}}</label>-->
     </div>
     <div> 
        <div class="browse-grid">
-            <label for="" class="product-text">PRODUCTS</label>
-      <div class="row"  >
-                <div class="col-50">
-                    <div class="products-card1">
+            <label for="" class="product-text text-uppercase">{{CompanyBanner.name}}</label>
+                 <div class="row " ng-repeat="s2 in categoriesOfCompany" >
+                <div class="col-50 prcard" ng-repeat="s in s2" ui-sref='app.category({company:company._id ,category:s._id})'>
+                    <div class="category-card1">
                         <div class="icondiv">
-                            <img src="img/door1.jpg" alt="">
+                            <img ng-src="{{s.image | uploadpath}}" alt="">
                             
                         </div>
-                        <label for="">EURO VENEER WORLD</label>
+                        <label for="" class="text-uppercase">{{s.name}}</label>
                     </div>
                     
                 </div>
-                <div class="col-50">
+     
+            </div>
+      <!--<div class="row" ng-repeat="s2 in subcategoryBig" >
+                <div class="col-50" ng-repeat="s in s2" ui-sref='app.productdetails'>
+                    <div class="products-card1 rel">
+                        <div class="icondiv">
+                            <img ng-src="{{s.smallerImg}}" alt="">
+                            
+                        </div>
+                        <label for="" class="text-uppercase">{{s.name}}</label>
+                    </div>
+                    
+                </div>
+                <div class="col-50" ui-sref='app.productdetails'>
                     <div class="produxts-card2" >
                         <div class="icondiv">
                             <img src="img/door2.jpg" alt="">
@@ -38,10 +51,10 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="products-card1">
+            </div>-->
+            <!--<div class="row">
+                <div class="col-50" ui-sref='app.productdetails'>
+                    <div class="products-card1 rel">
                         <div class="icondiv">
                             <img src="img/door3.jpg" alt="">
                             
@@ -50,8 +63,8 @@
                     </div>
                     
                 </div>
-                <div class="col-50">
-                    <div class="produxts-card2" >
+                <div class="col-50" ui-sref='app.productdetails'>
+                    <div class="produxts-card2 rel" >
                         <div class="icondiv">
                             <img src="img/door4.jpg" alt="">
                         </div>
@@ -60,9 +73,9 @@
 
                 </div>
             </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="products-card1">
+            <div class="row">
+                <div class="col-50" ui-sref='app.productdetails'>
+                    <div class="products-card1 rel">
                         <div class="icondiv">
                             <img src="img/door5.jpg" alt="">
                             
@@ -71,8 +84,8 @@
                     </div>
                     
                 </div>
-                <div class="col-50">
-                    <div class="produxts-card2" >
+                <div class="col-50" ui-sref='app.productdetails'>
+                    <div class="produxts-card2 rel">
                         <div class="icondiv">
                             <img src="img/door6.jpg" alt="">
                         </div>
@@ -80,7 +93,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>-->
     </div>
   </ion-content>
   </ion-view>

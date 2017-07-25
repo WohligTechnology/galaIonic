@@ -10,15 +10,15 @@
         </button>
     </ion-nav-buttons>
   </ion-nav-bar>
-  <ion-content>
+  <ion-content class="">
       <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
             auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
-            <ion-slide  >
+            <ion-slide  ng-repeat="hs in homebanner">
                 <div class="box box1">
-                <img src="img/Bath world.jpg" alt="">
+                <img ng-src="{{hs.image | uploadpath}}" alt="">
                 </div>
             </ion-slide>
-            <ion-slide  [options]="{pager:true}">
+            <!-- <ion-slide  [options]="{pager:true}">
                 <div class="box box1">
                 <img src="img/Euro Veneer 1.jpg" alt="">
                 </div>
@@ -42,22 +42,22 @@
                 <div class="box box1">
                 <img src="img/Lighting.jpg" alt="">
                 </div>
-            </ion-slide>
+            </ion-slide> -->
         </ion-slide-box>
          <div class="browse-grid">
             <label for="" class="browse-text">OUR OFFERINGS</label>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
+            <div class="row" ng-repeat="cat in companyBanner">
+                <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({company:c1._id})">
+                    <div class="browse-card1 ">
                         <div class="icondiv">
-                            <img src="img/Uro veneer world.jpg" alt="">
+                            <img ng-src="{{c1.banner | uploadpath}}" alt="">
                             
                         </div>
-                        <label for="">EURO VENEER WORLD</label>
+                        <label for="" class="text-uppercase">{{c1.name}}</label>
                     </div>
                     
                 </div>
-                <div class="col-50">
+                <!--<div class="col-50">
                     <div class="browse-card2" >
                         <div class="icondiv">
                             <img src="img/Wood & Mouldings 1.jpg" alt="">
@@ -65,9 +65,9 @@
                         <label for="">WOOD AND MOULDINGS</label>
                     </div>
 
-                </div>
+                </div>-->
             </div>
-            <div class="row"  >
+            <!--<div class="row"  >
                 <div class="col-50">
                     <div class="browse-card1">
                         <div class="icondiv">
@@ -150,38 +150,11 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="aboutUs rel">
+            </div>-->
+            <!--<div class="aboutUs ">
                 <img src="img/aboutus.jpg" alt="">
                 <label for="">ABOUT US</label>
-            </div>
-            <div class="description">
-                <div>
-    <label  for="">"Creativity is limitless and so are the way to expression !"</label>
-    <p>Our vision is to bring your dream space alive.<br> We believe that a house can only be turned into the home,<br> When it evoke emotions in its residents<br> and is installed with the memorable moments.<br> We at Gala, offers modern interior design solutions<br> with the touch of elegant architecture, and much more.<br> With a variety of high quality and luxury homes</p>
-                </div>
-            </div>
-            <div class="contactusDiv">
-                <div class="contactdiv"> <label class="" for="">CONTACT US</label>
-                 </div>
-                <div class="address">
-<p>339/1, Gala House, <br> Mysore Road Campus, <br> Anantramaiah Woolen Factory Compound<br> BApuji Nagar,Mysore Road,<br> Banglore-560026</p>
-                </div>
-                <div class="numberDiv">
-                    <label for="">080 26749845</label>
-                 </div>
-                <div class="emailDiv">
-<label for="">info@galagroup.in</label>
-                </div>
-            </div>
-
-            <div class="social">
-<i class="fa fa-dribbble" aria-hidden="true"></i>
-<i class="fa fa-linkedin" aria-hidden="true"></i>
-<i class="fa fa-instagram" aria-hidden="true"></i>
-<i class="fa fa-twitter" aria-hidden="true"></i>
-            </div>
-            
+            </div>      -->
         </div>
   </ion-content>
 </ion-view>

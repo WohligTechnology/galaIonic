@@ -1,128 +1,278 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['starter.services'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+    // With the new view caching in Ionic, Controllers are only called
+    // when they are recreated or on app start, instead of every page change.
+    // To listen for when this page is active (for example, to refresh data),
+    // listen for the $ionicView.enter event:
+    //$scope.$on('$ionicView.enter', function(e) {
+    //});
+  })
 
-  // Form data for the login modal
-  $scope.loginData = {};
+  .controller('HomeCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout) {
+    MyServices.HomeBanner(function (data) {
+      if (data.value) {
+        $scope.homebanner = data.data.results;
+      }
+    })
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+    MyServices.companyBanner(function (data) {
+      if (data.value) {
+        $scope.companyBanner = data.data.results;
+        $scope.companyBanner = _.chunk($scope.companyBanner, 2);
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
+      }
+    })
+    $scope.slideHasChanged = function (index) {
+      $ionicSlideBoxDelegate.cssClass = 'fade-in'
+      $scope.slideIndex = index;
+      if (($ionicSlideBoxDelegate.count() - 1) == index) {
+        $timeout(function () {
+          $ionicSlideBoxDelegate.slide(0);
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
+        }, $scope.interval);
+      }
+    };
+    $scope.interval = 5000;
+    $scope.homeSlider = {};
+    $scope.homeSlider.data = [];
+    $scope.homeSlider.currentPage = 0;
+    $scope.category = [{
+      name: "uro veener world",
+      id: "uroveenerworld",
+      url: "img/homenew/1.jpg"
+    }, {
+      name: "wood & mouldings",
+      id: "woodmouldings",
+      url: "img/homenew/2.jpg"
+    }, {
+      name: " bath world",
+      id: "bathworld",
+      url: "img/homenew/3.jpg"
+    }, {
+      name: " gala hardware worlds",
+      id: "galahardwareworlds",
+      url: "img/homenew/4.jpg"
+    }, {
+      name: " gala stone worlds",
+      id: "galastoneworlds",
+      url: "img/homenew/5.jpg"
+    }, {
+      name: " gala furniture worlds",
+      id: "galafurnitureworlds",
+      url: "img/homenew/6.jpg"
+    }, {
+      name: "euro lighting world",
+      id: "eurolightingworld",
+      url: "img/homenew/7.jpg"
+    }, {
+      name: "gala drapes world",
+      id: "galadrapesworld",
+      url: "img/homenew/8.jpg"
+    }, {
+      name: "gala kitchen world",
+      id: "galakitchenworld",
+      url: "img/homenew/9.jpg"
+    }, {
+      name: "mahavir corporation (India)",
+      id: "mahavircorporation",
+      url: "img/homenew/10.jpg"
+    }];
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+    //chunk//
+    $scope.homecategory = _.chunk($scope.category, 2);
+    $scope.setupSlider = function () {
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
+      //some options to pass to our slider
+      $scope.homeSlider.sliderOptions = {
+        initialSlide: 0,
+        direction: 'horizontal', //or vertical
+        speed: 300,
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
+        autoplay: "5000",
+        effect: 'fade',
 
-
-.controller('HomeCtrl', function($scope, $stateParams, $ionicSlideBoxDelegate,$timeout) {
- 
-   $scope.slideHasChanged = function(index) {
-            $ionicSlideBoxDelegate.cssClass = 'fade-in'
-            $scope.slideIndex = index;
-            if (($ionicSlideBoxDelegate.count() - 1) == index) {
-                $timeout(function() {
-                    $ionicSlideBoxDelegate.slide(0);
-
-                }, $scope.interval);
-            }
-        };
-         $scope.interval = 5000;
-        $scope.homeSlider = {};
-        $scope.homeSlider.data = [];
-        $scope.homeSlider.currentPage = 0;
-
-        $scope.setupSlider = function() {
-
-            //some options to pass to our slider
-            $scope.homeSlider.sliderOptions = {
-                initialSlide: 0,
-                direction: 'horizontal', //or vertical
-                speed: 300,
-
-                autoplay: "5000",
-                effect: 'fade',
-
-            };
-
-
-            //create delegate reference to link with slider
-            $scope.homeSlider.sliderDelegate = null;
-
-            //watch our sliderDelegate reference, and use it when it becomes available
-            $scope.$watch('homeSlider.sliderDelegate', function(newVal, oldVal) {
-                if (newVal != null) {
-                    $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function() {
-                        $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
-                        //use $scope.$apply() to refresh any content external to the slider
-                        $scope.$apply();
-                    });
-                }
-            });
-        };
-
-        $scope.setupSlider();
+      };
 
 
+      //create delegate reference to link with slider
+      $scope.homeSlider.sliderDelegate = null;
 
-        //detect when sliderDelegate has been defined, and attatch some event listeners
-        $scope.$watch('sliderDelegate', function(newVal, oldVal) {
-            if (newVal != null) {
-                $scope.sliderDelegate.on('slideChangeEnd', function() {
-                    console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
-                    $scope.$apply();
-                });
-            }
+      //watch our sliderDelegate reference, and use it when it becomes available
+      $scope.$watch('homeSlider.sliderDelegate', function (newVal, oldVal) {
+        if (newVal != null) {
+          $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function () {
+            $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
+            //use $scope.$apply() to refresh any content external to the slider
+            $scope.$apply();
+          });
+        }
+      });
+    };
+
+    $scope.setupSlider();
+
+
+
+    //detect when sliderDelegate has been defined, and attatch some event listeners
+    $scope.$watch('sliderDelegate', function (newVal, oldVal) {
+      if (newVal != null) {
+        $scope.sliderDelegate.on('slideChangeEnd', function () {
+          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
+          $scope.$apply();
         });
-})
+      }
+    });
+  })
 
-.controller('CategoryCtrl', function($scope, $stateParams) {
-})
+  .controller('ProductsCtrl', function ($scope, $stateParams, MyServices) {
+    $scope.company = {};
+    $scope.company._id = $stateParams.company;
+    MyServices.getAllCategoriesOfCompany($scope.company, function (data) {
+      if (data.value) {
+        $scope.categoriesOfCompany = data.data;
+        $scope.categoriesOfCompany = _.chunk($scope.categoriesOfCompany, 2);
 
-.controller('ProductsCtrl', function($scope, $stateParams) {
-})
+      }
+    })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-})
+    MyServices.getCompanyBanner($scope.company, function (data) {
+      if (data.value) {
+        $scope.CompanyBanner = data.data;
 
-.controller('ProductDetailsCtrl', function($scope, $stateParams) {
-    
-});
+      }
+    })
+
+  })
+
+  .controller('CategoryCtrl', function ($scope, $stateParams, MyServices) {
+    $scope.company = {};
+    $scope.category = {};
+    $scope.company._id = $stateParams.company;
+    $scope.category._id = $stateParams.category;
+    MyServices.getAllProductWithCategory($scope.category, function (data) {
+      if (data.value) {
+        $scope.AllProductWithCategory = data.data;
+        $scope.AllProductWithCategory = _.chunk($scope.AllProductWithCategory, 2);
+      }
+    })
+    MyServices.getCompanyBanner($scope.company, function (data) {
+      if (data.value) {
+        $scope.CompanyBanner = data.data;
+      }
+    })
+  })
+
+  .controller('DivisionCtrl', function ($scope, MyServices) {
+    MyServices.companyBanner(function (data) {
+      if (data.value) {
+        $scope.companyBanner = data.data.results;
+        $scope.companyBanner = _.chunk($scope.companyBanner, 2);
+
+      }
+    })
+
+  })
+
+  .controller('ProductDetailsCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout) {
+    $scope.product = {};
+    $scope.product._id = $stateParams.product;
+    $scope.bigImage={};
+    MyServices.getOneProductDetails($scope.product, function (data) {
+      if (data.value) {
+        $scope.ProductDetails = data.data;
+        if($scope.ProductDetails.images.length!=0){
+        $scope.bigImage = $scope.ProductDetails.images[0].bigImage;
+        }
+        $scope.proImages = $scope.ProductDetails.images;
+      }
+    })
+        $scope.changebigImage = function (bigImage) {
+          $scope.bigImage=bigImage;
+        }
+
+    $scope.closePopup = function () {
+      $scope.show.close();
+    };
+    $scope.lockSlide = function () {
+      $ionicSlideBoxDelegate.enableSlide(false);
+    };
+    $scope.myActiveSlide = 0;
+
+    $scope.slidePrevious = function (text) {
+
+      $ionicSlideBoxDelegate.$getByHandle(text).previous();
+    };
+
+    $scope.slideNext = function (text) {
+
+      $ionicSlideBoxDelegate.$getByHandle(text).next();
+
+    };
+
+    //     $scope.slideHasChanged = function(index) {
+    //       $ionicSlideBoxDelegate.cssClass = 'fade-in'
+    //     $scope.slideIndex = index;
+    //     if ( ($ionicSlideBoxDelegate.count() -1 ) == index ) {
+    //         $timeout(function(){
+    //             $ionicSlideBoxDelegate.slide(0);
+
+    //         },$scope.interval);
+    //     }
+    // };
+    $scope.interval = 2000;
+
+    $scope.homeSlider = {};
+    $scope.homeSlider.data = [];
+    $scope.homeSlider.currentPage = 0;
+    $scope.setupSlider = function () {
+
+      //some options to pass to our slider
+      $scope.homeSlider.sliderOptions = {
+        initialSlide: 0,
+        direction: 'horizontal', //or vertical
+        speed: 300,
+
+        autoplay: "5000",
+        effect: 'fade',
+
+      };
+
+
+      //create delegate reference to link with slider
+      $scope.homeSlider.sliderDelegate = null;
+
+      //watch our sliderDelegate reference, and use it when it becomes available
+      $scope.$watch('homeSlider.sliderDelegate', function (newVal, oldVal) {
+        if (newVal != null) {
+          $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function () {
+            $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
+            //use $scope.$apply() to refresh any content external to the slider
+            $scope.$apply();
+          });
+        }
+      });
+    };
+
+    $scope.setupSlider();
+
+
+
+    //detect when sliderDelegate has been defined, and attatch some event listeners
+    $scope.$watch('sliderDelegate', function (newVal, oldVal) {
+      if (newVal != null) {
+        $scope.sliderDelegate.on('slideChangeEnd', function () {
+          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
+          $scope.$apply();
+        });
+      }
+    });
+
+  })
+
+  .controller('ContactCtrl', function ($scope, $stateParams) {})
+
+  .controller('GalleryCtrl', function ($scope, $stateParams) {})
+
+  .controller('AboutUsCtrl', function ($scope, $stateParams) {});

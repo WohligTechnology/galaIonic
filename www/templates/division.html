@@ -1,0 +1,43 @@
+<ion-view  title="Gala" class="logo-center yes-title" >
+  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+        </button>
+    </ion-nav-buttons>
+    
+    <ion-nav-buttons side="right">
+      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
+        </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="">
+     
+         <div class="browse-grid">
+            <label for="" class="browse-text">DIVISIONS</label>
+                <div class="row" ng-repeat="cat in companyBanner">
+                <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({category:c1._id})">
+                    <div class="browse-card1 ">
+                        <div class="icondiv">
+                            <img ng-src="{{c1.banner | uploadpath}}" alt="">
+                        </div>
+                        <label for="" class="text-uppercase">{{c1.name}}</label>
+                    </div>
+                    
+                </div>
+                <!--<div class="col-50">
+                    <div class="browse-card2" >
+                        <div class="icondiv">
+                            <img src="img/Wood & Mouldings 1.jpg" alt="">
+                        </div>
+                        <label for="">WOOD AND MOULDINGS</label>
+                    </div>
+
+                </div>-->
+            </div>
+            <!--<div class="aboutUs ">
+                <img src="img/aboutus.jpg" alt="">
+                <label for="">ABOUT US</label>
+            </div>      -->
+        </div>
+  </ion-content>
+</ion-view>

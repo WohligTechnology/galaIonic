@@ -127,7 +127,8 @@ sans-serif-light !default;
   font-size: 20px;
   font-weight: 500;
   padding-bottom: 10px;
-  color: #77bf4f!important;
+  color: #fd3b40!important;
+  font-family: "AvenirNext"
 }
 
 .browse-grid {
@@ -153,12 +154,28 @@ sans-serif-light !default;
   //   color: #000;
   // }
 }
-
+.sliders {
+  width: 100%;
+  margin: 0px auto 0;
+  .ion-ios-arrow-back:before,
+  .ion-ios-arrow-forward:before {
+    color: #000;
+    font-size: 24px;
+    margin-top: 5px;
+  }
+}
+.flex-control-nav{
+  display: none;
+}
+.carousel li{
+  display: none;
+}
 .browse-card1 {
   padding: 1.5px;
   margin: 1.5px;
   overflow: hidden;
   position: relative;
+  height: 130px;
   .icondiv {
     height: auto;
     width: 100%;
@@ -173,22 +190,22 @@ sans-serif-light !default;
     }
   }
   label {
-    position: absolute;
+        position: absolute;
     display: block;
-    font-size: 11px;
-    /* box-shadow: 0 2px 0 0 lightgrey; */
+    font-size: 9px;
+    box-shadow: 0 2px 0 0 #b1b1b1;
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -23%);
     left: 50%;
-    top: 86%;
+    bottom: 0;
     width: 100%;
     /* width: 139%; */
     /* margin: 0 auto; */
     line-height: 30px;
     text-align: center;
-    font-family: "AvenirNext"
+    font-family: "AvenirNext";
   }
 }
 
@@ -209,22 +226,22 @@ sans-serif-light !default;
     }
   }
   label {
-    position: absolute;
+        position: absolute;
     display: block;
-    font-size: 11px;
-    /* box-shadow: 0 2px 0 0 lightgrey; */
+    font-size: 9px;
+    box-shadow: 0 2px 0 0 #b1b1b1;
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -23%);
     left: 50%;
-    top: 86%;
+    bottom: 0;
     width: 100%;
     /* width: 139%; */
     /* margin: 0 auto; */
     line-height: 30px;
     text-align: center;
-     font-family: "AvenirNext"
+    font-family: "AvenirNext";
   }
 }
 
@@ -235,12 +252,14 @@ sans-serif-light !default;
   }
   label{
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
     color: white;
     font-size: 35px;
-    font-family: "AvenirNext"
+    font-family: "AvenirNext";
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -252,7 +271,8 @@ sans-serif-light !default;
 .description{
   background: #75c04f;
   div{
-    padding: 20px
+    padding: 20px;
+    text-align: center;
   }
   label{
     font-size: 20px;
@@ -268,7 +288,8 @@ sans-serif-light !default;
 }
 
 .contactusDiv{
-  margin: 20px
+  margin: 20px;
+  text-align: center;
 }
 .contactdiv{
 label{
@@ -311,6 +332,7 @@ label{
 
 .social{
   margin-bottom: 10px;
+  text-align: center;
   i{
     padding-right: 20px;
     font-size: 18px;
@@ -335,7 +357,8 @@ label{
   padding: 1.5px;
   margin: 1.5px;
   overflow: hidden;
-  position: relative;
+  height: 115px;
+  // position: relative;
   .icondiv {
     height: auto;
     width: 100%;
@@ -414,7 +437,7 @@ label{
 //products
 .bgStrip{
   width: 100%;
-    max-height: 75px;
+    max-height: 105px;
     overflow: hidden;
     margin-top: 10px;
     img{
@@ -422,14 +445,16 @@ label{
     height: 100%;
     }
     label{
-    position: absolute;
-    transform: translate(-50%,-50%);
+   position: absolute;
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
     color: white;
     font-family: "AvenirNext";
     font-size: 16px;
     font-weight: 500;
+    width: 100%;
+    text-align: center;
     }
 }
 
@@ -437,7 +462,8 @@ label{
   padding: 1.5px;
   margin: 1.5px;
   overflow: hidden;
-  position: relative;
+  height: 115px;
+  // position: relative;
   .icondiv {
     height: auto;
     width: 100%;
@@ -454,20 +480,20 @@ label{
   label {
     position: absolute;
     display: block;
-    font-size: 11px;
-    /* box-shadow: 0 2px 0 0 lightgrey; */
+    font-size: 9px;
+    box-shadow: 0 2px 0 0 #b1b1b1;
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -23%);
     left: 50%;
-    top: 91%;
+    bottom: 0%;
     width: 100%;
     /* width: 139%; */
     /* margin: 0 auto; */
     line-height: 30px;
     text-align: center;
-    font-family: "AvenirNext"
+    font-family: "AvenirNext";
   }
 }
 
@@ -490,20 +516,20 @@ label{
   label {
     position: absolute;
     display: block;
-    font-size: 11px;
-    /* box-shadow: 0 2px 0 0 lightgrey; */
+    font-size: 9px;
+    box-shadow: 0 2px 0 0 #b1b1b1;
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -23%);
     left: 50%;
-    top: 91%;
+    bottom: 0%;
     width: 100%;
     /* width: 139%; */
     /* margin: 0 auto; */
     line-height: 30px;
     text-align: center;
-     font-family: "AvenirNext"
+    font-family: "AvenirNext";
   }
 }
 
@@ -563,6 +589,7 @@ position: absolute;
     transform: translate(-50%,-50%);
     padding: 0px;
     color: #55230a;
+    z-index: 100
 }
 
 .right-arrow{
@@ -572,6 +599,7 @@ position: absolute;
     padding: 0px;
     transform: translate(-50%,-50%);
     color:#55230a;
+    z-index: 100
 }
 
 .mart{
@@ -613,3 +641,123 @@ position: absolute;
     padding: 2px;
     font-family: "AvenirNext-Bold";
   }
+
+  .shareSocial{
+    text-align: center;
+    margin: 15px;
+    label{
+      display: inline-block;
+      font-family: "AvenirNext-Bold";
+      padding-right: 5px;
+    }
+  }
+
+  .fbImage{
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 20px;
+
+img{
+width: 100%
+}
+  }
+
+  .googleImgae{
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 20px;
+img{
+  width: 100%
+}
+  }
+
+  .twitImage{
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 20px;
+img{
+  width: 100%
+}
+  }
+
+  //menu
+  .bgcolor{
+    background: #75c04f;
+    color: white;
+    font-family: "AvenirNext";
+    padding: 15px 0px;
+  }
+
+.clickColor{
+  color: red;
+}
+
+  .menuOption{
+    border: transparent;
+    background: #75c04f!important;
+    color: white;
+    font-family: "AvenirNext";
+     
+    margin: 20px 0 0 0;
+  }
+  .mar20{
+    margin: 20px;
+  }
+
+  .bgColor{
+    .item-complex .item-content, .item-radio .item-content {
+    position: relative;
+    z-index: 2;
+    padding: 16px 49px 16px 16px;
+    border: none;
+    background-color: #fff;
+    background: #75c04f!important;
+    color: white;
+    font-family: "AvenirNext";
+    padding: 20px 10px;
+    
+}
+  }
+
+  .size{
+    font-size: 20px;
+  }
+
+  .border{
+    // border-bottom: 1px solid white;
+    border-left: none;
+    border-right: none;
+    border: none;
+    border-bottom: 1px solid white;
+  }
+
+.bordernone{
+  border: none;
+}
+
+  .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+    // border-color: white!important;
+    background-color: #75c04f!important;
+    color:#fd3b40;
+    // border-top: 1px solid rgba(255, 255, 255, 0.1);
+     
+}
+
+.hasfooter {
+    bottom: 100px;
+}
+.text-uppercase{
+  text-transform: uppercase;
+}
+.prcard{    
+  height: 180px;
+  position: relative;
+}
+.prosmall{
+  width: 30%;
+  display: inline-block!important;
+  img{
+    height: auto;
+    width: 100%;
+  }
+}

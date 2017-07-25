@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',  'angular-flexslider'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -27,40 +27,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     .state('app', {
     url: '/app',
+    cache:false,
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
-        }
-      }
-    })
 
     .state('app.home', {
       url: '/home',
+      cache:false,
       views: {
         'menuContent': {
           templateUrl: 'templates/home.html',
@@ -68,8 +45,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
+      .state('app.division', {
+      url: '/division',
+      cache:false,
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/division.html',
+          controller: 'DivisionCtrl'
+        }
+      }
+    })
      .state('app.category', {
-      url: '/category',
+      url: '/category/:company/:category',
       views: {
         'menuContent': {
           templateUrl: 'templates/category.html',
@@ -79,7 +66,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.products', {
-      url: '/products',
+      url: '/products/:company',
       views: {
         'menuContent': {
           templateUrl: 'templates/products.html',
@@ -89,7 +76,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.productdetails', {
-      url: '/productdetails',
+      url: '/productdetails/:product',
       views: {
         'menuContent': {
           templateUrl: 'templates/productdetails.html',
@@ -98,15 +85,57 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+    .state('app.aboutus', {
+      url: '/aboutus',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/aboutus.html',
+          controller: 'AboutUsCtrl'
+        }
       }
-    }
-  });
+    })
+
+    .state('app.contact', {
+      url: '/contact',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/contact.html',
+          controller: 'ContactCtrl'
+        }
+      }
+    })
+
+    .state('app.gallery', {
+      url: '/gallery',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/gallery.html',
+          controller: 'GalleryCtrl'
+        }
+      }
+    });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
-});
+  $urlRouterProvider.otherwise('/app/home');
+})
+    .filter('uploadpath', function() {
+        return function(input, width, height, style) {
+            var other = "";
+            if (width && width != "") {
+                other += "&width=" + width;
+            }
+            if (height && height != "") {
+                other += "&height=" + height;
+            }
+            if (style && style != "") {
+                other += "&style=" + style;
+            }
+            if (input) {
+                if (input.indexOf('https://') == -1) {
+                    return imgpath + input + other;
+
+                } else {
+                    return input;
+                }
+            }
+        }
+    });

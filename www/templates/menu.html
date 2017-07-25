@@ -12,25 +12,50 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
+  <ion-side-menu class="bgcolor bgColor"side="left">
+    <!--<ion-header-bar class="bar-stable">
       <h1 class="title">Left</h1>
-    </ion-header-bar>
-    <ion-content>
-      <ion-list>
-        <ion-item menu-close ng-click="login()">
-          Login
+    </ion-header-bar>-->
+    <ion-content class="mar20 bgColor">
+    <i class="ion-close-round size" menu-close ></i>
+      <ion-list class="mar20">
+        <ion-item class="menuOption border" ui-sref-active="active" menu-close ui-sref='app.home' ng-if!="category" >
+          HOME
         </ion-item>
-        <ion-item menu-close href="#/app/search">
-          Search
+        <ion-item class="bgColor border" ui-sref-active="active" menu-close ui-sref="app.aboutus" ng-click="category=false">
+          ABOUT US
         </ion-item>
-        <ion-item menu-close href="#/app/browse">
-          Browse
+        <!--<ion-item class="border" ui-sref-active="active" menu-close ui-sref="app.category" >
+          CATEGORIES
+          <ion-list class="mar20" ng-if="category">
+            <ion-item class="border bgColor menuOption"  menu-close >  
+              DOOR
+            </ion-item>
+            <ion-item class="border bgColor menuOption"  menu-close>  
+              DUPTON CORIAN
+            </ion-item>
+            <ion-item class="border bgColor menuOption"  menu-close>  
+              EXTERIOR CLADDING
+            </ion-item>
+            <ion-item class="border bgColor menuOption"  menu-close>  
+              WALLPAPER
+            </ion-item>
+            <ion-item class="border bgColor menuOption"  menu-close>  
+              DECKING
+            </ion-item>
+          </ion-list>
+        </ion-item>-->
+        <ion-item class="border" ui-sref-active="active" menu-close ui-sref="app.division" ng-click="category=false">
+          DIVISION
         </ion-item>
-        <ion-item menu-close href="#/app/playlists">
-          Playlists
+        <ion-item class="border" ui-sref-active="active" menu-close ui-sref="app.productdetails" ng-click="category=false">
+          GALLERY
+        </ion-item>
+        <ion-item class="bordernone" ui-sref-active="active" menu-close ui-sref="app.contact" ng-click="category=false">
+          CONTACT
         </ion-item>
       </ion-list>
+          
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>
