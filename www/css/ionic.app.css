@@ -12108,12 +12108,35 @@ a.button {
     color: #000;
     font-size: 24px;
     margin-top: 5px; }
+  .sliders .flexslider {
+    padding: 0 14%;
+    margin-bottom: 10px; }
 
 .flex-control-nav {
   display: none; }
 
-.carousel li {
-  display: none; }
+.flex-next {
+  right: 0px !important;
+  top: 38% !important;
+  height: 60px !important;
+  color: transparent !important;
+  opacity: 1 !important; }
+  .flex-next::before {
+    position: absolute !important;
+    top: 25px !important; }
+
+.flex-direction-nav .flex-disabled {
+  opacity: 2 !important; }
+
+.flex-prev {
+  left: 0px !important;
+  top: 38% !important;
+  height: 60px !important;
+  color: transparent !important;
+  opacity: 1 !important; }
+  .flex-prev::before {
+    position: absolute !important;
+    top: 25px !important; }
 
 .browse-card1 {
   padding: 1.5px;
@@ -12551,7 +12574,8 @@ a.button {
 .mar20 {
   margin: 20px; }
 
-.bgColor .item-complex .item-content, .bgColor .item-radio .item-content {
+.bgColor .item-complex .item-content,
+.bgColor .item-radio .item-content {
   position: relative;
   z-index: 2;
   padding: 16px 49px 16px 16px;
@@ -12574,7 +12598,12 @@ a.button {
 .bordernone {
   border: none; }
 
-.item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
   background-color: #75c04f !important;
   color: #fd3b40; }
 

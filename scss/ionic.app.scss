@@ -17,12 +17,9 @@ $dark:                            #444 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
-
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 @import "www/lib/font-awesome/scss/font-awesome.scss";
-
-
 $font-family-sans-serif: "AvenirNext",
 "AvenirNext-Bold",
 "savoyeplain",
@@ -36,17 +33,14 @@ $font-family-light-sans-serif: "AvenirNext",
 "fontawesome",
 "Segoe UI-Light",
 sans-serif-light !default;
-
 @font-face {
-    font-family: 'fontawesome';
-    src:url('../fonts/fontawesome-webfont.eot');
-    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
-        url('../fonts/fontawesome-webfont.woff') format('woff'),
-        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
-        url('../fonts/fontawesome-webfont.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'fontawesome';
+  src: url('../fonts/fontawesome-webfont.eot');
+  src: url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff') format('woff'), url('../fonts/fontawesome-webfont.ttf') format('truetype'), url('../fonts/fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
+
 @font-face {
   font-family: 'savoyeplain';
   src: url("../fonts/savoyeplain.ttf");
@@ -74,7 +68,7 @@ sans-serif-light !default;
 
 .disblock {
   display: inline-block!important;
-   padding-left: 5px!important;
+  padding-left: 5px!important;
   margin-right: 10px;
 }
 
@@ -86,19 +80,19 @@ sans-serif-light !default;
   color: #77bf4f!important;
 }
 
-.bgHeader{
-    background-color: white!important;
+.bgHeader {
+  background-color: white!important;
 }
 
-.logoImage{
-    margin-top: 10px;
+.logoImage {
+  margin-top: 10px;
 }
 
 .box1,
 .box2,
 .box3 {
   height: 230px;
-  img{
+  img {
     height: 100%;
     width: 100%;
     margin-top: 15px
@@ -112,13 +106,13 @@ sans-serif-light !default;
 }
 
 .slider-pager {
-    position: absolute;
-    bottom: 20px;
-    z-index: 1;
-    width: 100%;
-    height: 15px;
-    text-align: center;
-    display: none;
+  position: absolute;
+  bottom: 20px;
+  z-index: 1;
+  width: 100%;
+  height: 15px;
+  text-align: center;
+  display: none;
 }
 
 .browse-text {
@@ -148,12 +142,12 @@ sans-serif-light !default;
     padding: 0px!important;
     background-size: contain;
     color: transparent!important;
-  }
-  // span {
+  } // span {
   //   margin-top: 5px;
   //   color: #000;
   // }
 }
+
 .sliders {
   width: 100%;
   margin: 0px auto 0;
@@ -163,13 +157,45 @@ sans-serif-light !default;
     font-size: 24px;
     margin-top: 5px;
   }
+  .flexslider{
+      padding: 0 14%;
+      margin-bottom: 10px;
+  }
 }
-.flex-control-nav{
+
+.flex-control-nav {
   display: none;
 }
-.carousel li{
-  display: none;
+
+.flex-next {
+  right:0px!important;
+  top: 38%!important;
+  height: 60px!important;
+  color: transparent!important;
+  opacity: 1!important;
+  &::before {
+    position: absolute!important;
+    top: 25px!important;
+  }
 }
+.flex-direction-nav .flex-disabled{
+  opacity: 2!important;
+}
+.flex-prev {
+    left: 0px!important;
+  top: 38%!important;
+  height: 60px!important;
+  color: transparent!important;
+    opacity: 1!important;
+  &::before {
+    position: absolute!important;
+    top: 25px!important;
+  }
+}
+
+// .carousel li{
+//   display: none;
+// }
 .browse-card1 {
   padding: 1.5px;
   margin: 1.5px;
@@ -181,7 +207,6 @@ sans-serif-light !default;
     width: 100%;
     display: block;
     overflow: hidden;
-    
     overflow: hidden;
     img {
       height: auto;
@@ -190,7 +215,7 @@ sans-serif-light !default;
     }
   }
   label {
-        position: absolute;
+    position: absolute;
     display: block;
     font-size: 9px;
     box-shadow: 0 2px 0 0 #b1b1b1;
@@ -215,18 +240,15 @@ sans-serif-light !default;
   position: relative;
   .icondiv {
     height: auto;
-    width: 100%;
-    // padding: 15px 0;
+    width: 100%; // padding: 15px 0;
     display: block;
-    
-   
     img {
       height: auto;
       width: 100%;
     }
   }
   label {
-        position: absolute;
+    position: absolute;
     display: block;
     font-size: 9px;
     box-shadow: 0 2px 0 0 #b1b1b1;
@@ -245,12 +267,12 @@ sans-serif-light !default;
   }
 }
 
-.aboutUs{
+.aboutUs {
   width: 100%;
-  img{
+  img {
     width: 100%;
   }
-  label{
+  label {
     position: absolute;
     transform: translate(-50%, -50%);
     top: 40%;
@@ -263,23 +285,22 @@ sans-serif-light !default;
   }
 }
 
-.rel{
+.rel {
   position: relative
 }
 
-
-.description{
+.description {
   background: #75c04f;
-  div{
+  div {
     padding: 20px;
     text-align: center;
   }
-  label{
+  label {
     font-size: 20px;
     font-family: "savoyeplain";
     color: white;
   }
-  p{
+  p {
     color: white;
     font-family: "AvenirNext";
     font-size: 12px;
@@ -287,53 +308,53 @@ sans-serif-light !default;
   }
 }
 
-.contactusDiv{
+.contactusDiv {
   margin: 20px;
   text-align: center;
 }
-.contactdiv{
-label{
-  color: #78be4f;
+
+.contactdiv {
+  label {
+    color: #78be4f;
     font-size: 25px;
     font-family: "AvenirNext";
-}
+  }
 }
 
-.address{
+.address {
   margin: 10px;
-  p{
+  p {
     font-size: 15px;
     font-family: "AvenirNext";
     color: #a3a3a3;
   }
 }
 
-.numberDiv{
+.numberDiv {
   margin: 10px 0 0 0;
-label{
-  color: #78be4f;
+  label {
+    color: #78be4f;
     font-size: 15px;
     font-family: "AvenirNext";
-}
+  }
 }
 
-.emailDiv{
-label{
-  color: #78be4f;
+.emailDiv {
+  label {
+    color: #78be4f;
     font-size: 15px;
     font-family: "AvenirNext";
-}
+  }
 }
 
-.dribbleimage{
+.dribbleimage {
   font-family: "fontawesome"
-
 }
 
-.social{
+.social {
   margin-bottom: 10px;
   text-align: center;
-  i{
+  i {
     padding-right: 20px;
     font-size: 18px;
     color: #c9c9c9;
@@ -341,30 +362,28 @@ label{
 }
 
 //category
-.categoryTitle{
-      position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    font-family: "AvenirNext-Bold";
-    font-size: 20px;
-    width: 100%;
-    text-align: center;
-    color: white;
+.categoryTitle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  font-family: "AvenirNext-Bold";
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  color: white;
 }
 
 .category-card1 {
   padding: 1.5px;
   margin: 1.5px;
   overflow: hidden;
-  height: 115px;
-  // position: relative;
+  height: 115px; // position: relative;
   .icondiv {
     height: auto;
     width: 100%;
     display: block;
     overflow: hidden;
-    
     overflow: hidden;
     img {
       height: auto;
@@ -380,20 +399,17 @@ label{
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    padding: 5px 0px;
-    // width: 100%;
+    padding: 5px 0px; // width: 100%;
     /* width: 139%; */
     /* margin: 0 auto; */
-     width: 60%;
-    // line-height: 0px;
+    width: 60%; // line-height: 0px;
     text-align: center;
     font-family: "AvenirNext"
   }
 }
-
 
 .category-card2 {
   padding: 1.5px;
@@ -405,7 +421,6 @@ label{
     width: 100%;
     display: block;
     overflow: hidden;
-    
     overflow: hidden;
     img {
       height: auto;
@@ -421,7 +436,7 @@ label{
     /* font-weight: 500 !important; */
     background: rgba(241, 240, 236, 0.8);
     /* width: 50%; */
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
     padding: 5px 0px;
@@ -435,17 +450,17 @@ label{
 }
 
 //products
-.bgStrip{
+.bgStrip {
   width: 100%;
-    max-height: 105px;
-    overflow: hidden;
-    margin-top: 10px;
-    img{
-      width: 100%;
+  max-height: 105px;
+  overflow: hidden;
+  margin-top: 10px;
+  img {
+    width: 100%;
     height: 100%;
-    }
-    label{
-   position: absolute;
+  }
+  label {
+    position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
@@ -455,21 +470,19 @@ label{
     font-weight: 500;
     width: 100%;
     text-align: center;
-    }
+  }
 }
 
 .products-card1 {
   padding: 1.5px;
   margin: 1.5px;
   overflow: hidden;
-  height: 115px;
-  // position: relative;
+  height: 115px; // position: relative;
   .icondiv {
     height: auto;
     width: 100%;
     display: block;
     overflow: hidden;
-    
     overflow: hidden;
     img {
       height: auto;
@@ -503,11 +516,8 @@ label{
   position: relative;
   .icondiv {
     height: auto;
-    width: 100%;
-    // padding: 15px 0;
+    width: 100%; // padding: 15px 0;
     display: block;
-    
-   
     img {
       height: auto;
       width: 100%;
@@ -543,16 +553,15 @@ label{
   font-family: "AvenirNext"
 }
 
-
 //productsdetail
-.mainImage{
+.mainImage {
   margin-top: 10px;
+  width: 100%;
+  img {
     width: 100%;
-  img{
-width: 100%;
   }
-  div{
-   background: #75c04f;
+  div {
+    background: #75c04f;
     color: white;
     text-align: center;
     padding: 10px;
@@ -576,136 +585,133 @@ width: 100%;
   height: 150px;
   width: 90%;
   margin: 0 auto;
-  img{
+  img {
     height: 100%;
     width: 100%
   }
 }
 
-.left-arrow{
-position: absolute;
-    top: 50%;
-    right: 94%;
-    transform: translate(-50%,-50%);
-    padding: 0px;
-    color: #55230a;
-    z-index: 100
-}
-
-.right-arrow{
+.left-arrow {
   position: absolute;
-    top: 50%;
-    left: 98%;
-    padding: 0px;
-    transform: translate(-50%,-50%);
-    color:#55230a;
-    z-index: 100
+  top: 50%;
+  right: 94%;
+  transform: translate(-50%, -50%);
+  padding: 0px;
+  color: #55230a;
+  z-index: 100
 }
 
-.mart{
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  left: 98%;
+  padding: 0px;
+  transform: translate(-50%, -50%);
+  color: #55230a;
+  z-index: 100
+}
+
+.mart {
   margin-top: 20px;
 }
 
-.marl{
+.marl {
   padding-left: 10px;
 }
 
-.imageRow{
+.imageRow {
   position: absolute;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
 }
 
-.productdescription{
+.productdescription {
   text-align: center;
   font-family: "AvenirNext-Bold";
   font-size: 18px;
- 
 }
 
- .productinside{
-    padding: 10px;
-    text-align: justify;
-    font-size: 9px;
-    font-family: "AvenirNext";
-    line-height: 12px;
-  }
+.productinside {
+  padding: 10px;
+  text-align: justify;
+  font-size: 9px;
+  font-family: "AvenirNext";
+  line-height: 12px;
+}
 
-  .enquire{
-    margin: 0 auto;
-    display: block;
-    background: #75c04f;
-    border: none;
-    width: 40%;
-    padding: 2px;
+.enquire {
+  margin: 0 auto;
+  display: block;
+  background: #75c04f;
+  border: none;
+  width: 40%;
+  padding: 2px;
+  font-family: "AvenirNext-Bold";
+}
+
+.shareSocial {
+  text-align: center;
+  margin: 15px;
+  label {
+    display: inline-block;
     font-family: "AvenirNext-Bold";
+    padding-right: 5px;
   }
-
-  .shareSocial{
-    text-align: center;
-    margin: 15px;
-    label{
-      display: inline-block;
-      font-family: "AvenirNext-Bold";
-      padding-right: 5px;
-    }
-  }
-
-  .fbImage{
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 20px;
-
-img{
-width: 100%
 }
-  }
 
-  .googleImgae{
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 20px;
-img{
-  width: 100%
+.fbImage {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 20px;
+  img {
+    width: 100%
+  }
 }
-  }
 
-  .twitImage{
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 20px;
-img{
-  width: 100%
+.googleImgae {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 20px;
+  img {
+    width: 100%
+  }
 }
-  }
 
-  //menu
-  .bgcolor{
-    background: #75c04f;
-    color: white;
-    font-family: "AvenirNext";
-    padding: 15px 0px;
+.twitImage {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 20px;
+  img {
+    width: 100%
   }
+} //menu
+.bgcolor {
+  background: #75c04f;
+  color: white;
+  font-family: "AvenirNext";
+  padding: 15px 0px;
+}
 
-.clickColor{
+.clickColor {
   color: red;
 }
 
-  .menuOption{
-    border: transparent;
-    background: #75c04f!important;
-    color: white;
-    font-family: "AvenirNext";
-     
-    margin: 20px 0 0 0;
-  }
-  .mar20{
-    margin: 20px;
-  }
+.menuOption {
+  border: transparent;
+  background: #75c04f!important;
+  color: white;
+  font-family: "AvenirNext";
+  margin: 20px 0 0 0;
+}
 
-  .bgColor{
-    .item-complex .item-content, .item-radio .item-content {
+.mar20 {
+  margin: 20px;
+}
+
+.bgColor {
+  .item-complex .item-content,
+  .item-radio .item-content {
     position: relative;
     z-index: 2;
     padding: 16px 49px 16px 16px;
@@ -715,48 +721,53 @@ img{
     color: white;
     font-family: "AvenirNext";
     padding: 20px 10px;
-    
+  }
 }
-  }
 
-  .size{
-    font-size: 20px;
-  }
+.size {
+  font-size: 20px;
+}
 
-  .border{
-    // border-bottom: 1px solid white;
-    border-left: none;
-    border-right: none;
-    border: none;
-    border-bottom: 1px solid white;
-  }
+.border {
+  // border-bottom: 1px solid white;
+  border-left: none;
+  border-right: none;
+  border: none;
+  border-bottom: 1px solid white;
+}
 
-.bordernone{
+.bordernone {
   border: none;
 }
 
-  .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
-    // border-color: white!important;
-    background-color: #75c04f!important;
-    color:#fd3b40;
-    // border-top: 1px solid rgba(255, 255, 255, 0.1);
-     
+.item.active,
+.item.activated,
+.item-complex.active .item-content,
+.item-complex.activated .item-content,
+.item .item-content.active,
+.item .item-content.activated {
+  // border-color: white!important;
+  background-color: #75c04f!important;
+  color: #fd3b40; // border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .hasfooter {
-    bottom: 100px;
+  bottom: 100px;
 }
-.text-uppercase{
+
+.text-uppercase {
   text-transform: uppercase;
 }
-.prcard{    
+
+.prcard {
   height: 180px;
   position: relative;
 }
-.prosmall{
+
+.prosmall {
   width: 30%;
   display: inline-block!important;
-  img{
+  img {
     height: auto;
     width: 100%;
   }
