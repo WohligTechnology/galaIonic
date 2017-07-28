@@ -16,6 +16,16 @@ $dark:                            #444 !default;
 */
 
 // The path for our ionicons font files, relative to the built CSS in www/css
+$light: #fff !default;
+$stable: #f8f8f8 !default;
+$positive: #75c04f !default;
+$calm: #11c1f3 !default;
+$balanced: #33cd5f !default;
+$energized: #676588 !default;
+$assertive: #e05d5d !default;
+$royal: #352c6c !default;
+$dark: #303e54 !default;
+$base: #778aa6 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
@@ -33,6 +43,14 @@ $font-family-light-sans-serif: "AvenirNext",
 "fontawesome",
 "Segoe UI-Light",
 sans-serif-light !default;
+@mixin placeholder {
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
 @font-face {
   font-family: 'fontawesome';
   src: url('../fonts/fontawesome-webfont.eot');
@@ -770,4 +788,100 @@ sans-serif-light !default;
     height: auto;
     width: 100%;
   }
+}
+
+//signup
+.signup-logo{
+  margin: 20px auto;
+    width: 100px;
+    img{
+      width: 100%;
+    }
+}
+
+.err {
+  &::before {
+    content: "\f100";
+    font-family: "Ionicons";
+    color: $assertive;
+    position: absolute;
+    top: 15px;
+    left: 3px;
+    z-index: 1;
+    font-size: 12px;
+  }
+  &.succ {
+    &::before {
+      content: "\f122";
+      color: $balanced;
+    }
+    >* {
+      color: $balanced !important;
+    }
+  }
+  input {
+    @include placeholder {
+      color: $assertive !important;
+    }
+  }
+  >* {
+    color: $assertive !important;
+  }
+}
+
+.error-msg {
+  color: $assertive;
+  top: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  font-size: 11px;
+  background-color: #f1f1f1;
+  padding: 0px 10px;
+  border-radius: 6px;
+}
+
+.input-label {
+    color: #000;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    display: block;
+  }
+
+  .pro-edit {
+  &.text-rite {
+    .item-input input {
+      text-align: left;
+    }
+  }
+  }
+
+  .text-right {
+    text-align: right;
+  }
+
+  .bg-header{
+    background: #27204f;
+  }
+
+  .disblock {
+  display: inline-block!important;
+}
+
+.login{
+  text-align: center;
+  label{
+    display: inline-block;
+  }
+  span{
+      font-size: 16px;
+        padding: 5px;
+  }
+}
+.logout{
+      background: transparent;
+    color: white;
+    padding: 16px 10px;
 }

@@ -1,0 +1,37 @@
+<ion-view view-title="Login">
+    <ion-nav-bar class="bar-positive nav-height bar">
+    
+    </ion-nav-bar>
+    <ion-content>
+        <form name="formName" ng-submit="login(formData)">
+        <div class = "signup-logo">   
+            <img src="img/logo.png" alt="">
+        </div>
+<div class="pro-edit text-rite">
+        <label class="item item-input" ng-class="{'err': formName.email.$invalid && formName.email.$touched}">
+            <span class="input-label">Email Address</span>            
+            <input type="email" name="email" ng-model="formData.email" required>
+            <span class="error-msg" ng-show="formName.email.$invalid && formName.email.$touched">Please enter valid Email Address</span>
+          </label>
+         
+
+            <label class="item item-input" ng-class="{'err': formName.password.$invalid && formName.password.$touched}" >
+            <span class="input-label">Password</span>
+            <input type="password" no-paste name="password"   ng-model="formData.password" required limit-to = "15" >
+            <span class="error-msg" ng-show="formName.password.$invalid && formName.password.$touched">Please enter valid Password</span>
+            </label>
+
+            
+
+            <div class="text-center m20 padding-horizontal" >
+      <button class="button button-positive button-block" ng-disabled="formName.$invalid"
+        type="submit">Login</button>
+    </div>
+    </div>
+    <div class="login">
+<label>Signup with a different acoount?</label><span ui-sref='signup'>Click Here.</span>
+    </div>
+    
+    </form>
+    </ion-content>
+</ion-view>

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['starter.services'])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
 
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -8,6 +8,11 @@ angular.module('starter.controllers', ['starter.services'])
     // listen for the $ionicView.enter event:
     //$scope.$on('$ionicView.enter', function(e) {
     //});
+       $scope.logout = function () {
+      // alert("hi");
+      $.jStorage.flush();
+      $state.go('login')
+    }
   })
 
   .controller('HomeCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout) {
@@ -178,19 +183,19 @@ angular.module('starter.controllers', ['starter.services'])
   .controller('ProductDetailsCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout) {
     $scope.product = {};
     $scope.product._id = $stateParams.product;
-    $scope.bigImage={};
+    $scope.bigImage = {};
     MyServices.getOneProductDetails($scope.product, function (data) {
       if (data.value) {
         $scope.ProductDetails = data.data;
-        if($scope.ProductDetails.images.length!=0){
-        $scope.bigImage = $scope.ProductDetails.images[0].bigImage;
+        if ($scope.ProductDetails.images.length != 0) {
+          $scope.bigImage = $scope.ProductDetails.images[0].bigImage;
         }
         $scope.proImages = $scope.ProductDetails.images;
       }
     })
-        $scope.changebigImage = function (bigImage) {
-          $scope.bigImage=bigImage;
-        }
+    $scope.changebigImage = function (bigImage) {
+      $scope.bigImage = bigImage;
+    }
 
     $scope.closePopup = function () {
       $scope.show.close();
@@ -272,6 +277,68 @@ angular.module('starter.controllers', ['starter.services'])
   })
 
   .controller('ContactCtrl', function ($scope, $stateParams) {})
+  .controller('LoginCtrl', function ($scope, $stateParams,MyServices,$state,$ionicPopup) {
+     if ($.jStorage.get('profile')) {
+      $state.go('app.home');
+    }
+    $scope.formData = {};
+
+    $scope.login = function (value) {
+      console.log("value", value);
+      
+      MyServices.login(value, function (data) {
+        if (data.value == true) {
+          $state.go('app.home');
+          console.log(data);
+          $scope.formData = data.data;
+          $.jStorage.set('profile', data.data);
+          console.log($scope.formData)
+          $scope.formData = {};
+        } else {
+          $ionicPopup.alert({
+            cssClass: 'productspopup',
+            title: "Login Incorrect",
+
+          });
+        }
+
+      })
+    }
+  })
+  .controller('SignupCtrl', function ($scope, $stateParams,MyServices,$state,$ionicPopup) {
+
+    if ($.jStorage.get('profile')) {
+      $state.go('app.home');
+    }
+
+    $scope.formData = {};
+    $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    $scope.signupForm = function (value) {
+      console.log("value", value);
+      // if (!$.jStorage.get('profile')) {
+
+      MyServices.signup(value, function (data) {
+
+        console.log(data);
+        $scope.formData = data.data;
+        $.jStorage.set('profile', data.data);
+        console.log($scope.formData)
+        if (data.value == true) {
+          $state.go('app.home');
+        } else {
+          $ionicPopup.alert({
+            cssClass: 'productspopup',
+            title: "Sign Up Incorrect",
+
+          });
+        }
+      })
+
+      //}
+    }
+  })
+
 
   .controller('GalleryCtrl', function ($scope, $stateParams) {})
 

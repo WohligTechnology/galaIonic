@@ -1,4 +1,4 @@
-var adminurl = "http://192.168.1.105/api/"; //server
+var adminurl = "http://192.168.1.102/api/"; //server
 // var adminurl = "http://192.168.0.119:1337/api/"; //server
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
@@ -11,7 +11,7 @@ angular.module('starter.services', [])
 
 
       //To verfiy OTP
-      
+
       HomeBanner: function (callback) {
         $http({
           url: adminurl + 'HomeBanner/search',
@@ -26,6 +26,22 @@ angular.module('starter.services', [])
           withCredentials: true
         }).success(callback);
       },
+      login: function (data, callback) {
+        console.log(data);
+        $http({
+          url: adminurl + 'User/userLogin',
+          method: 'POST',
+          data: data
+        }).success(callback);
+      },
+      signup: function (data, callback) {
+        $http({
+          url: adminurl + 'User/registerAppuser',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
       getAllCategoriesOfCompany: function (data, callback) {
         $http({
           url: adminurl + 'CompanyCategory/getAllCategoriesOfCompany',
@@ -34,8 +50,8 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-      
-       getCompanyBanner: function (data, callback) {
+
+      getCompanyBanner: function (data, callback) {
         $http({
           url: adminurl + 'Company/getCompanyBanner',
           method: 'POST',
@@ -43,7 +59,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-          getAllProductWithCategory: function (data, callback) {
+      getAllProductWithCategory: function (data, callback) {
         $http({
           url: adminurl + 'CompanyProduct/getAllProductWithCategory',
           method: 'POST',
@@ -51,7 +67,7 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
-          getOneProductDetails: function (data, callback) {
+      getOneProductDetails: function (data, callback) {
         $http({
           url: adminurl + 'CompanyProduct/getOneProductDetails',
           method: 'POST',
@@ -61,4 +77,15 @@ angular.module('starter.services', [])
       },
 
     };
-  });
+  })
+  .directive("limitTo", [function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            var limit = parseInt(attrs.limitTo);
+            angular.element(elem).on("keypress", function(e) {
+                if (this.value.length == limit) e.preventDefault();
+            });
+        }
+    }
+}]);
