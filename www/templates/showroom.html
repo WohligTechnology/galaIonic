@@ -1,0 +1,36 @@
+<ion-view title="gala" class="logo-center yes-title">
+  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+        </button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
+        </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="">
+    <div class="mainImage rel">
+      <img ng-src="{{bigImage | uploadpath}}" alt="">
+      <div>{{name}}</div>
+    </div>
+    <!-- <div class="rel">
+       <button class="button button-icon icon ion-ios-arrow-left arrowbtn left-arrow" ng-click="slidePrevious('am')"></button>
+      <button class="button button-icon icon ion-ios-arrow-right rightarr right-arrow" ng-click="slideNext('am')"></button> 
+
+    </div> -->
+      <div class="sliders text-center " ng-if="proImages[0]!==''">
+      <flex-slider class="carousel " animation="slide" flex-slide="pro in ProductDetails track by $index" animation-loop="true"
+        item-margin="10" slideshow="false" item-width="75" maxItems="3">
+        <li class="prosmall" ng-click="changebigImage(pro.images[0].bigImage,pro.name) ">
+          <img ng-src="{{pro.images[0].smallImage | uploadpath}}" alt="">
+         </li>
+      </flex-slider>
+    </div> 
+
+
+
+
+  </ion-content>
+</ion-view>

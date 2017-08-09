@@ -20,7 +20,7 @@
       <button class="button button-icon icon ion-ios-arrow-right rightarr right-arrow" ng-click="slideNext('am')"></button> -->
 
     </div>
-      <div class="sliders text-center ">
+      <div class="sliders text-center " ng-if="proImages[0]!==''">
       <flex-slider class="carousel " animation="slide" flex-slide="pro in proImages track by $index" animation-loop="true"
         item-margin="10" slideshow="false" item-width="75" maxItems="3">
         <li class="prosmall" ng-click="changebigImage(pro.bigImage) ">

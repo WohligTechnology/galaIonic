@@ -16,9 +16,21 @@ angular.module('starter.controllers', ['starter.services'])
   })
 
   .controller('HomeCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout) {
+
+   MyServices.CompanyProduct(function (data){
+     console.log('hello',data)
+     if (data.value) {
+        $scope.companyProduct = data.data;
+        $scope.companyProduct = _.chunk($scope.companyProduct, 2);
+        console.log('sawme',$scope.companyProduct)
+      }
+   })
+    
     MyServices.HomeBanner(function (data) {
       if (data.value) {
         $scope.homebanner = data.data.results;
+        console.log('homebanner',$scope.homebanner)
+       
       }
     })
 
@@ -43,47 +55,7 @@ angular.module('starter.controllers', ['starter.services'])
     $scope.homeSlider = {};
     $scope.homeSlider.data = [];
     $scope.homeSlider.currentPage = 0;
-    $scope.category = [{
-      name: "uro veener world",
-      id: "uroveenerworld",
-      url: "img/homenew/1.jpg"
-    }, {
-      name: "wood & mouldings",
-      id: "woodmouldings",
-      url: "img/homenew/2.jpg"
-    }, {
-      name: " bath world",
-      id: "bathworld",
-      url: "img/homenew/3.jpg"
-    }, {
-      name: " gala hardware worlds",
-      id: "galahardwareworlds",
-      url: "img/homenew/4.jpg"
-    }, {
-      name: " gala stone worlds",
-      id: "galastoneworlds",
-      url: "img/homenew/5.jpg"
-    }, {
-      name: " gala furniture worlds",
-      id: "galafurnitureworlds",
-      url: "img/homenew/6.jpg"
-    }, {
-      name: "euro lighting world",
-      id: "eurolightingworld",
-      url: "img/homenew/7.jpg"
-    }, {
-      name: "gala drapes world",
-      id: "galadrapesworld",
-      url: "img/homenew/8.jpg"
-    }, {
-      name: "gala kitchen world",
-      id: "galakitchenworld",
-      url: "img/homenew/9.jpg"
-    }, {
-      name: "mahavir corporation (India)",
-      id: "mahavircorporation",
-      url: "img/homenew/10.jpg"
-    }];
+
 
     //chunk//
     $scope.homecategory = _.chunk($scope.category, 2);
@@ -115,10 +87,7 @@ angular.module('starter.controllers', ['starter.services'])
         }
       });
     };
-
     $scope.setupSlider();
-
-
 
     //detect when sliderDelegate has been defined, and attatch some event listeners
     $scope.$watch('sliderDelegate', function (newVal, oldVal) {
@@ -338,7 +307,94 @@ angular.module('starter.controllers', ['starter.services'])
       //}
     }
   })
+.controller('ShowroomCtrl', function ($scope, $stateParams, MyServices) {
+   $scope.product = {};
+    $scope.bigImage = {};
+    $scope.name = {};
+    MyServices.CompanyProduct( function (data) {
+      if (data.value) {
+        $scope.ProductDetails = data.data;
+        if ($scope.ProductDetails.length != 0) {
+          $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
+                $scope.name = $scope.ProductDetails[0].name;
 
+        }
+      }
+    })
+
+
+    $scope.changebigImage = function (bigImage,name) {
+      $scope.bigImage = bigImage;
+      $scope.name = name;
+    }
+
+    $scope.closePopup = function () {
+      $scope.show.close();
+    };
+    $scope.lockSlide = function () {
+      $ionicSlideBoxDelegate.enableSlide(false);
+    };
+    $scope.myActiveSlide = 0;
+
+    $scope.slidePrevious = function (text) {
+
+      $ionicSlideBoxDelegate.$getByHandle(text).previous();
+    };
+
+    $scope.slideNext = function (text) {
+
+      $ionicSlideBoxDelegate.$getByHandle(text).next();
+
+    };
+
+
+    $scope.interval = 2000;
+
+    $scope.homeSlider = {};
+    $scope.homeSlider.data = [];
+    $scope.homeSlider.currentPage = 0;
+    $scope.setupSlider = function () {
+
+      //some options to pass to our slider
+      $scope.homeSlider.sliderOptions = {
+        initialSlide: 0,
+        direction: 'horizontal', //or vertical
+        speed: 300,
+
+        autoplay: "5000",
+        effect: 'fade',
+
+      };
+      //create delegate reference to link with slider
+      $scope.homeSlider.sliderDelegate = null;
+
+      //watch our sliderDelegate reference, and use it when it becomes available
+      $scope.$watch('homeSlider.sliderDelegate', function (newVal, oldVal) {
+        if (newVal != null) {
+          $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function () {
+            $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
+            //use $scope.$apply() to refresh any content external to the slider
+            $scope.$apply();
+          });
+        }
+      });
+    };
+
+    $scope.setupSlider();
+
+
+
+    //detect when sliderDelegate has been defined, and attatch some event listeners
+    $scope.$watch('sliderDelegate', function (newVal, oldVal) {
+      if (newVal != null) {
+        $scope.sliderDelegate.on('slideChangeEnd', function () {
+          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
+          $scope.$apply();
+        });
+      }
+    });
+
+})
 
   .controller('GalleryCtrl', function ($scope, $stateParams) {})
 

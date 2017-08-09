@@ -15,7 +15,7 @@
          <div class="browse-grid">
             <label for="" class="browse-text">DIVISIONS</label>
                 <div class="row" ng-repeat="cat in companyBanner">
-                <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({category:c1._id})">
+                <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({company:c1._id})">
                     <div class="browse-card1 ">
                         <div class="icondiv">
                             <img ng-src="{{c1.banner | uploadpath}}" alt="">

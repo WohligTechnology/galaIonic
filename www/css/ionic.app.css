@@ -12508,7 +12508,8 @@ a.button {
 .productdescription {
   text-align: center;
   font-family: "AvenirNext-Bold";
-  font-size: 18px; }
+  font-size: 18px;
+  margin-top: 20px; }
 
 .productinside {
   padding: 10px;

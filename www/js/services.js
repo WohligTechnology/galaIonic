@@ -1,5 +1,5 @@
-var adminurl = "http://192.168.1.102/api/"; //server
-// var adminurl = "http://192.168.0.119:1337/api/"; //server
+//var adminurl = "http://galaapi.wohlig.co.in/api/"; //server
+ var adminurl = "http://192.168.1.123:80/api/"; //local
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -19,6 +19,16 @@ angular.module('starter.services', [])
           withCredentials: true
         }).success(callback);
       },
+
+    CompanyProduct: function (callback) {
+        $http({
+          url: adminurl + 'CompanyProduct/getAllProduct',
+          method: 'POST',
+          withCredentials: true
+        }).success(callback);
+      },
+
+
       companyBanner: function (callback) {
         $http({
           url: adminurl + 'Company/search',

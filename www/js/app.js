@@ -129,6 +129,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+
+     .state('app.showroom', {
+        url: '/showroom',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/showroom.html',
+            controller: 'ShowroomCtrl'
+          }
+        }
+      })
+
       .state('signup', {
         url: '/signup',
         cache: false,
