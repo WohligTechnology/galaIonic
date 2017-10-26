@@ -1,24 +1,21 @@
-<ion-view  title="Division" class="logo-center yes-title" >
-        <div class="row ">
-                <div class="col-25 mar-left">
-                        <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-                            </button>
-                </div>
-                <div class="col-50 headerimg">
-                  <img src="img/logo.png" alt="">
-        
-                </div>
-                <div class="col-25 text-right">
-                    <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+<ion-view title="Division" class="logo-center yes-title">
+    <div class="row ">
+        <div class="col-25 mar-left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+             </button>
+        </div>
+        <div class="col-50 headerimg">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="col-25 text-right">
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
                       </button>
-                </div>
-        
-            </div>
-  <ion-content class="has-header">
-     
-         <div class="browse-grid">
+        </div>
+    </div>
+    <ion-content class="has-header">
+        <div class="browse-grid">
             <label for="" class="browse-text">DIVISIONS</label>
-                <div class="row" ng-repeat="cat in companyBanner">
+            <div class="row" ng-repeat="cat in companyBanner">
                 <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({company:c1._id})">
                     <div class="browse-card1 ">
                         <div class="icondiv">
@@ -26,7 +23,6 @@
                         </div>
                         <label for="" class="text-uppercase">{{c1.name}}</label>
                     </div>
-                    
                 </div>
                 <!--<div class="col-50">
                     <div class="browse-card2" >
@@ -43,5 +39,5 @@
                 <label for="">ABOUT US</label>
             </div>      -->
         </div>
-  </ion-content>
+    </ion-content>
 </ion-view>

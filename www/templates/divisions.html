@@ -6,63 +6,24 @@
     </div>
     <div class="col-50 headerimg">
       <img src="img/logo.png" alt="">
-
     </div>
     <div class="col-25 text-right">
       <button class="button button-clear ion-ios-search-strong header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
                       </button>
     </div>
-
   </div>
   <ion-content class="has-header">
-
-    <!-- <div class="row">
-                    <div class="col-inline" ng-repeat="value in companyName"   ng-if="value.length==3">
-                            
-                            <div class="col-50" ng-repeat="val in value"> -->
-    <!-- <div class=""  > -->
-    <!-- <label class=""  ui-sref="app.category({company:data[val][0].companyCategory.company._id})">{{val}}</label>
-                                            <div ng-repeat="company in data[val]" ui-sref="app.productdetails({product:company._id})" ng-if="company.name != 'SOLID WOOD' && company.name !='ENGINEERED' && company.name !='LAMINATED FLOORING' && company.name !='EXOTIC BAMBOO' && company.name !='KAINDL VENEER' && company.name !='EXTERIOR DECK TILE'"  ui-sref="gallery({category:data[val][0].companyCategory.company._id ,productId:company._id})">                      
-                                                 <p>{{company.name}}</p>
-                                           </div>
-                                           <div ng-repeat="company in data[val]" ng-if="company.name == 'SOLID WOOD' && company.name =='ENGINEERED' && company.name =='LAMINATED FLOORING' && company.name =='EXOTIC BAMBOO' && company.name =='KAINDL VENEER' && company.name =='EXTERIOR DECK TILE'">
-                                                <p>{{company.name}}</p>
-                                       </div> -->
-
-    <!-- <div class>
-                                        <div class="icondiv">
-                                            <img ng-src="{{s.image | uploadpath}}" alt="">
-                                            
-                                        </div>
-                                        <label for="" class="text-uppercase">{{s.name}}</label>
-                                    </div> -->
-
-    <!-- </div> -->
-    <!-- </div>
-                               
-                    </div>
-    
-                        
-             
-                    </div> -->
-    <!-- <div class="row">
-                        <div class="col-inline" ng-repeat="value in companyName"   ng-if="value.length==2">
-                                 -->
-    <div class="productsrow"  ng-repeat="(key,val) in data">
+    <div class="productsrow" ng-repeat="(key,val) in data">
       <!-- <div class=""  > -->
-      <label class="" ui-sref="app.products({company:val[0][0].companyCategory.company._id})" >{{key}}</label>
+      <label class="" ui-sref="app.products({company:val[0][0].companyCategory.company._id})">{{key}}</label>
       <div class="" ng-repeat="qwerty in val">
         <div class="row">
-
           <div class="col-50 pad10" ng-repeat="company in qwerty" ui-sref="app.productdetails({product:company._id})" ng-if="company.name != 'SOLID WOOD' && company.name !='ENGINEERED' && company.name !='LAMINATED FLOORING' && company.name !='EXOTIC BAMBOO' && company.name !='KAINDL VENEER' && company.name !='EXTERIOR DECK TILE'">
             <!-- <pre>{{company|json}}</pre> -->
             <img ng-src="{{company.images[0].bigImage | uploadpath}}" alt="" class="full-image">
             <p class="">{{company.name}}</p>
           </div>
         </div>
-
-
-
         <div class="row">
           <div class="products-img" ng-repeat="company in qwerty" ng-if="company.name == 'SOLID WOOD' || company.name =='ENGINEERED' || company.name =='LAMINATED FLOORING' || company.name =='EXOTIC BAMBOO' || company.name =='KAINDL VENEER' || company.name =='EXTERIOR DECK TILE'"
             ng-click="inapp(company.name)">
@@ -70,59 +31,8 @@
             <p class="">{{company.name}}</p>
           </div>
         </div>
-        <!-- <div class>
-                                            <div class="icondiv">
-                                                <img ng-src="{{s.image | uploadpath}}" alt="">
-                                                
-                                            </div>
-                                            <label for="" class="text-uppercase">{{s.name}}</label>
-                                        </div> -->
       </div>
       <!-- </div> -->
     </div>
-
-
-    <!-- </div> -->
-
-
-
-    <!-- </div> -->
-    <!-- <div class="row">
-      <div class="col-inline" ng-repeat="value in companyName" ng-if="value.length==1">
-
-        <div class="col-50" ng-repeat="val in value"> -->
-    <!-- <div class=""  > -->
-    <!-- <label class="" ui-sref="app.products({company:data[val][0].companyCategory.company._id})">{{val}}</label>
-          <div ng-repeat="company in data[val]" ng-if="company.name != 'SOLID WOOD' && company.name !='ENGINEERED' && company.name !='LAMINATED FLOORING' && company.name !='EXOTIC BAMBOO' && company.name !='KAINDL VENEER' && company.name !='EXTERIOR DECK TILE'"
-            ui-sref="app.productdetails({product:company._id})">
-            <div class="products-img">
-              <img ng-src="{{company.images[0].bigImage | uploadpath}}" alt="">
-              <p class="">{{company.name}}</p>
-            </div>
-          </div>
-          <div ng-repeat="company in data[val]" ng-if="company.name == 'SOLID WOOD' || company.name =='ENGINEERED' || company.name =='LAMINATED FLOORING' || company.name =='EXOTIC BAMBOO' || company.name =='KAINDL VENEER' || company.name =='EXTERIOR DECK TILE'"
-            ng-click="inapp(company.name)">
-            <div class="products-img">
-              <img ng-src="{{company.images[0].bigImage | uploadpath}}" alt="">
-              <p class="">{{company.name}}</p>
-            </div>
-          </div> -->
-
-    <!-- <div class>
-                                                    <div class="icondiv">
-                                                        <img ng-src="{{s.image | uploadpath}}" alt="">
-                                                        
-                                                    </div>
-                                                    <label for="" class="text-uppercase">{{s.name}}</label>
-                                                </div> -->
-
-    <!-- </div> -->
-    <!-- </div>
-
-      </div>
-
-
-
-    </div> -->
   </ion-content>
 </ion-view>

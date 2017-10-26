@@ -1,19 +1,17 @@
 <ion-view title="Products Details" class="logo-center yes-title">
-    <div class="row ">
-        <div class="col-25 mar-left">
-                <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+  <div class="row ">
+    <div class="col-25 mar-left">
+      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
                     </button>
-        </div>
-        <div class="col-50 headerimg">
-          <img src="img/logo.png" alt="">
-
-        </div>
-        <div class="col-25 text-right">
-            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
-              </button>
-        </div>
-
     </div>
+    <div class="col-50 headerimg">
+      <img src="img/logo.png" alt="">
+    </div>
+    <div class="col-25 text-right">
+      <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
+              </button>
+    </div>
+  </div>
   <ion-content class="has-header">
     <div class="mainImage rel">
       <img ng-src="{{bigImage | uploadpath}}" alt="">
@@ -22,20 +20,19 @@
     <div class="rel">
       <!-- <button class="button button-icon icon ion-ios-arrow-left arrowbtn left-arrow" ng-click="slidePrevious('am')"></button>
       <button class="button button-icon icon ion-ios-arrow-right rightarr right-arrow" ng-click="slideNext('am')"></button> -->
-
     </div>
-      <div class="sliders text-center " ng-if="proImages[0]!==''">
-      <flex-slider class="carousel " animation="slide" flex-slide="pro in proImages track by $index" animation-loop="true"
-        item-margin="10" slideshow="false" item-width="75" maxItems="3">
+    <div class="sliders text-center " ng-if="proImages[0]!==''">
+      <flex-slider class="carousel " animation="slide" flex-slide="pro in proImages track by $index" animation-loop="true" item-margin="10"
+        slideshow="false" item-width="75" maxItems="3">
         <li class="prosmall" ng-click="changebigImage(pro.bigImage) ">
           <img ng-src="{{pro.smallImage | uploadpath}}" alt="">
-         </li>
+        </li>
       </flex-slider>
-    </div> 
+    </div>
     <div class="productdescription">Product Description</div>
     <p class="productinside">{{ProductDetails.description}}
     </p>
-    <div class="shareSocial">
+    <!--<div class="shareSocial">
       <label for="">Share</label>
       <div class="fbImage">
         <img src="img/fb.png" alt="">
@@ -48,8 +45,7 @@
       </div>
 
 
-    </div>
-
+    </div>-->
     <button class="enquire">Enquire Now</button>
   </ion-content>
 </ion-view>

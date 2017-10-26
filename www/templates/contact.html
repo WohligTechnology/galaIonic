@@ -1,39 +1,70 @@
-<ion-view  title="Contact" class="logo-center yes-title" >
-    <div class="row ">
+<ion-view title="Contact" class="logo-center yes-title">
+    <div class="row">
         <div class="col-25 mar-left">
-                <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-                    </button>
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+            </button>
         </div>
         <div class="col-50 headerimg">
-          <img src="img/logo.png" alt="">
-
+            <img src="img/logo.png" alt="">
         </div>
         <div class="col-25 text-right">
-            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
-              </button>
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
+            </button>
         </div>
-
     </div>
-  <ion-content class="has-header">
+    <ion-content class="has-header">
         <div class="contactusDiv">
-                <div class="contactdiv"> <label class="" for="">CONTACT US</label>
-                 </div>
-                <div class="address">
-<p>339/1, Gala House, <br> Mysore Road Campus, <br> Anantramaiah Woolen Factory Compound<br> Bapuji Nagar,Mysore Road,<br> Banglore-560026</p>
-                </div>
-                <div class="numberDiv">
-                    <label for="">080 26749845</label>
-                 </div>
-                <div class="emailDiv">
-<label for="">info@galagroup.in</label>
-                </div>
+            <div > <label class="about-us">CONTACT US</label>
             </div>
-
-            <div class="social">
-<i class="fa fa-dribbble" aria-hidden="true"></i>
-<i class="fa fa-linkedin" aria-hidden="true"></i>
-<i class="fa fa-instagram" aria-hidden="true"></i>
-<i class="fa fa-twitter" aria-hidden="true"></i>
+            <div>
+                <h4 class="gcolor mar-t">Office Address</h4>
             </div>
-  </ion-content>
+            <div class="address">
+                <p>339/1, Gala House, Mysore Road Campus,<br> Anantramaiah Woolen Factory Compound, Bapuji Nagar Mysore Road,<br>                    Banglore 560026
+                </p>
+            </div>
+            <div class="numberDiv">
+                <a href="tel:+080 26749845">080 26749845</a>
+            </div>
+            <div class="emailDiv">
+                <a href="mailto:info@galagroup.in">info@galagroup.in</a>
+            </div>
+            <div class="mar-t5" ng-click="showme=false">
+                <a>view map</a>
+            </div>
+        </div>
+        <div class="contactusDiv">
+            <div>
+                <h4 class="gcolor mar-t">Branch Address</h4>
+            </div>
+            <div class="address">
+                <p>Gala Square, #125,Ground Floor,<br> R.V. Road, V.V. Puram, Near Lalbagh West Gate,
+                    <br> Bengaluru 560004
+                </p>
+            </div>
+            <div class="numberDiv">
+                <a href="tel:+080 26749845">080 26749845</a>
+            </div>
+            <div class="emailDiv">
+                <a href="mailto:info@galagroup.in">info@galagroup.in</a>
+            </div>
+            <div class="mar-t5" ng-click="showme=true">
+                <a>view map</a>
+            </div>
+        </div>
+        <div ng-hide="showme">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2793705464983!2d77.54017821442001!3d12.95396681877088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e128e9b9585%3A0xa49c5c7db89d879!2sGALA+FURNITURE+WORLD!5e0!3m2!1sen!2sin!4v1507890102639"
+                width="370" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div ng-hide="!showme">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3215461462464!2d77.57761731485607!3d12.951264718828353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e93745a019%3A0x49f580b6e533f34f!2sURO+VENEER+WORLD!5e0!3m2!1sen!2sin!4v1508220212208"
+                width="370" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <!--<div class="social">
+            <i class="fa fa-dribbble" aria-hidden="true"></i>
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+        </div>-->
+    </ion-content>
 </ion-view>

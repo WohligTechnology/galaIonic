@@ -12761,3 +12761,42 @@ a.button {
   opacity: 2 !important;
   margin-top: 0px;
   z-index: 10 !important; }
+
+.w100 {
+  width: 100%;
+  padding: 5px 20px; }
+
+.about-us {
+  color: #79797d;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 30px 0px; }
+
+.para-color p {
+  color: #79797d;
+  font-size: 14px;
+  text-align: justify;
+  padding: 0px 25px; }
+
+.about-main-head {
+  font-size: 19px;
+  color: #79797d;
+  font-weight: 500;
+  padding: 0px 20px; }
+
+.chairman {
+  color: #79797d;
+  padding: 10px 0px; }
+
+.mar-t {
+  margin-top: 40px; }
+
+.gcolor {
+  color: #79797d; }
+
+.emailDiv a, .numberDiv a {
+  text-decoration: none; }
+
+.map-padd {
+  padding: 30px; }

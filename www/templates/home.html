@@ -1,278 +1,63 @@
-<ion-view  title="Home" class="logo-center yes-title" >
-        <div class="row ">
-                <div class="col-25 mar-left">
-                        <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-                            </button>
-                </div>
-                <div class="col-50 headerimg">
-                  <img src="img/logo.png" alt="">
-        
-                </div>
-                <div class="col-25 text-right">
-                    <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
-                      </button>
-                </div>
-        
-            </div>
-  <ion-content class="has-header">
-      <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
-            auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
-            <ion-slide  ng-repeat="hs in homebanner">
+<ion-view title="Home" class="logo-center yes-title">
+    <div class="row">
+        <div class="col-25 mar-left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+            </button>
+        </div>
+        <div class="col-50 headerimg">
+            <img src="img/logo.png" alt="">
+        </div>
+        <div class="col-25 text-right">
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
+            </button>
+        </div>
+    </div>
+    <ion-content class="has-header">
+        <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
+            auto-play="true" slide-interval="{{interval}}" show-pager="true" on-slide-changed="slideHasChanged(index)">
+            <ion-slide ng-repeat="hs in homebanner">
                 <div class="box box1">
-                <img ng-src="{{hs.image | uploadpath}}" alt="">
+                    <img ng-src="{{hs.image | uploadpath}}" alt="">
                 </div>
             </ion-slide>
-            <!-- <ion-slide  [options]="{pager:true}">
-                <div class="box box1">
-                <img src="img/Euro Veneer 1.jpg" alt="">
-                </div>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true}">
-                <div class="box box1">
-                <img src="img/Euro Veneer.jpg" alt="">
-                </div>
-            </ion-slide>
-             <ion-slide  [options]="{pager:true}">
-                <div class="box box1">
-                <img src="img/Gala Furniture world.jpg" alt="">
-                </div>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true}">
-                <div class="box box1">
-                <img src="img/Woode & moulding.jpg" alt="">
-                </div>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true}">
-                <div class="box box1">
-                <img src="img/Lighting.jpg" alt="">
-                </div>
-            </ion-slide> -->
         </ion-slide-box>
-         <div class="browse-grid">
-            <label for="" class="browse-text">OUR OFFERINGS</label>
+        <div class="browse-grid">
+            <label for="" class="browse-text">GROUP ACTIVITIES</label>
             <div class="row" ng-repeat="cat in companyBanner">
                 <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({company:c1._id})">
                     <div class="browse-card1 ">
                         <div class="icondiv">
                             <img ng-src="{{c1.banner | uploadpath}}" alt="">
-                            <label for="" class="text-uppercase">{{c1.name}}</label> 
+                            <label for="" class="text-uppercase">{{c1.name}}</label>
                         </div>
-                        
                     </div>
-                    
-                </div>
-                <!--<div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Wood & Mouldings 1.jpg" alt="">
-                        </div>
-                        <label for="">WOOD AND MOULDINGS</label>
-                    </div>
-
-                </div>-->
-            </div>
-            <!--<div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Bath World1.jpg" alt="">
-                            
-                        </div>
-                        <label for="">BATH WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala Hardware World.jpg" alt="">
-                        </div>
-                        <label for="">EURO HARDWARE WORLD</label>
-                    </div>
-
                 </div>
             </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Gala stone world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">GALA STONE WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala Furniture world1.jpg" alt="">
-                        </div>
-                        <label for="">GALA FURNITURE WORLD</label>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Euro lighting world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">EURO LIGHTING WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala curtain world.jpg" alt="">
-                        </div>
-                        <label for="">GALA DRAPES WORLD</label>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Gala kitchen world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">GALA KITCHEN WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Mahaveer corporation (india).jpg" alt="">
-                        </div>
-                        <label for="">MAHAVIR CORPORATION (INDIA)</label>
-                    </div>
-
-                </div>
-            </div>-->
-            <!--<div class="aboutUs ">
-                <img src="img/aboutus.jpg" alt="">
-                <label for="">ABOUT US</label>
-            </div>      -->
         </div>
-
-       <div class="browse-grid">
-            <label for="" class="browse-text">OUR CATEGORIES</label>
-            <div class="row" ng-repeat="comcat in companyCategory">
-                <div class="col-50 " ng-repeat="comc1 in comcat" ui-sref='app.category({company:comc1.company ,category:comc1._id})'>
-                    <div class="browse-card1 ">
-                        <div class="icondiv">
-                            <img ng-src="{{comc1.image | uploadpath}}" alt="">
-                          <label for="" class="text-uppercase">{{comc1.name}}</label>  
-                        </div>
-                        
+        <div class="browse-grid">
+            <label for="" class="browse-text"> CATEGORIES</label>
+            <div class="row" ng-repeat="(key,val) in data track by $index" ng-if="$index<=2">
+                <div class="col">
+                    <div>
+                        <label>{{key}}</label>
                     </div>
-                    
-                </div>
-                <!--<div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Wood & Mouldings 1.jpg" alt="">
+                    <div ng-repeat="p in val track by $index" ng-if="val.length=2">
+                        <div class="row">
+                            <div class="col-50" ng-repeat="cat in p track by $index" ui-sref='app.category({company:comc1.company ,category:comc1._id})'>
+                                <div class="browse-card1">
+                                    <div class="icondiv">
+                                        <img ng-src="{{cat.image | uploadpath}}" alt="">
+                                        <label for="" class="text-uppercase">{{cat.name}}</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <label for="">WOOD AND MOULDINGS</label>
                     </div>
-
-                </div>-->
-            </div>
-            <!--<div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Bath World1.jpg" alt="">
-                            
-                        </div>
-                        <label for="">BATH WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala Hardware World.jpg" alt="">
-                        </div>
-                        <label for="">EURO HARDWARE WORLD</label>
-                    </div>
-
                 </div>
             </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Gala stone world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">GALA STONE WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala Furniture world1.jpg" alt="">
-                        </div>
-                        <label for="">GALA FURNITURE WORLD</label>
-                    </div>
-
-                </div>
+            <div>
+                <p><a ui-sref="app.divisions">View More</a></p>
             </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Euro lighting world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">EURO LIGHTING WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Gala curtain world.jpg" alt="">
-                        </div>
-                        <label for="">GALA DRAPES WORLD</label>
-                    </div>
-
-                </div>
-            </div>
-            <div class="row"  >
-                <div class="col-50">
-                    <div class="browse-card1">
-                        <div class="icondiv">
-                            <img src="img/Gala kitchen world.jpg" alt="">
-                            
-                        </div>
-                        <label for="">GALA KITCHEN WORLD</label>
-                    </div>
-                    
-                </div>
-                <div class="col-50">
-                    <div class="browse-card2" >
-                        <div class="icondiv">
-                            <img src="img/Mahaveer corporation (india).jpg" alt="">
-                        </div>
-                        <label for="">MAHAVIR CORPORATION (INDIA)</label>
-                    </div>
-
-                </div>
-            </div>-->
-            <!--<div class="aboutUs ">
-                <img src="img/aboutus.jpg" alt="">
-                <label for="">ABOUT US</label>
-            </div>      -->
         </div>
-
-  </ion-content>
+    </ion-content>
 </ion-view>

@@ -36,9 +36,15 @@ angular.module('starter.controllers', ['starter.services'])
 
    MyServices.getAllCategories(function(data){
     console.log('getallcategories',data)
-    $scope.companyCategory = data.data
-    $scope.companyCategory = _.chunk($scope.companyCategory, 2);
-    console.log('getallcategories',$scope.companyCategory)
+     $scope.getAllCategory = data.data;
+        $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
+        // $scope.datachunk = _.chunk( $scope.data,2);
+ _.each($scope.data,function(n,key){
+        $scope.data[key]=_.chunk($scope.data[key], 2);
+         console.log('getallcategorieshello',$scope.data)
+      });
+        
+    console.log('getallcategorieshello',$scope.datachunk)
    })
     
     MyServices.HomeBanner(function (data) {
@@ -116,6 +122,8 @@ angular.module('starter.controllers', ['starter.services'])
         });
       }
     });
+
+    
   })
 
   .controller('ProductsCtrl', function ($scope, $stateParams, MyServices, $ionicPlatform, $ionicLoading) {
