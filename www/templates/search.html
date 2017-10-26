@@ -1,0 +1,69 @@
+<ion-view  title="Search" class="" >
+        <div class="row ">
+                <div class="col-25 mar-left">
+                        <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                            </button>
+                </div>
+                <div class="col-50 headerimg">
+                  <img src="img/logo.png" alt="">
+      
+                </div>
+                <div class="col-25">
+      
+                </div>
+        
+            </div>
+         <!-- <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
+                <ion-nav-buttons side="left">
+                  <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                    </button>
+                </ion-nav-buttons> -->
+                <!-- <div class="title title-center header-item">
+                    <img src="/img/logo.png" alt="">
+                </div> -->
+                
+                <!-- <ion-nav-buttons side="right">
+                        <button class="button button-clear ion-ios-search-strong header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
+                            </button>               
+                </ion-nav-buttons> -->
+              <!-- </ion-nav-bar> -->
+        <ion-content class="has-header">
+          <!--<h3>Search</h3>-->
+          <div class="searching">
+            <input type="text" class="form-control" ng-model="searchText.searchText" ng-change="search(searchText)" name="keyword" placeholder="Search...">
+            <div class="" ng-if="searchText != '' && isText == true">
+              <ul class="list-unstyled">
+                <!-- <li class="ct-name"><span>Product</span></li> -->
+                <!--ng-click="getMySP($index)" -->
+                <li class="search-item" ng-click="getProduct($index)" ng-repeat=" item in companyCategory " ng-if="companyCategory.length>0">
+                  <p class="text-wrapper" ui-sref="app.category({company:item._id,category:item._id})">{{item.name}}</p>
+                </li>
+                <!-- <li class="search-item" ng-if="productArray.length == 0">
+                  <p class="text-wrapper">No match found</p>
+                </li> -->
+              </ul>
+              <ul class="list-unstyled">
+                <!-- <li class="ct-name"><span>Collection</span></li> -->
+                <!--ng-click="getSPByLocation($index,1)"-->
+                <li class="search-item" ng-click="getCollection($index)" ng-repeat="item in company1" ng-if="company1.length > 0">
+                  <p class="text-wrapper" ui-sref="app.products({company:item._id})">{{item.name}}</p>
+                </li>
+                <!-- <li class="search-item" ng-if="collectionArray.length == 0">
+                  <p class="text-wrapper">No match found</p>
+                </li> -->
+              </ul>
+              <ul class="list-unstyled">
+                    <!-- <li class="ct-name"><span>Collection</span></li> -->
+                    <!--ng-click="getSPByLocation($index,1)"-->
+                    <li class="search-item" ng-click="getCollection($index)" ng-repeat="item in companyProduct" ng-if="companyProduct.length > 0">
+                      <p class="text-wrapper" ui-sref="app.productdetails({product:item._id})">{{item.name}}</p>
+                    </li>
+                    <!-- <li class="search-item" ng-if="collectionArray.length == 0">
+                      <p class="text-wrapper">No match found</p>
+                    </li> -->
+                  </ul>
+            </div>
+          </div>
+        </ion-content>
+      </ion-view>
+      

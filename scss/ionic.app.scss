@@ -79,9 +79,10 @@ sans-serif-light !default;
 
 .sigupIconLeft {
   color: #091b27!important;
-  font-size: 24px!important;
+  font-size: 30px!important;
   color: #77bf4f!important;
   padding: 0 0 0 0px !important;
+  
 }
 
 .disblock {
@@ -109,7 +110,7 @@ sans-serif-light !default;
 .box1,
 .box2,
 .box3 {
-  height: 230px;
+  // height: 230px;
   img {
     height: 100%;
     width: 100%;
@@ -218,13 +219,13 @@ sans-serif-light !default;
   margin: 1.5px;
   overflow: hidden;
   position: relative;
-  height: 130px;
+
   .icondiv {
     height: auto;
     width: 100%;
     display: block;
     overflow: hidden;
-    overflow: hidden;
+   position: relative;
     img {
       height: auto;
       width: 100%;
@@ -242,7 +243,7 @@ sans-serif-light !default;
     transform: translate(-50%, -23%);
     left: 50%;
     bottom: 0;
-    width: 100%;
+    width: 101%;
     /* width: 139%; */
     /* margin: 0 auto; */
     line-height: 30px;
@@ -665,6 +666,7 @@ sans-serif-light !default;
   border: none;
   width: 40%;
   padding: 2px;
+  color: white;
   font-family: "AvenirNext-Bold";
 }
 
@@ -725,6 +727,10 @@ sans-serif-light !default;
 
 .mar20 {
   margin: 20px;
+}
+
+.pad10 {
+  padding: 10px;
 }
 
 .bgColor {
@@ -885,4 +891,78 @@ sans-serif-light !default;
       background: transparent;
     color: white;
     padding: 16px 10px;
+}
+
+.col-inline{
+  width: 100%;
+  display: inline-flex;
+  
+  text-align: center;
+  label{
+    font-weight: 500;
+    
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.mascot{
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  left: 4%;
+  img{
+    width: 21%;
+  }
+}
+
+.searching {
+  padding: 20px;
+  input {
+    border-bottom: 1px solid #77bf4f;
+    width: 100%;
+  }
+}
+
+//header
+.mar-left{
+  margin-left: 5px;
+}
+
+.headerimg{
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  img{
+    width: 20%;
+  }
+}
+
+.has-header{
+  top: 50px;
+  bottom: 10px;
+}
+
+.flex-direction-nav .flex-disabled {
+  opacity: 2 !important;
+  margin-top: 0px;
+}
+
+.products-img{
+  width: 100%;
+  padding-top: 10px;
+  img{
+    width: 70%;
+  }
+}
+
+.productsrow{
+  text-align: center;
+  padding: 10px;
+}
+
+.flex-direction-nav .flex-disabled {
+  opacity: 2 !important;
+  margin-top: 0px;
+  z-index: 10!important;
 }

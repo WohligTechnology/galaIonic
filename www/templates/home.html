@@ -1,16 +1,20 @@
-<ion-view  title="Gala" class="logo-center yes-title" >
-  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
-    <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-        </button>
-    </ion-nav-buttons>
-    
-    <ion-nav-buttons side="right">
-      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
-        </button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="">
+<ion-view  title="Home" class="logo-center yes-title" >
+        <div class="row ">
+                <div class="col-25 mar-left">
+                        <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                            </button>
+                </div>
+                <div class="col-50 headerimg">
+                  <img src="img/logo.png" alt="">
+        
+                </div>
+                <div class="col-25 text-right">
+                    <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+                      </button>
+                </div>
+        
+            </div>
+  <ion-content class="has-header">
       <ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
             auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
             <ion-slide  ng-repeat="hs in homebanner">
@@ -51,9 +55,9 @@
                     <div class="browse-card1 ">
                         <div class="icondiv">
                             <img ng-src="{{c1.banner | uploadpath}}" alt="">
-                            
+                            <label for="" class="text-uppercase">{{c1.name}}</label> 
                         </div>
-                        <label for="" class="text-uppercase">{{c1.name}}</label>
+                        
                     </div>
                     
                 </div>
@@ -158,15 +162,15 @@
         </div>
 
        <div class="browse-grid">
-            <label for="" class="browse-text">OUR PRODUCTS</label>
-            <div class="row" ng-repeat="comcat in companyProduct">
-                <div class="col-50 " ng-repeat="comc1 in comcat" ui-sref="app.productdetails({product:comc1._id})">
+            <label for="" class="browse-text">OUR CATEGORIES</label>
+            <div class="row" ng-repeat="comcat in companyCategory">
+                <div class="col-50 " ng-repeat="comc1 in comcat" ui-sref='app.category({company:comc1.company ,category:comc1._id})'>
                     <div class="browse-card1 ">
                         <div class="icondiv">
-                            <img ng-src="{{comc1.images[0].bigImage | uploadpath}}" alt="">
-                            
+                            <img ng-src="{{comc1.image | uploadpath}}" alt="">
+                          <label for="" class="text-uppercase">{{comc1.name}}</label>  
                         </div>
-                        <label for="" class="text-uppercase">{{comc1.name}}</label>
+                        
                     </div>
                     
                 </div>

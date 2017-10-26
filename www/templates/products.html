@@ -1,19 +1,35 @@
-<ion-view  title="Gala" class="logo-center yes-title" >
-  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage" >
-    <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-        </button>
-    </ion-nav-buttons>
-    
-    <ion-nav-buttons side="right">
-      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
-        </button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="">
+<ion-view  title="Products" class="logo-center yes-title" >
+        <div class="row ">
+                <div class="col-25 mar-left">
+                        <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                            </button>
+                </div>
+                <div class="col-50 headerimg">
+                  <img src="img/logo.png" alt="">
+        
+                </div>
+                <div class="col-25 text-right">
+                    <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+                      </button>
+                </div>
+        
+            </div>
+  <ion-content class="has-header">
     <div class="bgStrip rel"> 
       <img ng-src="{{CompanyBanner.backgroundBanner | uploadpath}}" alt="">
-      <!--<label for="" class="text-uppercase">{{subcategory[0].names}}</label>-->
+      <label for="" class="text-uppercase">{{subcategory[0].names}}</label>
+      <div class="mascot">
+        <img ng-if="CompanyBanner.name=='Bath World'" src="img/Bath world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Euro Lighting World'" src="img/Euro lighting world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Gala Curtain World'" src="img/Gala curtain world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Gala Furniture World'" src="img/Gala Furniture world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Gala Hardware World'" src="img/Gala hardware world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Gala Kitchen World'" src="img/Gala kitchen world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Gala Stone World'" src="img/Gala stone world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Mahaveer Corporation (India)'" src="img/Mahaveer corporation (india).png" alt="">
+        <img ng-if="CompanyBanner.name=='Uro Veneer World'" src="img/Uro veneer world-mascot.png" alt="">
+        <img ng-if="CompanyBanner.name=='Wood & Mouldings'" src="img/Wood & Mouldings-mascot.png" alt="">  
+      </div>
     </div>
     <div> 
        <div class="browse-grid">

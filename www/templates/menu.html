@@ -1,14 +1,28 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
+    <!-- <ion-nav-bar class="bar-stable"> -->
+      <!-- <ion-nav-back-button>
+      </ion-nav-back-button> -->
+      <!-- <div class="row ">
+          <div class="col-25 mar-left">
+                  <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                      </button>
+          </div>
+          <div class="col-50 headerimg">
+            <img src="/img/logo.png" alt="">
 
-      <ion-nav-buttons side="left">
+          </div>
+          <div class="col-25">
+
+          </div>
+  
+      </div> -->
+      <!-- <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
+      </ion-nav-buttons> -->
+    <!-- </ion-nav-bar> -->
+    
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
@@ -19,12 +33,19 @@
     <ion-content class="mar20 bgColor">
       <i class="ion-close-round size" menu-close></i>
       <ion-list class="mar20">
+          
         <ion-item class="menuOption border" ui-sref-active="active" menu-close ui-sref='app.home' ng-if!="category">
           HOME
         </ion-item>
+        <ion-item class="bgColor border" ui-sref-active="active" menu-close ui-sref="app.search" ng-click="category=false">
+            SEARCH
+          </ion-item>
         <ion-item class="bgColor border" ui-sref-active="active" menu-close ui-sref="app.aboutus" ng-click="category=false">
           ABOUT US
         </ion-item>
+        <ion-item class="bgColor border" ui-sref-active="active" menu-close ui-sref="app.divisions" ng-click="category=false">
+            PRODUCTS
+          </ion-item>
         <!--<ion-item class="border" ui-sref-active="active" menu-close ui-sref="app.category" >
           CATEGORIES
           <ion-list class="mar20" ng-if="category">

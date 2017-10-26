@@ -1,26 +1,30 @@
-<ion-view title="Gala" class="logo-center yes-title">
-  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage">
-    <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-        </button>
-    </ion-nav-buttons>
+<ion-view title="Category" class="logo-center yes-title">
+    <div class="row ">
+        <div class="col-25 mar-left">
+                <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                    </button>
+        </div>
+        <div class="col-50 headerimg">
+          <img src="img/logo.png" alt="">
 
-    <ion-nav-buttons side="right">
-      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
-        </button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content>
+        </div>
+        <div class="col-25 text-right">
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+              </button>
+        </div>
+
+    </div>
+  <ion-content class="has-header">
          <div class="browse-grid">
     <label for="" class="product-text text-uppercase">{{CompanyBanner.name}}</label>          
       <div class="row" ng-repeat="s1 in AllProductWithCategory" >
                 <div class="col-50" ng-repeat="s in s1" ui-sref="app.productdetails({product:s._id})">
-                    <div class="products-card1 rel">
+                    <div class="browse-card1 rel">
                         <div class="icondiv">
                             <img ng-src="{{s.images[0].bigImage | uploadpath}}" alt="">
-                            
+                            <label for="" class="text-uppercase">{{s.name}}</label> 
                         </div>
-                        <label for="" class="text-uppercase">{{s.name}}</label>
+                       
                     </div>
                     
                 </div>

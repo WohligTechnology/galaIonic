@@ -1,5 +1,5 @@
-//var adminurl = "http://galaapi.wohlig.co.in/api/"; //server
- var adminurl = "http://192.168.1.123:80/api/"; //local
+var adminurl = "http://galaapi.wohlig.co.in/api/"; //server
+//  var adminurl = "http://192.168.1.123:80/api/"; //local
 // var imgpath = adminurl + "uploadfile/getupload?file=";
 var imgurl = adminurl + "upload/";
 var imgpath = imgurl + "readFile?file=";
@@ -59,6 +59,31 @@ angular.module('starter.services', [])
           withCredentials: true,
           data: data
         }).success(callback);
+      },
+
+      getAllCategories: function (callback) {
+        $http({
+          url: adminurl + 'CompanyCategory/getAllCategory',
+          method: 'POST',
+          withCredentials: true,
+        }).success(callback);
+      },
+      
+      getAllProducts:function(callback) {
+        $http({
+          url: adminurl + 'CompanyProduct/getAllProduct',
+          method: 'POST',
+          withCredentials: true,
+        }).success(callback);
+      },
+
+      search:function(data,callback){
+        $http({
+          url: adminurl + 'Company/globalSearch',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback); 
       },
 
       getCompanyBanner: function (data, callback) {

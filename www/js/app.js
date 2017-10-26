@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-flexslider'])
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform,$state) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -19,18 +19,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+      
     });
     $ionicPlatform.registerBackButtonAction(function (event) {
       if ($.jStorage.get('profile')) {
         if ($state.current.name == "app.home") {
+          console.log("showstate",$state.current.name)
           navigator.app.exitApp(); //<-- remove this line to disable the exit
         } else {
+          console.log("showstate",$state.current.name)
           window.history.back();
         }
       } else {
         if ($state.current.name == "login") {
+          console.log("showstate",$state.current.name)
           navigator.app.exitApp();
         } else {
+          console.log("showstate",$state.current.name)
           window.history.back();
         }
       }
@@ -60,6 +65,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+
+      .state('app.search', {
+        url: '/search',
+        cache: false,
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/search.html',
+            controller: 'SearchCtrl'
+          }
+        }
+      })
+
       .state('app.division', {
         url: '/division',
         cache: false,
@@ -86,6 +103,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           'menuContent': {
             templateUrl: 'templates/products.html',
             controller: 'ProductsCtrl'
+          }
+        }
+      })
+
+      .state('app.divisions', {
+        url: '/divisions/:company',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/divisions.html',
+            controller: 'DivisionsCtrl'
           }
         }
       })

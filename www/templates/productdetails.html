@@ -1,16 +1,20 @@
-<ion-view title="gala" class="logo-center yes-title">
-  <ion-nav-bar class="bar-stable nav-height bgHeader logoImage">
-    <ion-nav-buttons side="left">
-      <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-        </button>
-    </ion-nav-buttons>
+<ion-view title="Products Details" class="logo-center yes-title">
+    <div class="row ">
+        <div class="col-25 mar-left">
+                <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+                    </button>
+        </div>
+        <div class="col-50 headerimg">
+          <img src="img/logo.png" alt="">
 
-    <ion-nav-buttons side="right">
-      <button class="button button-clear ion-ios-search-strong header-bellFont disblock" menu-toggle="right">
-        </button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
-  <ion-content class="">
+        </div>
+        <div class="col-25 text-right">
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+              </button>
+        </div>
+
+    </div>
+  <ion-content class="has-header">
     <div class="mainImage rel">
       <img ng-src="{{bigImage | uploadpath}}" alt="">
       <div>{{ProductDetails.name}}</div>
