@@ -2,14 +2,14 @@
   <div class="row ">
     <div class="col-25 mar-left">
       <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-                            </button>
+      </button>
     </div>
     <div class="col-50 headerimg">
-      <img src="img/logo.png" alt="">
+      <img src="img/logo.png" alt="logo" ui-sref="app.home">
     </div>
     <div class="col-25 text-right">
       <button class="button button-clear ion-ios-search-strong header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
-                      </button>
+      </button>
     </div>
   </div>
   <ion-content class="has-header">
@@ -20,14 +20,14 @@
         <div class="row">
           <div class="col-50 pad10" ng-repeat="company in qwerty" ui-sref="app.productdetails({product:company._id})" ng-if="company.name != 'SOLID WOOD' && company.name !='ENGINEERED' && company.name !='LAMINATED FLOORING' && company.name !='EXOTIC BAMBOO' && company.name !='KAINDL VENEER' && company.name !='EXTERIOR DECK TILE'">
             <!-- <pre>{{company|json}}</pre> -->
-            <img ng-src="{{company.images[0].bigImage | uploadpath}}" alt="" class="full-image">
+            <img ng-src="{{company.image | uploadpath}}" alt="" class="full-image">
             <p class="">{{company.name}}</p>
           </div>
         </div>
         <div class="row">
           <div class="products-img" ng-repeat="company in qwerty" ng-if="company.name == 'SOLID WOOD' || company.name =='ENGINEERED' || company.name =='LAMINATED FLOORING' || company.name =='EXOTIC BAMBOO' || company.name =='KAINDL VENEER' || company.name =='EXTERIOR DECK TILE'"
             ng-click="inapp(company.name)">
-            <img ng-src="{{company.images[0].bigImage | uploadpath}}" alt="">
+            <img ng-src="{{company.image | uploadpath}}">
             <p class="">{{company.name}}</p>
           </div>
         </div>

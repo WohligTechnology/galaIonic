@@ -1,59 +1,39 @@
 <ion-view view-title="Signup">
     <ion-nav-bar class="bar-positive nav-height bar ">
-        <!--<ion-nav-buttons side="left">
-            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
-        </button>
-        </ion-nav-buttons>-->
-        <!--<ion-nav-buttons side="right">
-            <button class="button button-clear ion-android-more-vertical sigupRight disblock" ng-click="popover.show($event)">
-      </button>
-        </ion-nav-buttons>-->
     </ion-nav-bar>
     <ion-content>
         <form name="formName" ng-submit="signupForm(formData)">
-        <div class = "signup-logo">   
-            <img src="img/logo.png" alt="">
-        </div>
-<div class="pro-edit text-rite">
-        <label class="item item-input" ng-class="{'err': formName.name.$invalid && formName.name.$touched}">
+            <div class="signup-logo">
+                <img src="img/logo.png" alt="logo" ui-sref="app.home">
+            </div>
+            <div class="pro-edit text-rite">
+                <label class="item item-input" ng-class="{'err': formName.name.$invalid && formName.name.$touched}">
             <span class="input-label">Name</span>            
             <input type="text" name="name" ng-model="formData.name"  required>
             <span class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please enter valid Name</span>
           </label>
-
- <label class="item item-input" ng-class="{'err': formName.email.$invalid && formName.email.$touched}">
+                <label class="item item-input" ng-class="{'err': formName.email.$invalid && formName.email.$touched}">
             <span class="input-label">Email Address</span>            
             <input type="email" name="email" ng-model="formData.email"  required>
             <span class="error-msg" ng-show="formName.email.$invalid && formName.email.$touched">Please enter valid Email Address</span>
           </label>
-
-          <label class="item item-input pro-edit text-rite" ng-class="{'err': formName.phoneNumber.$invalid && formName.phoneNumber.$touched}">
+                <label class="item item-input pro-edit text-rite" ng-class="{'err': formName.phoneNumber.$invalid && formName.phoneNumber.$touched}">
             <span class="input-label">Phone Number</span>
             <input type="number" no-paste name="phoneNumber" limit-to = "10" ng-model="formData.phoneNumber" required>
             <span class="error-msg" ng-show="formName.phoneNumber.$invalid && formName.phoneNumber.$touched">Please enter valid Phone Number</span>
             </label>
-
-            <label class="item item-input" ng-class="{'err': formName.password.$invalid && formName.password.$touched}">
+                <label class="item item-input" ng-class="{'err': formName.password.$invalid && formName.password.$touched}">
             <span class="input-label">Password</span>
             <input type="password"  name="password"  maxlength="15" ng-model="formData.password" required>
             <span class="error-msg" ng-show="formName.password.$invalid && formName.password.$touched">Please enter valid Password</span>
             </label>
-
-            <!--<label class="item item-input" ng-class="{'err': formName.confirmPwd.$invalid && formName.confirmPwd.$touched}">
-            <span class="input-label">Confirm Password</span>
-            <input type="password" no-paste name="confirmPwd" ng-change="passwordValidator(formData.confirmPwd);" maxlength="15" ng-model="formData.confirmPwd" required>
-            <span class="error-msg" ng-show="formName.confirmPwd.$invalid && formName.confirmPwd.$touched">Please enter valid confirm Password</span>
-            </label>-->
-
-            <div class="text-center m20 padding-horizontal" >
-      <button class="button button-positive button-block"  ng-disabled="formName.$invalid"
-        type="submit">Register Now</button>
-    </div>
-    </div>
-    <div class="login">
-<label>Already have an account?</label><span ui-sref='login'>Login.</span>
-    </div>
-    
-    </form>
+                <div class="text-center m20 padding-horizontal">
+                    <button class="button button-positive button-block" ng-disabled="formName.$invalid" type="submit">Register Now</button>
+                </div>
+            </div>
+            <div class="login">
+                <label>Already have an account?</label><span ui-sref='login'>Login.</span>
+            </div>
+        </form>
     </ion-content>
 </ion-view>

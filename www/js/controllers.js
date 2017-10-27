@@ -145,7 +145,18 @@ angular.module('starter.controllers', ['starter.services'])
       }
     })
 
-    MyServices.getCompanyBanner($scope.company, function (data) {
+    MyServices.getCompanyBanner($scope.company, function (data) {   MyServices.getAllCategories(function(data){
+    console.log('getallcategories',data)
+     $scope.getAllCategory = data.data;
+        $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
+        // $scope.datachunk = _.chunk( $scope.data,2);
+ _.each($scope.data,function(n,key){
+        $scope.data[key]=_.chunk($scope.data[key], 2);
+         console.log('getallcategorieshello',$scope.data)
+      });
+        
+    console.log('getallcategorieshello',$scope.datachunk)
+   })
       if (data.value) {
         $scope.CompanyBanner = data.data;
         $ionicLoading.hide()
@@ -384,7 +395,10 @@ angular.module('starter.controllers', ['starter.services'])
 
     $scope.signupForm = function (value) {
       console.log("value", value);
-      // if (!$.jStorage.get('profile')) {
+      // if (!$.jStorage.get('pro // $scope.chunckproduct = data.data
+      // $scope.chunckproduct = _.chunk($scope.chunckproduct, 2)
+      // console.log("showchunkchunckproduct",$scope.chunckproduct);
+      // $scope.data=[];file')) {
 
       MyServices.signup(value, function (data) {
 
@@ -513,29 +527,42 @@ angular.module('starter.controllers', ['starter.services'])
     showDelay: 0
   });
 
-  MyServices.getAllProducts( function (data) {
-    if (data.value) {
-      console.log("getallproduct", data.data);
-      $ionicLoading.hide()
-      $scope.allproduct = data.data;
-      $scope.chunckproduct = data.data
-      $scope.chunckproduct = _.chunk($scope.chunckproduct, 2)
-      console.log("showchunkchunckproduct",$scope.chunckproduct);
-      $scope.data=[];
-      $scope.data=_.groupBy($scope.allproduct, 'companyCategory.company.name');
-      console.log("hello",$scope.data)
-      $scope.dataprods = _.chunk($scope.data, 2);
-      _.each($scope.data,function(n,key){
+  MyServices.getAllCategories( function (data) {
+    // if (data.value) {
+    //   console.log("getallproduct", data.data);
+    //   $ionicLoading.hide()
+    //   $scope.allproduct = data.data;
+    //   $scope.chunckproduct = data.data
+    //   $scope.chunckproduct = _.chunk($scope.chunckproduct, 2)
+    //   console.log("showchunkchunckproduct",$scope.chunckproduct);
+    //    $scope.data=[];
+    //   $scope.data=_.groupBy($scope.allproduct, 'companyCategory.company.name');
+    //   console.log("hello",$scope.data)
+    //   $scope.dataprods = _.chunk($scope.data, 2);
+    //   _.each($scope.data,function(n,key){
+    //     $scope.data[key]=_.chunk($scope.data[key], 2);
+    //   });
+    //   console.log("hellodataprods",$scope.data)
+    //   console.log("$scope.------",$scope.data);
+    //   var keys=_.keysIn($scope.data);
+    //   console.log(_.keysIn($scope.data));
+    //  $scope.companyName=_.chunk(keys,2);
+    //  console.log("showchunk",$scope.companyName);
+    //   $scope.allproductData = _.chunk($scope.data, 2);
+    //   console.log("$chunck.------",$scope.allproductData);
+       MyServices.getAllCategories(function(data){
+    console.log('getallcategories',data)
+     $scope.getAllCategory = data.data;
+        $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
+        // $scope.datachunk = _.chunk( $scope.data,2);
+ _.each($scope.data,function(n,key){
         $scope.data[key]=_.chunk($scope.data[key], 2);
+         console.log('getallcategorieshello',$scope.data)
       });
-      console.log("hellodataprods",$scope.data)
-      console.log("$scope.------",$scope.data);
-      var keys=_.keysIn($scope.data);
-      console.log(_.keysIn($scope.data));
-     $scope.companyName=_.chunk(keys,2);
-     console.log("showchunk",$scope.companyName);
-      $scope.allproductData = _.chunk($scope.data, 2);
-      console.log("$chunck.------",$scope.allproductData);
+        
+    console.log('getallcategorieshello',$scope.datachunk)
+    $ionicLoading.hide()
+   })
       $scope.inapp=function(name){
         console.log("nameproduct",name)
         var options = "location=no,toolbar=yes";
@@ -569,7 +596,7 @@ angular.module('starter.controllers', ['starter.services'])
          window.open = cordova.InAppBrowser.open;
         }
       }
-    }
+    
   })
 })
 
