@@ -38,12 +38,12 @@
             <label for="" class="browse-text"> CATEGORIES</label>
             <div class="row" ng-repeat="(key,val) in data track by $index" ng-if="$index<=2">
                 <div class="col">
-                    <div>
+                    <div ui-sref='app.products({company:val[0][0].company._id})'>
                         <label>{{key}}</label>
                     </div>
                     <div ng-repeat="p in val track by $index" ng-if="val.length=2">
                         <div class="row">
-                            <div class="col-50" ng-repeat="cat in p track by $index" ui-sref='app.category({company:comc1.company ,category:comc1._id})'>
+                            <div class="col-50" ng-repeat="cat in p track by $index" ui-sref='app.category({company:cat.company._id,category:cat._id })'>
                                 <div class="browse-card1">
                                     <div class="icondiv">
                                         <img ng-src="{{cat.image | uploadpath}}" alt="">
