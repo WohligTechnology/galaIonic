@@ -22,19 +22,48 @@
             </ion-slide>
         </ion-slide-box>
         <div class="browse-grid">
-            <label for="" class="browse-text">GROUP ACTIVITIES</label>
-            <div class="row" ng-repeat="cat in companyBanner">
-                <div class="col-50 " ng-repeat="c1 in cat" ui-sref="app.products({company:c1._id})">
-                    <div class="browse-card1 ">
+            <!-- <label for="" class="browse-text">GROUP ACTIVITIES</label> -->
+            <div class="row homehead-holder">
+              <div class="col-50">
+                <div class="group-heading">
+                  Group Products
+                </div>
+              </div>
+              <div class="col-50 text-right">
+                <button class="button btn-green" ui-sref="app.aboutus" >
+                  About Us
+                </button>
+              </div>
+            </div>
+            <div class="" >
+                <div class=" " ng-repeat="c1 in productList" >
+                  <div class="home-groupcard">
+                    <div class="" ui-sref="app.products({company:c1._id})">
+                      <div class="home-grouptitle">{{c1.name}}</div>
+                      <div class="home-groupimg">
+                        <img ng-src="{{c1.categoryImage | uploadpath}}" alt="" class="img-responsive">
+                      </div>
+                    </div>
+                    <div class="home-grouplist">
+                      <!-- <pre>{{c1|json}}</pre> -->
+                      <div class="prod-flexlist" >
+                        <div class="prod-flexitem" ng-repeat= "category in c1.categories track by $index" ui-sref="app.category({company: c1._id,category:category._id})">
+                          <a>{{category.name}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <!-- <div class="browse-card1 ">
                         <div class="icondiv">
                             <img ng-src="{{c1.banner | uploadpath}}" alt="">
                             <label for="" class="text-uppercase">{{c1.name}}</label>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
-        <div class="browse-grid">
+        <!-- CATGORIES SECTION -->
+        <div class="browse-grid hide">
             <label for="" class="browse-text"> CATEGORIES</label>
             <div class="row" ng-repeat="(key,val) in data track by $index" ng-if="$index<=2">
                 <div class="col">
@@ -59,5 +88,18 @@
                 <p><a ui-sref="app.divisions">View More</a></p>
             </div>
         </div>
+        <!-- CATGORIES SECTION END -->
+
+        <!-- BRANDS LIST -->
+          <div class="homebrand-section">
+            <div class="row">
+              <div class="col">
+                <div class="brandhome-card">
+                  <img src="{{brandImage.brandImage | uploadpath}}" alt="" class="img-responsive">
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- BRANDS LIST END -->
     </ion-content>
 </ion-view>

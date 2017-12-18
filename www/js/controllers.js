@@ -30,7 +30,7 @@ angular.module('starter.controllers', ['starter.services'])
         $scope.companyProduct = data.data;
         $scope.companyProduct = _.chunk($scope.companyProduct, 2);
         console.log('sawme',$scope.companyProduct)
-      
+
       }
    })
 
@@ -43,23 +43,24 @@ angular.module('starter.controllers', ['starter.services'])
         $scope.data[key]=_.chunk($scope.data[key], 2);
          console.log('getallcategorieshello',$scope.data)
       });
-        
+
     console.log('getallcategorieshello',$scope.datachunk)
    })
-    
+
     MyServices.HomeBanner(function (data) {
       if (data.value) {
         $scope.homebanner = data.data.results;
         console.log('homebanner',$scope.homebanner)
         $ionicSlideBoxDelegate.update();
         $ionicLoading.hide()
-        
+
       }
     })
 
     MyServices.companyBanner(function (data) {
       if (data.value) {
         $scope.companyBanner = data.data.results;
+        console.log("Bann",$scope.companyBanner);
         $scope.companyBanner = _.chunk($scope.companyBanner, 2);
         $ionicLoading.hide()
 
@@ -123,7 +124,26 @@ angular.module('starter.controllers', ['starter.services'])
       }
     });
 
-    
+    MyServices.getAllCompanyWithCategory(function(data){
+      console.log(data);
+      if (data.value == true) {
+        $scope.productList = data.data;
+      } else{
+        console.log("ERROR");
+      }
+    });
+
+    MyServices.BrandsHomeImage(function(data){
+      console.log("brandImage", data);
+      if (data.value == true) {
+        $scope.brandImage = data.data.results[0];
+        console.log("BI", $scope.brandImage);
+      } else{
+        console.log("ERROR");
+      }
+    });
+
+
   })
 
   .controller('ProductsCtrl', function ($scope, $stateParams, MyServices, $ionicPlatform, $ionicLoading) {
@@ -141,6 +161,7 @@ angular.module('starter.controllers', ['starter.services'])
       if (data.value) {
         $scope.categoriesOfCompany = data.data;
         $scope.categoriesOfCompany = _.chunk($scope.categoriesOfCompany, 2);
+        $scope.companyBrands = data.data[0].company.brandImage;
         $ionicLoading.hide()
       }
     })
@@ -154,7 +175,7 @@ angular.module('starter.controllers', ['starter.services'])
         $scope.data[key]=_.chunk($scope.data[key], 2);
          console.log('getallcategorieshello',$scope.data)
       });
-        
+
     console.log('getallcategorieshello',$scope.datachunk)
    })
       if (data.value) {
@@ -191,7 +212,7 @@ angular.module('starter.controllers', ['starter.services'])
           var options = "location=no,toolbar=yes";
           var target = "_blank";
           $scope.finalURL = '';
-         
+
           var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           if(name=='SOLID WOOD'){
             $scope.finalURL = 'http://euroflooring.co.in/solid-wood/58edd69c1d42174d44801f5f';
@@ -364,7 +385,7 @@ angular.module('starter.controllers', ['starter.services'])
 
     $scope.login = function (value) {
       console.log("value", value);
-      
+
       MyServices.login(value, function (data) {
         if (data.value == true) {
           $state.go('app.home');
@@ -559,7 +580,7 @@ angular.module('starter.controllers', ['starter.services'])
         $scope.data[key]=_.chunk($scope.data[key], 2);
          console.log('getallcategorieshello',$scope.data)
       });
-        
+
     console.log('getallcategorieshello',$scope.datachunk)
     $ionicLoading.hide()
    })
@@ -568,7 +589,7 @@ angular.module('starter.controllers', ['starter.services'])
         var options = "location=no,toolbar=yes";
         var target = "_blank";
         $scope.finalURL = '';
-       
+
         var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
         if(name=='SOLID WOOD'){
           $scope.finalURL = 'http://euroflooring.co.in/solid-wood/58edd69c1d42174d44801f5f';
@@ -596,7 +617,7 @@ angular.module('starter.controllers', ['starter.services'])
          window.open = cordova.InAppBrowser.open;
         }
       }
-    
+
   })
 })
 
@@ -627,11 +648,20 @@ angular.module('starter.controllers', ['starter.services'])
         //     console.log("not working")
         // }
         });
-        
+
     }
 };
 })
 
   .controller('GalleryCtrl', function ($scope, $stateParams) {})
 
-  .controller('AboutUsCtrl', function ($scope, $stateParams) {});
+  .controller('AboutUsCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
+    MyServices.getAllCompany(function(data){
+      console.log("getAllCompany",data);
+      if(data.value == true){
+        $scope.aboutProducts = data.data;
+      } else {
+        console.log("ERROR. NO DATA");
+      }
+    })
+  });

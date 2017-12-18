@@ -82,7 +82,7 @@ sans-serif-light !default;
   font-size: 30px!important;
   color: #77bf4f!important;
   padding: 0 0 0 0px !important;
-  
+
 }
 
 .disblock {
@@ -896,11 +896,11 @@ sans-serif-light !default;
 .col-inline{
   width: 100%;
   display: inline-flex;
-  
+
   text-align: center;
   label{
     font-weight: 500;
-    
+
     font-size: 18px;
     text-align: center;
   }
@@ -971,7 +971,7 @@ sans-serif-light !default;
 .w100{
  width: 100%;
  padding: 5px 20px;
- 
+
 }
 .about-us {
     color: #79797d;
@@ -1012,3 +1012,99 @@ sans-serif-light !default;
 .map-padd{
   padding: 30px;
 }
+
+// SAGAR SCSS
+.about-prodcard{
+  margin: 25px 0;
+}
+.about-prodtitle{
+  padding: 0px 25px;
+}
+.about-prodimage{
+  margin: 10px 25px;
+  box-shadow: 0px 0px 0px #ccc;
+  .img-responsive{
+    width: 100%;
+    height: auto;
+    box-shadow: 7px 6px 1px #ccc;
+  }
+}
+
+.relate{
+  position: relative;
+}
+.get-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}
+.product-tag{
+  padding: 10px;
+  box-shadow: 2px 2px 2px #ccc;
+  background-color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+.products-title{
+  padding: 0 10px;
+  color: #333;
+  font-size: 21px;
+  text-align: left;
+}
+.home-groupcard{
+  padding: 0 10px;
+  margin: 20px 0;
+}
+.homehead-holder{
+  padding: 10px;
+}
+.btn-green{
+  min-height: auto;
+  border: none;
+  border-radius: 0;
+  background-color: #77bf4f;
+  color: #fff;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+.group-heading{
+  padding: 10px 0;
+  color: #ff3a40;
+  font-size: 16px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.home-grouptitle{
+  padding-bottom: 10px;
+  color: #333;
+  font-size: 16px;
+  text-align: left;
+}
+.img-responsive{
+  width: 100%;
+  height: auto;
+}
+.prod-flexlist{
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.prod-flexitem{
+  margin: 0px 10px 5px;
+  flex: auto;
+  // border-right: 1px solid #ff3a40;
+  // &:last-child{
+  //   border-right: none;
+  // }
+}
+.brands-grid {
+    margin: 15px 0;
+}
+.productbrand-title {
+  padding: 10px;
+  color: #fd3b40;
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+// SAGAR SCSS END

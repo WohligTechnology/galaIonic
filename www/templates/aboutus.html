@@ -6,7 +6,7 @@
         </div>
         <div class="col-50 headerimg">
             <img src="img/logo.png" ui-sref="app.home">
-        
+
         </div>
         <div class="col-25 text-right">
             <button class="button button-clear ion-ios-search-strong header-bellFont text-right disblock" ui-sref="app.search" menu-toggle="right">
@@ -14,7 +14,7 @@
         </div>
     </div>
     <ion-content class="has-header">
-        
+
         <!--<div class="aboutUs rel">
             <img src="img/aboutus.jpg">
             <label for="">ABOUT US</label>
@@ -45,7 +45,7 @@
                     on display for you to choose from.</p>
             </div>
         </div>
-        <div class="mar-t">
+        <div class="  mar-t">
               <img src="img/about/aaa.jpg" class="w100">
         </div>
           <div class="text-center">
@@ -87,5 +87,15 @@
                         require, we have the interiors for you. Now, no more wandering the streets for trendy and affordable
                         interiors, with our varied divisions, we ensure all your Interior Needs are met under one roof.</p>
                 </div>
+                <div class="about-prodcard" ng-repeat = "product in aboutProducts track by $index">
+                  <div class="about-prodtitle ">
+                    <h4 class="gcolor">{{product.name}}</h4>
+                  </div>
+                  <div class="about-prodimage">
+                    <img ng-src="{{product.categoryImage | uploadpath}}" alt="{{product.name}}" class="img-responsive">
+                  </div>
+                  <div class="about-prodcontent para-color" ng-bind-html="product.aboutCompData"></div>
+                </div>
+
     </ion-content>
 </ion-view>

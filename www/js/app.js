@@ -19,7 +19,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-      
+
     });
     $ionicPlatform.registerBackButtonAction(function (event) {
       if ($.jStorage.get('profile')) {
@@ -108,7 +108,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       })
 
       .state('app.divisions', {
-        url: '/divisions/:company',
+        url: '/products/:company',
         views: {
           'menuContent': {
             templateUrl: 'templates/divisions.html',

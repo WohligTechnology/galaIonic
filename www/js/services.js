@@ -68,7 +68,7 @@ angular.module('starter.services', [])
           withCredentials: true,
         }).success(callback);
       },
-      
+
       getAllProducts:function(callback) {
         $http({
           url: adminurl + 'CompanyProduct/getAllProduct',
@@ -83,7 +83,7 @@ angular.module('starter.services', [])
           method: 'POST',
           withCredentials: true,
           data: data
-        }).success(callback); 
+        }).success(callback);
       },
 
       getCompanyBanner: function (data, callback) {
@@ -110,6 +110,27 @@ angular.module('starter.services', [])
           data: data
         }).success(callback);
       },
+      getAllCompany: function (callback) {
+        $http({
+          url: adminurl + 'company/getAllCompany',
+          method: 'POST',
+          withCredentials: true
+        }).success(callback);
+      },
+      getAllCompanyWithCategory: function (callback) {
+        $http({
+          url: adminurl + 'Company/getAllCompanyWithCategory',
+          method: 'POST',
+          withCredentials: true
+        }).success(callback);
+      },
+      BrandsHomeImage: function(callback){
+        $http({
+          url: adminurl + 'BrandsHomeImage/search',
+          method: 'POST',
+          withCredentials: true
+        }).success(callback);
+      }
 
     };
   })
