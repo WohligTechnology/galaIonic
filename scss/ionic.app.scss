@@ -1092,11 +1092,16 @@ sans-serif-light !default;
 .prod-flexitem{
   margin: 0px 10px 5px;
   flex: auto;
-  // border-right: 1px solid #ff3a40;
-  // &:last-child{
-  //   border-right: none;
-  // }
+  border-right: 1px solid #ff3a40;
+  &:last-child{
+    border-right: none;
+  }
 }
+
+.contactDet{
+  color: gray;
+}
+
 .brands-grid {
     margin: 15px 0;
 }

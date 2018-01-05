@@ -12877,7 +12877,13 @@ a.button {
 
 .prod-flexitem {
   margin: 0px 10px 5px;
-  flex: auto; }
+  flex: auto;
+  border-right: 1px solid #ff3a40; }
+  .prod-flexitem:last-child {
+    border-right: none; }
+
+.contactDet {
+  color: gray; }
 
 .brands-grid {
   margin: 15px 0; }

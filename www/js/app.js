@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angular-flexslider'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter.services', 'angular-flexslider'])
 
   .run(function ($ionicPlatform,$state) {
     $ionicPlatform.ready(function () {
@@ -203,4 +203,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     }
-  });
+  })
+
+  .directive("limitTo", [function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            var limit = parseInt(attrs.limitTo);
+            angular.element(elem).on("keypress", function(e) {
+                if (this.value.length == limit) e.preventDefault();
+            });
+        }
+    }
+}]);

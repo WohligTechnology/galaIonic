@@ -130,18 +130,17 @@ angular.module('starter.services', [])
           method: 'POST',
           withCredentials: true
         }).success(callback);
+      },
+      
+      Enquiry: function(data,callback){
+        $http({
+          url: adminurl + 'ContactUs/save',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
       }
 
     };
   })
-  .directive("limitTo", [function() {
-    return {
-        restrict: "A",
-        link: function(scope, elem, attrs) {
-            var limit = parseInt(attrs.limitTo);
-            angular.element(elem).on("keypress", function(e) {
-                if (this.value.length == limit) e.preventDefault();
-            });
-        }
-    }
-}]);
+ 

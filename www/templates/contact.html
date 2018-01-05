@@ -60,6 +60,43 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3215461462464!2d77.57761731485607!3d12.951264718828353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15e93745a019%3A0x49f580b6e533f34f!2sURO+VENEER+WORLD!5e0!3m2!1sen!2sin!4v1508220212208"
                 width="370" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
+        <form name="formName" ng-submit="contactDetails(formData)">
+                <h4 class="text-center contactDet">CONTACT DETAILS </h4>
+            <!-- <div class = "signup-logo">   
+                <img src="img/logo.png" alt="">
+            </div> -->
+    <div class="pro-edit text-rite">
+            <label class="item item-input" ng-class="{'err': formName.email.$invalid && formName.email.$touched}">
+                <span class="input-label">First Name:</span>            
+                <input type="text" name="Fname" ng-model="formData.firstName" required>
+                <span class="error-msg" ng-show="formName.Fname.$invalid && formName.Fname.$touched">Please enter valid First Name</span>
+              </label>
+             
+    
+                <label class="item item-input" ng-class="{'err': formName.Sname.$invalid && formName.Sname.$touched}" >
+                <span class="input-label">Last Name:</span>
+                <input type="text" no-paste name="Sname"   ng-model="formData.lastName" required limit-to = "15" >
+                <span class="error-msg" ng-show="formName.Sname.$invalid && formName.Sname.$touched">Please enter valid Second Name</span>
+                </label>
+                <label class="item item-input" ng-class="{'err': formName.number.$invalid && formName.number.$touched}" >
+                        <span class="input-label">Contact Number:</span>
+                        <input type="tel" no-paste name="number"   ng-model="formData.contactNumber" required limit-to = "15" >
+                        <span class="error-msg" ng-show="formName.number.$invalid && formName.number.$touched">Please enter valid Contact Number</span>
+                        </label>
+                        <label class="item item-input" ng-class="{'err': formName.msg.$invalid && formName.msg.$touched}" >
+                                <span class="input-label">Message:</span>
+                                <textarea  no-paste name="msg"   ng-model="formData.message" required  ></textarea>
+                                <span class="error-msg" ng-show="formName.msg.$invalid && formName.msg.$touched">Please enter valid Contact Number</span>
+                                </label>
+    
+                <div class="text-center m20 padding-horizontal" >
+          <button class="button button-positive button-block" ng-disabled="formName.$invalid"
+            type="submit">Submit</button>
+            <button class="button button-positive button-block" ng-click="openPDF()">All Divisions Contact Details</button>
+        </div>
+        </div>
+        
+        </form>
         <!--<div class="social">
             <i class="fa fa-dribbble" aria-hidden="true"></i>
             <i class="fa fa-linkedin" aria-hidden="true"></i>

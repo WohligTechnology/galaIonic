@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.services'])
+angular.module('starter.controllers', ['starter.services', 'ngCordova'])
 
   .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
 
@@ -128,6 +128,8 @@ angular.module('starter.controllers', ['starter.services'])
       console.log(data);
       if (data.value == true) {
         $scope.productList = data.data;
+        console.log("helloproductlist",$scope.productList)
+        // $scope.categoriesOfCompany = _.chunk($scope.categoriesOfCompany, 2);
       } else{
         console.log("ERROR");
       }
@@ -375,7 +377,28 @@ angular.module('starter.controllers', ['starter.services'])
 
   })
 
-  .controller('ContactCtrl', function ($scope, $stateParams) {})
+  .controller('ContactCtrl', function ($scope, $stateParams, MyServices, $cordovaFile) {
+    $scope.contactDetails = function (detail) {
+    MyServices.Enquiry(detail, function (data) {
+      $scope.submitmsg = data;
+      console.log("submit",$scope.submitmsg)
+      // detail.firstName = "";
+      // detail.lastName = "";
+      // detail.contactNumber = "";
+      // detail.message = "";  
+  })
+}
+$scope.openPDF = function(){
+  var options = "location=no,toolbar=yes";
+  var target = "_blank";
+  $scope.finalURL = '';
+  var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+  $scope.finalURL = 'https://storage.googleapis.com/galapdf/all_divisions_contact_details.pdf';
+  ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+}
+
+})
+ 
   .controller('LoginCtrl', function ($scope, $stateParams,MyServices,$state,$ionicPopup, $ionicPlatform) {
     $ionicPlatform.registerBackButtonAction()
      if ($.jStorage.get('profile')) {
