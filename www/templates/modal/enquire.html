@@ -1,0 +1,40 @@
+<ion-modal-view >
+<ion-content>
+    <form name="formName" ng-submit="saveEnquiry(formData)">
+    <h4 class="text-center contactDet">CONTACT DETAILS </h4>
+<div class = "signup-logo">   
+    <img src="img/logo.png" alt="">
+</div>
+<div class="pro-edit text-rite">
+<label class="item item-input" ng-class="{'err': formName.email.$invalid && formName.email.$touched}">
+    <span class="input-label">First Name:</span>            
+    <input type="text" name="Fname" ng-model="formData.firstName" required>
+    <span class="error-msg" ng-show="formName.Fname.$invalid && formName.Fname.$touched">Please enter valid First Name</span>
+  </label>
+ 
+
+    <label class="item item-input" ng-class="{'err': formName.Sname.$invalid && formName.Sname.$touched}" >
+    <span class="input-label">Last Name:</span>
+    <input type="text" no-paste name="Sname"   ng-model="formData.lastName" required limit-to = "15" >
+    <span class="error-msg" ng-show="formName.Sname.$invalid && formName.Sname.$touched">Please enter valid Second Name</span>
+    </label>
+    <label class="item item-input" ng-class="{'err': formName.number.$invalid && formName.number.$touched}" >
+            <span class="input-label">Contact Number:</span>
+            <input type="tel" no-paste name="number"   ng-model="formData.contactNumber" required limit-to = "15" >
+            <span class="error-msg" ng-show="formName.number.$invalid && formName.number.$touched">Please enter valid Contact Number</span>
+            </label>
+            <label class="item item-input" ng-class="{'err': formName.msg.$invalid && formName.msg.$touched}" >
+                    <span class="input-label">Message:</span>
+                    <textarea  no-paste name="msg"   ng-model="formData.message" required  ></textarea>
+                    <span class="error-msg" ng-show="formName.msg.$invalid && formName.msg.$touched">Please enter valid Contact Number</span>
+                    </label>
+
+    <div class="text-center m20 padding-horizontal" >
+<button class="button button-positive button-block" ng-disabled="formName.$invalid"
+type="submit">Submit</button>
+</div>
+</div>
+
+</form>
+</ion-content>
+</ion-modal-view>

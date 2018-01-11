@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['starter.services', 'ngCordova'])
+angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova'])
 
   .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
 
@@ -290,7 +290,7 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
 
   })
 
-  .controller('ProductDetailsCtrl', function ($scope, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
+  .controller('ProductDetailsCtrl', function ($scope, $ionicModal, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -404,6 +404,40 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
       }
     });
 
+    $scope.saveEnquiry = function (detail) {
+      detail.productName = $scope.ProductDetails.name;
+      detail.image = $scope.bigImage;
+
+      MyServices.Enquiry(detail, function (data) {
+        console.log('detail',detail)
+          $scope.submitmsg = data.data;
+          detail.firstName = "";
+          detail.lastName = "";
+          detail.contactNumber = "";
+          detail.message = "";
+          detail.productName = "";
+          detail.image = "";
+          $timeout(function () {
+              $scope.closeModal()
+          }, 1000);
+      })
+  }
+    
+    $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function (modal) {
+      $scope.modal = modal;
+      console.log("hellowasssuip")
+    });
+
+    $scope.openModal = function () {
+      $scope.modal.show();
+    };
+
+  $scope.closeModal = function () {
+    $scope.modal.hide();
+  };
   })
 
   .controller('ContactCtrl', function ($scope, $stateParams, MyServices, $cordovaFile, $ionicPopup, $filter) {
