@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter.services', 'angular-flexslider'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','pdf', 'starter.services', 'angular-flexslider'])
 
   .run(function ($ionicPlatform,$state) {
     $ionicPlatform.ready(function () {
@@ -22,7 +22,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter
 
     });
     $ionicPlatform.registerBackButtonAction(function (event) {
-      if ($.jStorage.get('profile')) {
+      // if ($.jStorage.get('profile')) {
         if ($state.current.name == "app.home") {
           console.log("showstate",$state.current.name)
           navigator.app.exitApp(); //<-- remove this line to disable the exit
@@ -30,15 +30,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter
           console.log("showstate",$state.current.name)
           window.history.back();
         }
-      } else {
-        if ($state.current.name == "login") {
-          console.log("showstate",$state.current.name)
-          navigator.app.exitApp();
-        } else {
-          console.log("showstate",$state.current.name)
-          window.history.back();
-        }
-      }
+      // } else {
+      //   if ($state.current.name == "login") {
+      //     console.log("showstate",$state.current.name)
+      //     navigator.app.exitApp();
+      //   } else {
+      //     console.log("showstate",$state.current.name)
+      //     window.history.back();
+      //   }
+      // }
     }, 100);
   })
 
@@ -118,7 +118,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter
       })
 
       .state('app.productdetails', {
-        url: '/productdetails/:product',
+        url: '/productdetails/:product/:company',
         views: {
           'menuContent': {
             templateUrl: 'templates/productdetails.html',
@@ -167,6 +167,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter
         }
       })
 
+      .state('app.download', {
+        url: '/download',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/download.html',
+            controller: 'DownloadCtrl'
+          }
+        }
+      })
+
       .state('signup', {
         url: '/signup',
         cache: false,
@@ -180,7 +190,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova', 'starter
         controller: 'LoginCtrl'
       });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/app/home');
   })
   .filter('uploadpath', function () {
     return function (input, width, height, style) {

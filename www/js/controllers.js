@@ -244,6 +244,19 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
         }
       }
     })
+
+    $scope.urlLink=function(link){
+      console.log("urllink",link)
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      if(link==undefined){
+        console.log('no link available')
+      }else{
+        $scope.finalURL = link;
+        ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+       window.open = cordova.InAppBrowser.open;
+      }
+    }
     MyServices.getCompanyBanner($scope.company, function (data) {
       if (data.value) {
         $scope.CompanyBanner = data.data;
@@ -251,6 +264,11 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
         $ionicLoading.hide()
       }
     })
+
+    MyServices.companyCategory($scope.category, function (data) {
+      $scope.productImage = data.data;
+      console.log("doneshowProducts",$scope.productImage)
+  });
   })
 
   .controller('DivisionCtrl', function ($scope, MyServices, $ionicPlatform, $ionicLoading) {
@@ -282,11 +300,14 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
     });
     $ionicPlatform.registerBackButtonAction()
     $scope.product = {};
+    $scope.company={};
     $scope.product._id = $stateParams.product;
+    $scope.company._id = $stateParams.company;
     $scope.bigImage = {};
     MyServices.getOneProductDetails($scope.product, function (data) {
       if (data.value) {
         $scope.ProductDetails = data.data;
+        console.log("helloproduct",$scope.ProductDetails)
         $ionicLoading.hide()
         if ($scope.ProductDetails.images.length != 0) {
           $scope.bigImage = $scope.ProductDetails.images[0].bigImage;
@@ -327,6 +348,14 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
     //         },$scope.interval);
     //     }
     // };
+
+    MyServices.getCompanyBanner($scope.company, function (data) {
+      if (data.value) {
+        $scope.CompanyBanner = data.data;
+        console.log("CompanyBanner",$scope.CompanyBanner)
+        $ionicLoading.hide()
+      }
+    })
     $scope.interval = 2000;
 
     $scope.homeSlider = {};
@@ -377,7 +406,7 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
 
   })
 
-  .controller('ContactCtrl', function ($scope, $stateParams, MyServices, $cordovaFile) {
+  .controller('ContactCtrl', function ($scope, $stateParams, MyServices, $cordovaFile, $ionicPopup, $filter) {
     $scope.contactDetails = function (detail) {
     MyServices.Enquiry(detail, function (data) {
       $scope.submitmsg = data;
@@ -389,12 +418,18 @@ angular.module('starter.controllers', ['starter.services', 'ngCordova'])
   })
 }
 $scope.openPDF = function(){
-  var options = "location=no,toolbar=yes";
-  var target = "_blank";
-  $scope.finalURL = '';
+  
+    var options = "location=no,toolbar=yes";
+    var target = "_blank";
+    var link = 'img/AllDivisionsContactDetails.pdf'
+  $scope.pdfURL = 'https://storage.googleapis.com/galapdf/AllDivisionsContactDetails.pdf';
+  $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
+  console.log("hellolink", $scope.finalURL)
   var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-  $scope.finalURL = 'https://storage.googleapis.com/galapdf/all_divisions_contact_details.pdf';
-  ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+
+// }
+// $scope.closePopup = function () {
+//   $scope.pdf.close();
 }
 
 })
@@ -464,6 +499,47 @@ $scope.openPDF = function(){
       //}
     }
   })
+.controller('DownloadCtrl', function ($scope, $stateParams, MyServices, $ionicLoading, $ionicPopup, $filter) {
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+   $scope.product = {};
+    $scope.bigImage = {};
+    $scope.name = {};
+    // MyServices.CompanyProduct( function (data) {
+    //   if (data.value) {
+    //     $scope.ProductDetails = data.data;
+    //     $ionicLoading.hide()
+    //     if ($scope.ProductDetails.length != 0) {
+    //       $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
+    //             $scope.name = $scope.ProductDetails[0].name;
+
+    //     }
+    //   }
+    // })
+
+    MyServices.Download(function (data) {
+      console.log("inside  download api",data)
+      $scope.PdfData=data.data;
+      $scope.pdfChunk = _.chunk($scope.PdfData, 2);
+      console.log("inside     $scope.PdfData",   $scope.PdfData)
+      $ionicLoading.hide()
+     });
+
+  $scope.openPDF = function(link){
+    var options = "location=no,toolbar=yes";
+    var target = "_blank";
+  $scope.pdfURL = $filter('uploadpath')(link);
+  $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
+  console.log("hellolink", $scope.finalURL)
+  var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+}
+})
+
 .controller('ShowroomCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
   $ionicLoading.show({
     content: 'Loading',
@@ -475,89 +551,40 @@ $scope.openPDF = function(){
    $scope.product = {};
     $scope.bigImage = {};
     $scope.name = {};
-    MyServices.CompanyProduct( function (data) {
-      if (data.value) {
-        $scope.ProductDetails = data.data;
-        $ionicLoading.hide()
-        if ($scope.ProductDetails.length != 0) {
-          $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
-                $scope.name = $scope.ProductDetails[0].name;
+    // MyServices.CompanyProduct( function (data) {
+    //   if (data.value) {
+    //     $scope.ProductDetails = data.data;
+    //     $ionicLoading.hide()
+    //     if ($scope.ProductDetails.length != 0) {
+    //       $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
+    //             $scope.name = $scope.ProductDetails[0].name;
 
-        }
-      }
-    })
+    //     }
+    //   }
+    // })
 
+    MyServices.Showroom(function (data) {
+      $scope.showroom = data.data;
+      console.log("showroom images",$scope.showroom)
+      $ionicLoading.hide()
+  });
 
-    $scope.changebigImage = function (bigImage,name) {
-      $scope.bigImage = bigImage;
-      $scope.name = name;
+  $scope.video=function(link){
+    console.log("urllink",link)
+    var options = "location=no,toolbar=yes";
+    var target = "_blank";
+    if(link==undefined){
+      console.log('no link available')
+    }else{
+      $scope.finalURL = link;
+      ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+     window.open = cordova.InAppBrowser.open;
     }
-
-    $scope.closePopup = function () {
-      $scope.show.close();
-    };
-    $scope.lockSlide = function () {
-      $ionicSlideBoxDelegate.enableSlide(false);
-    };
-    $scope.myActiveSlide = 0;
-
-    $scope.slidePrevious = function (text) {
-
-      $ionicSlideBoxDelegate.$getByHandle(text).previous();
-    };
-
-    $scope.slideNext = function (text) {
-
-      $ionicSlideBoxDelegate.$getByHandle(text).next();
-
-    };
-
-
-    $scope.interval = 2000;
-
-    $scope.homeSlider = {};
-    $scope.homeSlider.data = [];
-    $scope.homeSlider.currentPage = 0;
-    $scope.setupSlider = function () {
-
-      //some options to pass to our slider
-      $scope.homeSlider.sliderOptions = {
-        initialSlide: 0,
-        direction: 'horizontal', //or vertical
-        speed: 300,
-
-        autoplay: "5000",
-        effect: 'fade',
-
-      };
-      //create delegate reference to link with slider
-      $scope.homeSlider.sliderDelegate = null;
-
-      //watch our sliderDelegate reference, and use it when it becomes available
-      $scope.$watch('homeSlider.sliderDelegate', function (newVal, oldVal) {
-        if (newVal != null) {
-          $scope.homeSlider.sliderDelegate.on('slideChangeEnd', function () {
-            $scope.homeSlider.currentPage = $scope.homeSlider.sliderDelegate.activeIndex;
-            //use $scope.$apply() to refresh any content external to the slider
-            $scope.$apply();
-          });
-        }
-      });
-    };
-
-    $scope.setupSlider();
+  }
 
 
 
-    //detect when sliderDelegate has been defined, and attatch some event listeners
-    $scope.$watch('sliderDelegate', function (newVal, oldVal) {
-      if (newVal != null) {
-        $scope.sliderDelegate.on('slideChangeEnd', function () {
-          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
-          $scope.$apply();
-        });
-      }
-    });
+
 
 })
 

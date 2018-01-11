@@ -12455,8 +12455,21 @@ a.button {
     font-size: 18px;
     width: 100%;
     max-width: 100%;
-    margin-top: 20px;
+    margin-top: 7px;
     font-family: "AvenirNext"; }
+
+.showroomImage {
+  position: relative;
+  width: 100%; }
+  .showroomImage i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    color: red;
+    transform: translate(-50%, -50%); }
+  .showroomImage img {
+    width: 100%; }
 
 .product1,
 .product2,
@@ -12793,7 +12806,7 @@ a.button {
   margin-top: 40px; }
 
 .gcolor {
-  color: #79797d; }
+  color: #fd3b40; }
 
 .emailDiv a, .numberDiv a {
   text-decoration: none; }
@@ -12876,11 +12889,9 @@ a.button {
   flex-wrap: wrap; }
 
 .prod-flexitem {
-  margin: 0px 10px 5px;
+  margin: 0px 2px 5px;
   flex: auto;
-  border-right: 1px solid #ff3a40; }
-  .prod-flexitem:last-child {
-    border-right: none; }
+  border: 1px solid lightgrey; }
 
 .contactDet {
   color: gray; }
@@ -12894,3 +12905,35 @@ a.button {
   font-size: 20px;
   text-align: left;
   text-transform: uppercase; }
+
+.modal-download {
+  width: 100%; }
+  .modal-download canvas {
+    width: 100%; }
+  .modal-download input[type=text] {
+    display: inline-block;
+    margin: 10px 0; }
+  .modal-download .button {
+    padding: 0 5px;
+    font-size: 12px;
+    margin: 0 1px; }
+
+.close {
+  position: absolute;
+  top: 10px;
+  left: 10px; }
+
+.hideButtons .clearfix {
+  display: none; }
+
+.pdfviewerclass .popup {
+  width: 100%; }
+
+.noproductavail {
+  color: #fd3b40; }
+
+.categoryImage {
+  width: 80%;
+  margin: 0 auto; }
+  .categoryImage img {
+    width: 100%; }

@@ -15,14 +15,31 @@
 
     </div>
   <ion-content class="has-header">
+      <div class="bgStrip rel">
+          <img ng-src="{{CompanyBanner.backgroundBanner | uploadpath}}" alt="">
+          <label for="" class="text-uppercase">{{subcategory[0].names}}</label>
+      </div>
          <div class="browse-grid">
     <label for="" class="product-text text-uppercase">{{CompanyBanner.name}}</label>
-      <div class="row" ng-repeat="s1 in AllProductWithCategory" >
-                <div class="col-50" ng-repeat="s in s1" ui-sref="app.productdetails({product:s._id})">
+      <div class="row" ng-repeat="s1 in AllProductWithCategory" ng-if="AllProductWithCategory1!='noDataound'" >
+                <div class="col-50" ng-repeat="s in s1" ui-sref="app.productdetails({product:s._id, company:s.company})" ng-if="s.name != 'SOLID WOOD' && s.name !='ENGINEERED' && s.name !='LAMINATED FLOORING' && s.name !='EXOTIC BAMBOO' && s.name !='KAINDL VENEER' && s.name !='EXTERIOR DECK TILE'">
                     <div class="browse-card1 rel">
                         <div class="icondiv">
                             <img ng-src="{{s.images[0].bigImage | uploadpath}}" alt="">
-                            <label for="" class="text-uppercase">yo {{s.name}}</label>
+                            <label for="" class="text-uppercase">{{s.name}}</label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row" ng-repeat="s1 in AllProductWithCategory" ng-if="AllProductWithCategory1!='noDataound'" >
+                <div class="col-50" ng-repeat="s in s1" ng-click="inapp(s.name)" ng-if="s.name == 'SOLID WOOD' || s.name =='ENGINEERED' || s.name =='LAMINATED FLOORING' || s.name =='EXOTIC BAMBOO' || s.name =='KAINDL VENEER' || s.name =='EXTERIOR DECK TILE'">
+                    <div class="browse-card1 rel">
+                        <div class="icondiv">
+                            <img ng-src="{{s.images[0].bigImage | uploadpath}}" alt="">
+                            <label for="" class="text-uppercase">{{s.name}}</label>
                         </div>
 
                     </div>
@@ -31,6 +48,9 @@
 
             </div>
          </div>
+         <div class="text-center categoryImage" ng-click="urlLink(productImage.link)" ng-if="productImage.noImage!='' && productImage.noImage && productImage.noImage!=null"><img ng-if="!productImage.link || productImage.link=='' || productImage.link==null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""><img ng-if="productImage.link!='' && productImage.link && productImage.link!=null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""></div>
+         <h5 class="text-center noproductavail" ng-if="AllProductWithCategory1=='noDataound' && !productImage.noImage">No Products Available Right Now.</h5>
+         
     <!--<ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
             auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
             <ion-slide class="rel" >

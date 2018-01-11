@@ -13,7 +13,20 @@
     </div>
   </div>
   <ion-content class="has-header">
-    <div class="mainImage rel">
+      <div class="bgStrip rel">
+          <img src="img/Showroom.jpg" alt="">
+          <label for="" class="text-uppercase">{{subcategory[0].names}}</label>
+      </div>
+      <div class="row">
+          <div class="col col-50" ng-repeat="showrooms in showroom">
+              <div class=" showroomImage" ng-click="video(showrooms.link)">
+                  <img ng-src="{{showrooms.thumbnail | uploadpath}}" alt="" class="img-responsive" >
+                  <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              </div>
+              
+          </div>
+      </div>
+    <!-- <div class="mainImage rel">
       <img ng-src="{{bigImage | uploadpath}}" alt="">
       <div>{{name}}</div>
     </div>
@@ -24,6 +37,6 @@
           <img ng-src="{{pro.images[0].smallImage | uploadpath}}" alt="">
         </li>
       </flex-slider>
-    </div>
+    </div> -->
   </ion-content>
 </ion-view>

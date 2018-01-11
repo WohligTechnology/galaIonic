@@ -592,8 +592,25 @@ sans-serif-light !default;
     font-size: 18px;
     width: 100%;
     max-width: 100%;
-    margin-top: 20px;
+    margin-top: 7px;
     font-family: "AvenirNext";
+  }
+}
+
+
+.showroomImage{
+  position: relative;
+  width: 100%;
+  i{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 40px;
+      color: red;
+      transform: translate(-50%,-50%);
+  }
+  img{
+    width: 100%
   }
 }
 
@@ -1002,7 +1019,7 @@ sans-serif-light !default;
   margin-top: 40px;
 }
 .gcolor {
-    color: #79797d;
+    color: #fd3b40;
 }
 .emailDiv,.numberDiv{
   a{
@@ -1090,12 +1107,9 @@ sans-serif-light !default;
   flex-wrap: wrap;
 }
 .prod-flexitem{
-  margin: 0px 10px 5px;
+  margin: 0px 2px 5px;
   flex: auto;
-  border-right: 1px solid #ff3a40;
-  &:last-child{
-    border-right: none;
-  }
+  border: 1px solid lightgrey;
 }
 
 .contactDet{
@@ -1113,3 +1127,52 @@ sans-serif-light !default;
   text-transform: uppercase;
 }
 // SAGAR SCSS END
+
+.modal-download {
+  width: 100%;
+  canvas {
+      width: 100%;
+  }
+
+  input[type=text] {
+      display: inline-block;
+      margin: 10px 0;
+  }
+
+  .button {
+      padding: 0 5px;
+      font-size: 12px;
+      margin: 0 1px;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.hideButtons{
+  .clearfix {
+    display: none;
+  }
+}
+
+
+.pdfviewerclass{
+  .popup{
+    width: 100%;
+  }
+}
+
+.noproductavail{
+color: #fd3b40;
+}
+
+.categoryImage{
+  width: 80%;
+  margin: 0 auto;
+  img{
+    width: 100%;
+  }
+}

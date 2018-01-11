@@ -139,8 +139,33 @@ angular.module('starter.services', [])
           withCredentials: true,
           data: data
         }).success(callback);
-      }
+      },
 
+      companyCategory: function(data,callback){
+        $http({
+          url: adminurl + 'CompanyCategory/getOne',
+          method: 'POST',
+          withCredentials: true,
+          data: data
+        }).success(callback);
+      },
+
+      Showroom: function(callback){
+        $http({
+          url: adminurl + 'Showroom/getAllShowroom',
+          method: 'POST',
+          withCredentials: true,
+        }).success(callback);
+      },
+
+      Download: function(callback){
+        $http({
+          url: adminurl + 'PdfImageUpload/getAllPdfData',
+          method: 'POST',
+          withCredentials: true,
+        }).success(callback);
+      }
+      
     };
   })
  

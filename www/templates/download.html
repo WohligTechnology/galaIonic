@@ -1,0 +1,42 @@
+<ion-view title="Showroom" class="logo-center yes-title">
+        <div class="row ">
+          <div class="col-25 mar-left">
+            <button class="button button-icon button-clear ion-navicon sigupIconLeft disblock" menu-toggle="left">
+           </button>
+          </div>
+          <div class="col-50 headerimg">
+            <img src="img/logo.png" alt="logo" ui-sref="app.home">
+          </div>
+          <div class="col-25 text-right">
+            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search" menu-toggle="right">
+          </button>
+          </div>
+        </div>
+        <ion-content class="has-header">
+            <div class="bgStrip rel">
+                <img src="img/download.jpg" alt="">
+                <label for="" class="text-uppercase">{{subcategory[0].names}}</label>
+            </div>
+            <div class="row" ng-repeat="download in pdfChunk">
+                <div class="col col-50" ng-repeat="downloads in download">
+                    <div class=" showroomImage" ng-click="openPDF(downloads.pdf)">
+                        <img ng-src="{{downloads.image | uploadpath}}" alt="" class="img-responsive" >
+                        
+                    </div>
+                    
+                </div>
+            </div>
+          <!-- <div class="mainImage rel">
+            <img ng-src="{{bigImage | uploadpath}}" alt="">
+            <div>{{name}}</div>
+          </div>
+          <div class="sliders text-center " ng-if="proImages[0]!==''">
+            <flex-slider class="carousel " animation="slide" flex-slide="pro in ProductDetails track by $index" animation-loop="true"
+              item-margin="10" slideshow="false" item-width="75" maxItems="3">
+              <li class="prosmall" ng-click="changebigImage(pro.images[0].bigImage,pro.name) ">
+                <img ng-src="{{pro.images[0].smallImage | uploadpath}}" alt="">
+              </li>
+            </flex-slider>
+          </div> -->
+        </ion-content>
+      </ion-view>
