@@ -290,7 +290,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
 
   })
 
-  .controller('ProductDetailsCtrl', function ($scope, $ionicModal, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
+  .controller('ProductDetailsCtrl', function ($scope, $filter, $ionicModal, $cordovaSocialSharing, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -422,6 +422,18 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
           }, 1000);
       })
   }
+
+  $scope.shareProduct = function() {
+    var image = $filter("downloadImage")($scope.bigImage);
+    console.log(image);
+    $cordovaSocialSharing
+      .share('', '', image, '') // Share via native share sheet
+      .then(function(result) {
+        // Success!
+      }, function(err) {
+        // An error occured. Show a message to the user
+      });
+  };
     
     $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
       scope: $scope,

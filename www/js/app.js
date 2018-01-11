@@ -225,4 +225,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','pdf', 's
             });
         }
     }
-}]);
+}])
+
+.filter('downloadImage', function () {
+  return function (input) {
+    if (input) {
+      return adminurl + "download/" + input;
+    } else {
+      return "img/logo.png";
+    }
+  };
+});
