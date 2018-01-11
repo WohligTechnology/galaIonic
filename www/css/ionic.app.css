@@ -12937,3 +12937,6 @@ a.button {
   margin: 0 auto; }
   .categoryImage img {
     width: 100%; }
+
+.borderimgchnage {
+  border: 1px solid lightgray; }

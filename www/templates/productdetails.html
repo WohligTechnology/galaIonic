@@ -29,7 +29,7 @@
       <flex-slider class="carousel " animation="slide" flex-slide="pro in proImages track by $index" animation-loop="true" item-margin="10"
         slideshow="false" item-width="75" maxItems="3">
         <li class="prosmall" ng-click="changebigImage(pro.bigImage) ">
-          <img ng-src="{{pro.bigImage | uploadpath}}" alt="">
+          <img ng-class="{'borderimgchnage': pro.bigImage==bigImage}" ng-src="{{pro.bigImage | uploadpath}}" alt="">
         </li>
       </flex-slider>
     </div>
