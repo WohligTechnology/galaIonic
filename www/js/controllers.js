@@ -668,17 +668,21 @@ $scope.openPDF = function(){
     //   $scope.allproductData = _.chunk($scope.data, 2);
     //   console.log("$chunck.------",$scope.allproductData);
        MyServices.getAllCategories(function(data){
-    console.log('getallcategories',data)
+    
      $scope.getAllCategory = data.data;
-        $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
+     console.log('getallcategories',$scope.getAllCategory)
+       $scope.order = _.orderBy($scope.getAllCategory, ['company.order'], ['asc', 'desc'])
+
+        $scope.data = _.groupBy($scope.order, 'company.name');
         // $scope.datachunk = _.chunk( $scope.data,2);
  _.each($scope.data,function(n,key){
         $scope.data[key]=_.chunk($scope.data[key], 2);
          console.log('getallcategorieshello',$scope.data)
+         $ionicLoading.hide()
       });
 
     console.log('getallcategorieshello',$scope.datachunk)
-    $ionicLoading.hide()
+    
    })
       $scope.inapp=function(name){
         console.log("nameproduct",name)
@@ -756,6 +760,8 @@ $scope.openPDF = function(){
       console.log("getAllCompany",data);
       if(data.value == true){
         $scope.aboutProducts = data.data;
+        console.log("helloProduct", $scope.aboutProducts)
+        $scope.data1 = _.orderBy($scope.aboutProducts, ['order'], ['asc', 'desc'])
       } else {
         console.log("ERROR. NO DATA");
       }

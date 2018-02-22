@@ -12531,8 +12531,7 @@ a.button {
   display: block;
   background: #75c04f;
   border: none;
-  width: 40%;
-  padding: 2px;
+  padding: 3px 25px;
   color: white;
   font-family: "AvenirNext-Bold"; }
 
@@ -12940,3 +12939,13 @@ a.button {
 
 .borderimgchnage {
   border: 1px solid lightgray; }
+
+.share-btn {
+  background: #75c04f;
+  border: none;
+  padding: 3px 45px;
+  color: white;
+  font-family: "AvenirNext-Bold"; }
+
+.my-slider .flex-direction-nav a:before {
+  font-size: 0px; }

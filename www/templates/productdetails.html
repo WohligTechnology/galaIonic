@@ -25,7 +25,7 @@
       <!-- <button class="button button-icon icon ion-ios-arrow-left arrowbtn left-arrow" ng-click="slidePrevious('am')"></button>
       <button class="button button-icon icon ion-ios-arrow-right rightarr right-arrow" ng-click="slideNext('am')"></button> -->
     </div>
-    <div class="sliders text-center " ng-if="proImages[0]!==''">
+    <div class="sliders text-center my-slider" ng-if="proImages[0]!==''">
       <flex-slider class="carousel " animation="slide" flex-slide="pro in proImages track by $index" animation-loop="true" item-margin="10"
         slideshow="false" item-width="75" maxItems="3">
         <li class="prosmall" ng-click="changebigImage(pro.bigImage) ">
@@ -36,11 +36,17 @@
     <div class="productdescription">Product Description</div>
     <p class="productinside">{{ProductDetails.description}}
     </p>
-    <div class="social-icons">
-      <button class="button button-block ln-share2 button-balanced" ng-click="shareProduct();">
-      Share
-      </button>
+    <div class="row">
+      <div class="col-50">  <div class="social-icons text-center">
+        <button class="share-btn" ng-click="shareProduct();">
+        Share
+        </button>
+        </div></div>
+      <div class="col-50">
+        <div><button class="enquire" ng-click="openModal()">Enquire Now</button></div>
       </div>
-    <button class="enquire" ng-click="openModal()">Enquire Now</button>
+    </div>
+  
+  
   </ion-content>
 </ion-view>

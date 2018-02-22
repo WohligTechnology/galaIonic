@@ -186,6 +186,7 @@ sans-serif-light !default;
   display: none;
 }
 .flex-next {
+
   right:0px!important;
   top: 38%!important;
   height: 60px!important;
@@ -681,8 +682,8 @@ sans-serif-light !default;
   display: block;
   background: #75c04f;
   border: none;
-  width: 40%;
-  padding: 2px;
+  // width: 40%;
+  padding: 3px 25px;
   color: white;
   font-family: "AvenirNext-Bold";
 }
@@ -1179,4 +1180,17 @@ color: #fd3b40;
 
 .borderimgchnage{
   border: 1px solid lightgray
+}
+.share-btn{
+  background: #75c04f;
+  border: none;
+  // width: 40%;
+  padding: 3px 45px;
+  color: white;
+  font-family: "AvenirNext-Bold";
+}
+.my-slider{
+.flex-direction-nav a:before{
+  font-size: 0px;
+}
 }
