@@ -32,14 +32,30 @@
         <div>
             <div class="browse-grid">
                 <label for="" class="product-text text-uppercase">{{CompanyBanner.name}}</label>
+                <div >
+                    <i class="fa fa-phone numberMail" aria-hidden="true"></i>
+                    <h3 class="emailTel">Mysore Road Campus: 9880589246 /</h3>
+                    <h3 class="emailTel">RV Road Campus: 8105921000</h3>
+                    <i class="fa fa-envelope-o numberMail" aria-hidden="true"></i>
+                    <h3 class="emailTel">wood@galagroup.in</h3>
+            </div>
                 <div class="row " ng-repeat="s2 in categoriesOfCompany">
                     <div class="col-50 prcard" ng-repeat="s in s2" ui-sref='app.category({company:company._id ,category:s._id})'>
-                        <div class="category-card1">
+                        <!-- <div class="category-card1 ">
                             <div class="icondiv">
-                                <img ng-src="{{s.image | uploadpath}}" alt="">
+                                <img ng-src="{{s.image | uploadpath}}">
                             </div>
-                            <label for="" class="text-uppercase">{{s.name}}</label>
-                        </div>
+                            <label class="text-uppercase">{{s.name}}</label>
+                       </div> -->
+                       <div class="category-card1">
+                            <div class="icondiv">
+                                <img ng-src="{{s.image | uploadpath}}">
+                            </div>
+                            <div class="door-info">
+                            <p class="text-uppercase">{{s.name}}</p>
+                            </div>
+                       </div>
+                     
                     </div>
                 </div>
                 <!-- BRANDS GRID -->
