@@ -12280,10 +12280,9 @@ a.button {
   color: white; }
 
 .category-card1 {
-  padding: 1.5px;
-  margin: 1.5px;
+  margin: 10px;
   overflow: hidden;
-  height: 115px; }
+  box-shadow: 7px 6px 1px #ccc !important; }
   .category-card1 .icondiv {
     height: auto;
     width: 100%;
@@ -12311,6 +12310,11 @@ a.button {
     width: 60%;
     text-align: center;
     font-family: "AvenirNext"; }
+  .category-card1 p {
+    margin: 0;
+    padding: 4px 0px !important;
+    font-size: 11px !important;
+    font-family: "AvenirNext" !important; }
 
 .category-card2 {
   padding: 1.5px;
@@ -12466,7 +12470,7 @@ a.button {
     top: 50%;
     left: 50%;
     font-size: 40px;
-    color: red;
+    color: #fd3b40;
     transform: translate(-50%, -50%); }
   .showroomImage img {
     width: 100%; }
@@ -12571,7 +12575,7 @@ a.button {
   padding: 15px 0px; }
 
 .clickColor {
-  color: red; }
+  color: #fd3b40 !important; }
 
 .menuOption {
   border: transparent;
@@ -12626,7 +12630,6 @@ a.button {
   text-transform: uppercase; }
 
 .prcard {
-  height: 180px;
   position: relative; }
 
 .prosmall {
@@ -12845,7 +12848,7 @@ a.button {
 
 .products-title {
   padding: 0 10px;
-  color: #333;
+  color: red !important;
   font-size: 21px;
   text-align: left; }
 
@@ -12949,3 +12952,21 @@ a.button {
 
 .my-slider .flex-direction-nav a:before {
   font-size: 0px; }
+
+.door-shadow {
+  box-shadow: 7px 6px 1px #ccc !important; }
+
+.door-info {
+  box-shadow: 2px 2px 2px #ccc;
+  background: white; }
+
+.numberMail {
+  padding: 10px;
+  font-size: 18px;
+  color: #ff3a40; }
+
+.emailTel {
+  padding: 0 0 0px !important;
+  font-size: 14px !important;
+  margin-top: 0px !important;
+  color: #000 !important; }

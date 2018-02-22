@@ -32,6 +32,7 @@
             <div class="mar-t5" ng-click="showme=false">
                 <a>view map</a>
             </div>
+           
         </div>
         <div class="contactusDiv">
             <div>
@@ -51,6 +52,7 @@
             <div class="mar-t5" ng-click="showme=true">
                 <a>view map</a>
             </div>
+            <button class="button button-positive button-block" ng-click="openPDF()" download>All Divisions Contact Details</button>
         </div>
         <div ng-hide="showme">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2793705464983!2d77.54017821442001!3d12.95396681877088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e128e9b9585%3A0xa49c5c7db89d879!2sGALA+FURNITURE+WORLD!5e0!3m2!1sen!2sin!4v1507890102639"
@@ -92,7 +94,7 @@
                 <div class="text-center m20 padding-horizontal" >
           <button class="button button-positive button-block" ng-disabled="formName.$invalid"
             type="submit">Submit</button>
-            <button class="button button-positive button-block" ng-click="openPDF()" download>All Divisions Contact Details</button>
+            <!-- <button class="button button-positive button-block" ng-click="openPDF()" download>All Divisions Contact Details</button> -->
         </div>
         </div>
         

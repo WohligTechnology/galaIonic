@@ -15,7 +15,7 @@
   <ion-content class="has-header">
     <div class="productsrow" ng-repeat="(key,val) in data">
       <!-- <div class=""  > -->
-      <div class="products-title" ui-sref='app.products({company:val[0][0].company._id})'>{{key}}</div>
+      <div class="products-title clickColor" ui-sref='app.products({company:val[0][0].company._id})'>{{key}}</div>
       <div class="" ng-repeat="qwerty in val">
         <div class="">
           <div class="pad10 relate" ng-repeat="company in qwerty" ui-sref='app.category({company:company.company._id,category:company._id })' ng-if="company.name != 'SOLID WOOD' && company.name !='ENGINEERED' && company.name !='LAMINATED FLOORING' && company.name !='EXOTIC BAMBOO' && company.name !='KAINDL VENEER' && company.name !='EXTERIOR DECK TILE'">

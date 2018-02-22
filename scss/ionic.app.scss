@@ -394,10 +394,13 @@ sans-serif-light !default;
 }
 
 .category-card1 {
-  padding: 1.5px;
-  margin: 1.5px;
+  // padding: 1.5px;
+  // margin: 1.5px;
+  margin: 10px;
   overflow: hidden;
-  height: 115px; // position: relative;
+  // height: 115px; 
+  // position: relative;
+  box-shadow: 7px 6px 1px #ccc !important;
   .icondiv {
     height: auto;
     width: 100%;
@@ -428,6 +431,12 @@ sans-serif-light !default;
     text-align: center;
     font-family: "AvenirNext"
   }
+  p {
+    margin: 0;
+    padding: 4px 0px !important;
+    font-size: 11px !important;
+    font-family: "AvenirNext" !important;
+}
 }
 
 .category-card2 {
@@ -607,7 +616,7 @@ sans-serif-light !default;
       top: 50%;
       left: 50%;
       font-size: 40px;
-      color: red;
+      color: #fd3b40;
       transform: translate(-50%,-50%);
   }
   img{
@@ -732,7 +741,7 @@ sans-serif-light !default;
 }
 
 .clickColor {
-  color: red;
+  color: #fd3b40 !important;
 }
 
 .menuOption {
@@ -802,7 +811,7 @@ sans-serif-light !default;
 }
 
 .prcard {
-  height: 180px;
+  // height: 180px;
   position: relative;
 }
 
@@ -1065,7 +1074,7 @@ sans-serif-light !default;
 }
 .products-title{
   padding: 0 10px;
-  color: #333;
+  color: red !important;
   font-size: 21px;
   text-align: left;
 }
@@ -1193,4 +1202,31 @@ color: #fd3b40;
 .flex-direction-nav a:before{
   font-size: 0px;
 }
+}
+
+.door-shadow{
+  box-shadow: 7px 6px 1px #ccc !important;
+}
+
+ 
+  // box-shadow: 0px 5px 25px #0000;
+  .door-info {
+      // @include padding(10px 0);
+     
+      box-shadow: 2px 2px 2px #ccc;
+      background: white;
+     
+  }
+
+.numberMail {
+  padding: 10px;
+  font-size: 18px;
+  color: #ff3a40;
+}
+.emailTel {
+  padding: 0 0 0px!important;
+  font-size: 14px!important;
+  margin-top: 0px !important;
+  // font-weight: 900;
+  color: #000!important;
 }
