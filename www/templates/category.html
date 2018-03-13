@@ -8,8 +8,12 @@
           <img src="img/logo.png" alt="logo" ui-sref="app.home">
 
         </div>
-        <div class="col-25 text-right">
-            <button class="button button-clear ion-ios-search-strong text-right header-bellFont disblock" ui-sref="app.search"menu-toggle="right">
+        <div class="col-10 disblock">
+          <button class="button button-clear ion ion-android-arrow-back  header-bellFont " ng-click="goBackHandler()">
+          </button>
+        </div>
+        <div class="col-15 text-center">
+            <button class="button button-clear ion-ios-search-strong searchicon header-bellFont " ui-sref="app.search"menu-toggle="right">
               </button>
         </div>
 

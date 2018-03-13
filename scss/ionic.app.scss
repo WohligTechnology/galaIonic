@@ -965,6 +965,19 @@ sans-serif-light !default;
   }
 }
 
+.headerimg1{
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  img{
+    width: 25%;
+  }
+}
+
+.searchicon{
+  padding: 0px!important;
+    margin: 0px!important;
+}
 .has-header{
   top: 50px;
   bottom: 10px;

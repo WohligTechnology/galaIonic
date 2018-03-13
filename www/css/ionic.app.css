@@ -12754,6 +12754,13 @@ a.button {
   .headerimg img {
     width: 20%; }
 
+.headerimg1 {
+  width: 100%;
+  text-align: center;
+  margin-top: 8px; }
+  .headerimg1 img {
+    width: 25%; }
+
 .has-header {
   top: 50px;
   bottom: 10px; }

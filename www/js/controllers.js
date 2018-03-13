@@ -197,6 +197,9 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
+    $scope.goBackHandler = function() {
+      window.history.back(); //This works
+    };
     $ionicPlatform.registerBackButtonAction()
     $scope.company = {};
     $scope.category = {};
@@ -298,6 +301,9 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
+    $scope.goBackHandler = function() {
+      window.history.back(); //This works
+    };
     $ionicPlatform.registerBackButtonAction()
     $scope.product = {};
     $scope.company={};
