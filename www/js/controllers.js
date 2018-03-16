@@ -284,7 +284,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       showDelay: 0
     });
     $scope.goBackHandler = function () {
-      window.history.back(); //This works
+      window.history.back(); //This work
       console.log("showstate",$state.current.name)
     };
     // $ionicPlatform.registerBackButtonAction()
