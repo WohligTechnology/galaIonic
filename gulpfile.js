@@ -5,6 +5,8 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var create = require('gulp-cordova-create');
+var android = require('gulp-cordova-build-android')
 var sh = require('shelljs');
 
 var paths = {
@@ -37,6 +39,16 @@ gulp.task('install', ['git-check'], function() {
     .on('log', function(data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
+});
+gulp.task('build', function () {
+  return gulp.src('dist')
+    .pipe(create())
+    .pipe(android({
+      release: true,
+      storeFile: 'wohlig.keystore',
+      keyAlias: 'wohlig'
+    }))
+    .pipe(gulp.dest('apk'));
 });
 
 gulp.task('git-check', function(done) {

@@ -108,7 +108,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova','pdf', 's
       })
 
       .state('app.divisions', {
-        url: '/products/:company',
+        url: '/divisions',
         views: {
           'menuContent': {
             templateUrl: 'templates/divisions.html',

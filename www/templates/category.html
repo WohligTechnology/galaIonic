@@ -9,7 +9,7 @@
 
         </div>
         <div class="col-10 disblock">
-          <button class="button button-clear ion ion-android-arrow-back  header-bellFont " ng-click="goBackHandler()">
+          <button class="button button-clear ion ion-android-arrow-back  header-bellFont " ng-click="productsPage()">
           </button>
         </div>
         <div class="col-15 text-center">
@@ -52,109 +52,9 @@
 
             </div>
          </div>
-         <div class="text-center categoryImage" ng-click="urlLink(productImage.link)" ng-if="productImage.noImage!='' && productImage.noImage && productImage.noImage!=null"><img ng-if="!productImage.link || productImage.link=='' || productImage.link==null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""><img ng-if="productImage.link!='' && productImage.link && productImage.link!=null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""></div>
+         <div class="text-center categoryImage" ng-click="urlLink(productImage.link)" ng-if="productImage.noImage!='' && productImage.noImage && productImage.noImage!=null && AllProductWithCategory1=='noDataound'"><img ng-if="!productImage.link || productImage.link=='' || productImage.link==null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""><img ng-if="productImage.link!='' && productImage.link && productImage.link!=null" class="img-responsive" src="{{productImage.noImage | uploadpath}}" alt=""></div>
          <h5 class="text-center noproductavail" ng-if="AllProductWithCategory1=='noDataound' && !productImage.noImage">No Products Available Right Now.</h5>
          
-    <!--<ion-slide-box options="homeSlider.sliderOptions" slider="homeSlider.sliderDelegate" does-continue="true" animation='fade'
-            auto-play="true"  slide-interval="{{interval}}" show-pager="true"  on-slide-changed="slideHasChanged(index)">
-            <ion-slide class="rel" >
-                <div class="box box1">
-                <img src="img/Bath world category.jpg" alt="">
-                </div>
-                 <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true} " class="rel">
-                <div class="box box1">
-                <img src="img/Euro flooring Pvt. Ltd..jpg" alt="">
-                </div>
-                <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-
-            <ion-slide  [options]="{pager:true}" class="rel">
-                <div class="box box1">
-                <img src="img/aboutus.jpg" alt="">
-                </div>
-                <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-             <ion-slide  [options]="{pager:true}" class="rel">
-                <div class="box box1">
-                <img src="img/Gala curtain world category.jpg" alt="">
-                </div>
-                <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true}" class="rel">
-                <div class="box box1">
-                <img src="img/Gala Furniture world category.jpg" alt="">
-                </div>
-                <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-            <ion-slide  [options]="{pager:true}" class="rel">
-                <div class="box box1">
-                <img src="img/Gala hardware world category.jpg" alt="">
-                </div>
-                <label class="categoryTitle" for="">WOODS & MOULDINGS</label>
-            </ion-slide>
-        </ion-slide-box>-->
-    <!--<div class="row">
-      <div class="col-50">
-        <div class="category-card1">
-          <div class="icondiv">
-            <img src="img/Door.jpg" alt="">
-
-          </div>
-          <label for="">Door</label>
-        </div>
-
-      </div>
-      <div class="col-50">
-        <div class="category-card2">
-          <div class="icondiv">
-            <img src="img/Dupont Corian.jpg" alt="">
-          </div>
-          <label for="">Dupont Corian</label>
-        </div>
-
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <div class="category-card1">
-          <div class="icondiv">
-            <img src="img/Exterior Cladding.jpg" alt="">
-
-          </div>
-          <label for="">Exterior Cladding</label>
-        </div>
-
-      </div>
-      <div class="col-50">
-        <div class="category-card2">
-          <div class="icondiv">
-            <img src="img/Wallpaper.jpg" alt="">
-          </div>
-          <label for="">Wallpaper</label>
-        </div>
-
-      </div>
-    </div>-->
-    <!--<div class="row">
-      <div class="col-25">
-
-
-      </div>
-      <div class="col-50">
-        <div class="category-card2">
-          <div class="icondiv">
-            <img src="img/Decking.jpg" alt="">
-          </div>
-          <label for="">Decking</label>
-        </div>
-
-      </div>
-      <div class="col-25">
-
-
-      </div>
-    </div>-->
+   
   </ion-content>
 </ion-view>

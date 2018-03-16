@@ -1,22 +1,14 @@
 angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova'])
 
-  .controller('AppCtrl', function ($scope, $ionicModal, $timeout,$state) {
-
-    // With the new view caching in Ionic, Controllers are only called
-    // when they are recreated or on app start, instead of every page change.
-    // To listen for when this page is active (for example, to refresh data),
-    // listen for the $ionicView.enter event:
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
-       $scope.logout = function () {
-      // alert("hi");
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $state) {
+    $scope.logout = function () {
       $.jStorage.flush();
       $state.go('login')
     }
   })
 
   .controller('HomeCtrl', function ($scope, $stateParams, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform, $ionicLoading) {
-    $ionicPlatform.registerBackButtonAction()
+    // $ionicPlatform.registerBackButtonAction()
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -24,43 +16,32 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
-   MyServices.CompanyProduct(function (data){
-     console.log('hello',data)
-     if (data.value) {
+    MyServices.CompanyProduct(function (data) {
+      if (data.value) {
         $scope.companyProduct = data.data;
         $scope.companyProduct = _.chunk($scope.companyProduct, 2);
-        console.log('sawme',$scope.companyProduct)
-
       }
-   })
+    })
 
-   MyServices.getAllCategories(function(data){
-    console.log('getallcategories',data)
-     $scope.getAllCategory = data.data;
-        $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
-        // $scope.datachunk = _.chunk( $scope.data,2);
- _.each($scope.data,function(n,key){
-        $scope.data[key]=_.chunk($scope.data[key], 2);
-         console.log('getallcategorieshello',$scope.data)
+    MyServices.getAllCategories(function (data) {
+      $scope.getAllCategory = data.data;
+      $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
+      _.each($scope.data, function (n, key) {
+        $scope.data[key] = _.chunk($scope.data[key], 2);
       });
-
-    console.log('getallcategorieshello',$scope.datachunk)
-   })
+    })
 
     MyServices.HomeBanner(function (data) {
       if (data.value) {
         $scope.homebanner = data.data.results;
-        console.log('homebanner',$scope.homebanner)
         $ionicSlideBoxDelegate.update();
         $ionicLoading.hide()
-
       }
     })
 
     MyServices.companyBanner(function (data) {
       if (data.value) {
         $scope.companyBanner = data.data.results;
-        console.log("Bann",$scope.companyBanner);
         $scope.companyBanner = _.chunk($scope.companyBanner, 2);
         $ionicLoading.hide()
 
@@ -114,37 +95,29 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
     };
     $scope.setupSlider();
 
-    //detect when sliderDelegate has been defined, and attatch some event listeners
     $scope.$watch('sliderDelegate', function (newVal, oldVal) {
       if (newVal != null) {
         $scope.sliderDelegate.on('slideChangeEnd', function () {
-          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
           $scope.$apply();
         });
       }
     });
 
-    MyServices.getAllCompanyWithCategory(function(data){
-      console.log(data);
+    MyServices.getAllCompanyWithCategory(function (data) {
       if (data.value == true) {
         $scope.productList = data.data;
-        console.log("helloproductlist",$scope.productList)
-        // $scope.categoriesOfCompany = _.chunk($scope.categoriesOfCompany, 2);
-      } else{
+      } else {
         console.log("ERROR");
       }
     });
 
-    MyServices.BrandsHomeImage(function(data){
-      console.log("brandImage", data);
+    MyServices.BrandsHomeImage(function (data) {
       if (data.value == true) {
         $scope.brandImage = data.data.results[0];
-        console.log("BI", $scope.brandImage);
-      } else{
+      } else {
         console.log("ERROR");
       }
     });
-
 
   })
 
@@ -156,7 +129,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
-    $ionicPlatform.registerBackButtonAction()
+    // $ionicPlatform.registerBackButtonAction()
     $scope.company = {};
     $scope.company._id = $stateParams.company;
     MyServices.getAllCategoriesOfCompany($scope.company, function (data) {
@@ -168,18 +141,15 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       }
     })
 
-    MyServices.getCompanyBanner($scope.company, function (data) {   MyServices.getAllCategories(function(data){
-    console.log('getallcategories',data)
-     $scope.getAllCategory = data.data;
+    MyServices.getCompanyBanner($scope.company, function (data) {
+      MyServices.getAllCategories(function (data) {
+        $scope.getAllCategory = data.data;
         $scope.data = _.groupBy($scope.getAllCategory, 'company.name');
-        // $scope.datachunk = _.chunk( $scope.data,2);
- _.each($scope.data,function(n,key){
-        $scope.data[key]=_.chunk($scope.data[key], 2);
-         console.log('getallcategorieshello',$scope.data)
-      });
+        _.each($scope.data, function (n, key) {
+          $scope.data[key] = _.chunk($scope.data[key], 2);
+        });
 
-    console.log('getallcategorieshello',$scope.datachunk)
-   })
+      })
       if (data.value) {
         $scope.CompanyBanner = data.data;
         $ionicLoading.hide()
@@ -189,7 +159,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
 
   })
 
-  .controller('CategoryCtrl', function ($scope, $stateParams, MyServices, $ionicPlatform, $ionicLoading) {
+  .controller('CategoryCtrl', function ($state,$scope, $stateParams, MyServices, $ionicPlatform, $ionicLoading) {
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -197,10 +167,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
-    $scope.goBackHandler = function() {
-      window.history.back(); //This works
-    };
-    $ionicPlatform.registerBackButtonAction()
+    
     $scope.company = {};
     $scope.category = {};
     $scope.company._id = $stateParams.company;
@@ -211,67 +178,83 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
         $scope.AllProductWithCategory = data.data;
         $ionicLoading.hide()
         $scope.AllProductWithCategory = _.chunk($scope.AllProductWithCategory, 2);
-        console.log("AllProductWithCategory1",$scope.AllProductWithCategory1)
-        $scope.inapp=function(name){
-          console.log("nameproduct",name)
+        $scope.inapp = function (name) {
           var options = "location=no,toolbar=yes";
           var target = "_blank";
           $scope.finalURL = '';
 
           var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-          if(name=='SOLID WOOD'){
+          if (name == 'SOLID WOOD') {
             $scope.finalURL = 'http://euroflooring.co.in/solid-wood/58edd69c1d42174d44801f5f';
-             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+            ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             window.open = cordova.InAppBrowser.open;
-          }else if(name=='ENGINEERED'){
+          } else if (name == 'ENGINEERED') {
             $scope.finalURL = 'http://euroflooring.co.in/engineered/58eddc351d42174d44802021';
-             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+            ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             window.open = cordova.InAppBrowser.open;
-          }else if(name=='LAMINATED FLOORING'){
+          } else if (name == 'LAMINATED FLOORING') {
             $scope.finalURL = 'http://euroflooring.co.in/laminated-flooring/58eddf0d1d42174d44802130';
-             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+            ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             window.open = cordova.InAppBrowser.open;
-          }else if(name=='EXOTIC BAMBOO'){
+          } else if (name == 'EXOTIC BAMBOO') {
             $scope.finalURL = 'http://euroflooring.co.in/exotic-bamboo/58ede7401d42174d44802328';
-             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+            ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             window.open = cordova.InAppBrowser.open;
-          }else if(name=='KAINDL VENEER'){
+          } else if (name == 'KAINDL VENEER') {
             $scope.finalURL = 'http://euroflooring.co.in/kaindl-veneer/58edf3b61d42174d448024b9';
-             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+            ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
             window.open = cordova.InAppBrowser.open;
-          }else{
+          } else {
             $scope.finalURL = 'http://euroflooring.co.in/exterior-deck-tile/58ee2acc1d42174d448036e7';
             ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-           window.open = cordova.InAppBrowser.open;
+            window.open = cordova.InAppBrowser.open;
           }
         }
       }
     })
 
-    $scope.urlLink=function(link){
-      console.log("urllink",link)
+ 
+
+    $scope.urlLink = function (link) {
       var options = "location=no,toolbar=yes";
       var target = "_blank";
-      if(link==undefined){
+      if (link == undefined) {
         console.log('no link available')
-      }else{
+      } else {
         $scope.finalURL = link;
         ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-       window.open = cordova.InAppBrowser.open;
+        window.open = cordova.InAppBrowser.open;
       }
     }
     MyServices.getCompanyBanner($scope.company, function (data) {
       if (data.value) {
         $scope.CompanyBanner = data.data;
-        console.log("CompanyBanner",$scope.CompanyBanner)
         $ionicLoading.hide()
       }
     })
 
     MyServices.companyCategory($scope.category, function (data) {
       $scope.productImage = data.data;
-      console.log("doneshowProducts",$scope.productImage)
-  });
+    });
+    $scope.productsPage = function () {
+      var company = {
+        company: $scope.productImage.company._id
+      }
+      $state.go('app.products',company) //This works
+      
+    };
+    // $ionicPlatform.registerBackButtonAction(function (event) {
+    //   if($state.current.name=='app.category'){
+    //     var company = {
+    //       company: $scope.productImage.company._id
+    //     }
+    //     $state.go('app.products',company)
+    //   }else{
+    //     navigator.app.backHistory();
+    //     console.log("hello")
+    //   }
+    
+    // }, 100);
   })
 
   .controller('DivisionCtrl', function ($scope, MyServices, $ionicPlatform, $ionicLoading) {
@@ -282,7 +265,6 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
-    $ionicPlatform.registerBackButtonAction()
     MyServices.companyBanner(function (data) {
       if (data.value) {
         $scope.companyBanner = data.data.results;
@@ -293,7 +275,7 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
 
   })
 
-  .controller('ProductDetailsCtrl', function ($scope, $filter, $ionicModal, $cordovaSocialSharing, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
+  .controller('ProductDetailsCtrl', function ($state,$scope, $filter, $ionicModal, $cordovaSocialSharing, $stateParams, $ionicLoading, MyServices, $ionicSlideBoxDelegate, $timeout, $ionicPlatform) {
     $ionicLoading.show({
       content: 'Loading',
       animation: 'fade-in',
@@ -301,19 +283,19 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       maxWidth: 200,
       showDelay: 0
     });
-    $scope.goBackHandler = function() {
+    $scope.goBackHandler = function () {
       window.history.back(); //This works
+      console.log("showstate",$state.current.name)
     };
-    $ionicPlatform.registerBackButtonAction()
+    // $ionicPlatform.registerBackButtonAction()
     $scope.product = {};
-    $scope.company={};
+    $scope.company = {};
     $scope.product._id = $stateParams.product;
     $scope.company._id = $stateParams.company;
     $scope.bigImage = {};
     MyServices.getOneProductDetails($scope.product, function (data) {
       if (data.value) {
         $scope.ProductDetails = data.data;
-        console.log("helloproduct",$scope.ProductDetails)
         $ionicLoading.hide()
         if ($scope.ProductDetails.images.length != 0) {
           $scope.bigImage = $scope.ProductDetails.images[0].bigImage;
@@ -344,21 +326,11 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
 
     };
 
-    //     $scope.slideHasChanged = function(index) {
-    //       $ionicSlideBoxDelegate.cssClass = 'fade-in'
-    //     $scope.slideIndex = index;
-    //     if ( ($ionicSlideBoxDelegate.count() -1 ) == index ) {
-    //         $timeout(function(){
-    //             $ionicSlideBoxDelegate.slide(0);
 
-    //         },$scope.interval);
-    //     }
-    // };
 
     MyServices.getCompanyBanner($scope.company, function (data) {
       if (data.value) {
         $scope.CompanyBanner = data.data;
-        console.log("CompanyBanner",$scope.CompanyBanner)
         $ionicLoading.hide()
       }
     })
@@ -404,7 +376,6 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
     $scope.$watch('sliderDelegate', function (newVal, oldVal) {
       if (newVal != null) {
         $scope.sliderDelegate.on('slideChangeEnd', function () {
-          console.log('updated slide to ' + $scope.sliderDelegate.activeIndex);
           $scope.$apply();
         });
       }
@@ -415,94 +386,77 @@ angular.module('starter.controllers', ['starter.services', 'ionic', 'ngCordova']
       detail.image = $scope.bigImage;
 
       MyServices.Enquiry(detail, function (data) {
-        console.log('detail',detail)
-          $scope.submitmsg = data.data;
-          detail.firstName = "";
-          detail.lastName = "";
-          detail.contactNumber = "";
-          detail.message = "";
-          detail.productName = "";
-          detail.image = "";
-          $timeout(function () {
-              $scope.closeModal()
-          }, 1000);
+        $scope.submitmsg = data.data;
+        detail.firstName = "";
+        detail.lastName = "";
+        detail.contactNumber = "";
+        detail.message = "";
+        detail.productName = "";
+        detail.image = "";
+        $timeout(function () {
+          $scope.closeModal()
+        }, 1000);
       })
-  }
+    }
 
-  $scope.shareProduct = function() {
-    var image = $filter("downloadImage")($scope.bigImage);
-    console.log(image);
-    $cordovaSocialSharing
-      .share('', '', image, '') // Share via native share sheet
-      .then(function(result) {
-        // Success!
-      }, function(err) {
-        // An error occured. Show a message to the user
-      });
-  };
-    
+    $scope.shareProduct = function () {
+      var image = $filter("downloadImage")($scope.bigImage);
+      $cordovaSocialSharing
+        .share('', '', image, '') // Share via native share sheet
+        .then(function (result) {
+          // Success!
+        }, function (err) {
+          // An error occured. Show a message to the user
+        });
+    };
+
     $ionicModal.fromTemplateUrl('templates/modal/enquire.html', {
       scope: $scope,
       animation: 'slide-in-up',
     }).then(function (modal) {
       $scope.modal = modal;
-      console.log("hellowasssuip")
     });
 
     $scope.openModal = function () {
       $scope.modal.show();
     };
 
-  $scope.closeModal = function () {
-    $scope.modal.hide();
-  };
+    $scope.closeModal = function () {
+      $scope.modal.hide();
+    };
   })
 
   .controller('ContactCtrl', function ($scope, $stateParams, MyServices, $cordovaFile, $ionicPopup, $filter) {
     $scope.contactDetails = function (detail) {
-    MyServices.Enquiry(detail, function (data) {
-      $scope.submitmsg = data;
-      console.log("submit",$scope.submitmsg)
-      // detail.firstName = "";
-      // detail.lastName = "";
-      // detail.contactNumber = "";
-      // detail.message = "";  
+      MyServices.Enquiry(detail, function (data) {
+        $scope.submitmsg = data;
+      })
+    }
+    $scope.openPDF = function () {
+
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      var link = 'img/AllDivisionsContactDetails.pdf'
+      $scope.pdfURL = 'https://storage.googleapis.com/galapdf/AllDivisionsContactDetails.pdf';
+      $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
+      var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+    }
+
   })
-}
-$scope.openPDF = function(){
-  
-    var options = "location=no,toolbar=yes";
-    var target = "_blank";
-    var link = 'img/AllDivisionsContactDetails.pdf'
-  $scope.pdfURL = 'https://storage.googleapis.com/galapdf/AllDivisionsContactDetails.pdf';
-  $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
-  console.log("hellolink", $scope.finalURL)
-  var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
 
-// }
-// $scope.closePopup = function () {
-//   $scope.pdf.close();
-}
-
-})
- 
-  .controller('LoginCtrl', function ($scope, $stateParams,MyServices,$state,$ionicPopup, $ionicPlatform) {
-    $ionicPlatform.registerBackButtonAction()
-     if ($.jStorage.get('profile')) {
+  .controller('LoginCtrl', function ($scope, $stateParams, MyServices, $state, $ionicPopup, $ionicPlatform) {
+    // $ionicPlatform.registerBackButtonAction()
+    if ($.jStorage.get('profile')) {
       $state.go('app.home');
     }
     $scope.formData = {};
 
     $scope.login = function (value) {
-      console.log("value", value);
-
       MyServices.login(value, function (data) {
         if (data.value == true) {
           $state.go('app.home');
-          console.log(data);
           $scope.formData = data.data;
           $.jStorage.set('profile', data.data);
-          console.log($scope.formData)
           $scope.formData = {};
         } else {
           $ionicPopup.alert({
@@ -515,7 +469,7 @@ $scope.openPDF = function(){
       })
     }
   })
-  .controller('SignupCtrl', function ($scope, $stateParams,MyServices,$state,$ionicPopup) {
+  .controller('SignupCtrl', function ($scope, $stateParams, MyServices, $state, $ionicPopup) {
 
     if ($.jStorage.get('profile')) {
       $state.go('app.home');
@@ -525,25 +479,16 @@ $scope.openPDF = function(){
     $scope.validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
     $scope.signupForm = function (value) {
-      console.log("value", value);
-      // if (!$.jStorage.get('pro // $scope.chunckproduct = data.data
-      // $scope.chunckproduct = _.chunk($scope.chunckproduct, 2)
-      // console.log("showchunkchunckproduct",$scope.chunckproduct);
-      // $scope.data=[];file')) {
 
       MyServices.signup(value, function (data) {
-
-        console.log(data);
         $scope.formData = data.data;
         $.jStorage.set('profile', data.data);
-        console.log($scope.formData)
         if (data.value == true) {
           $state.go('app.home');
         } else {
           $ionicPopup.alert({
             cssClass: 'productspopup',
             title: "Sign Up Incorrect",
-
           });
         }
       })
@@ -551,225 +496,156 @@ $scope.openPDF = function(){
       //}
     }
   })
-.controller('DownloadCtrl', function ($scope, $stateParams, MyServices, $ionicLoading, $ionicPopup, $filter) {
-  $ionicLoading.show({
-    content: 'Loading',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
-   $scope.product = {};
+  .controller('DownloadCtrl', function ($scope, $stateParams, MyServices, $ionicLoading, $ionicPopup, $filter) {
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+    $scope.product = {};
     $scope.bigImage = {};
     $scope.name = {};
-    // MyServices.CompanyProduct( function (data) {
-    //   if (data.value) {
-    //     $scope.ProductDetails = data.data;
-    //     $ionicLoading.hide()
-    //     if ($scope.ProductDetails.length != 0) {
-    //       $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
-    //             $scope.name = $scope.ProductDetails[0].name;
-
-    //     }
-    //   }
-    // })
 
     MyServices.Download(function (data) {
-      console.log("inside  download api",data)
-      $scope.PdfData=data.data;
+      $scope.PdfData = data.data;
       $scope.pdfChunk = _.chunk($scope.PdfData, 2);
-      console.log("inside     $scope.PdfData",   $scope.PdfData)
       $ionicLoading.hide()
-     });
+    });
 
-  $scope.openPDF = function(link){
-    var options = "location=no,toolbar=yes";
-    var target = "_blank";
-  $scope.pdfURL = $filter('uploadpath')(link);
-  $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
-  console.log("hellolink", $scope.finalURL)
-  var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-}
-})
+    $scope.openPDF = function (link) {
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      $scope.pdfURL = $filter('uploadpath')(link);
+      $scope.finalURL = 'http://docs.google.com/gview?url=' + $scope.pdfURL + '&embedded=true';
+      var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+    }
+  })
 
-.controller('ShowroomCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
-  $ionicLoading.show({
-    content: 'Loading',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
-   $scope.product = {};
+  .controller('ShowroomCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
+    $scope.product = {};
     $scope.bigImage = {};
     $scope.name = {};
-    // MyServices.CompanyProduct( function (data) {
-    //   if (data.value) {
-    //     $scope.ProductDetails = data.data;
-    //     $ionicLoading.hide()
-    //     if ($scope.ProductDetails.length != 0) {
-    //       $scope.bigImage = $scope.ProductDetails[0].images[0].bigImage;
-    //             $scope.name = $scope.ProductDetails[0].name;
-
-    //     }
-    //   }
-    // })
 
     MyServices.Showroom(function (data) {
       $scope.showroom = data.data;
-      console.log("showroom images",$scope.showroom)
       $ionicLoading.hide()
-  });
+    });
 
-  $scope.video=function(link){
-    console.log("urllink",link)
-    var options = "location=no,toolbar=yes";
-    var target = "_blank";
-    if(link==undefined){
-      console.log('no link available')
-    }else{
-      $scope.finalURL = link;
-      ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-     window.open = cordova.InAppBrowser.open;
+    $scope.video = function (link) {
+      var options = "location=no,toolbar=yes";
+      var target = "_blank";
+      if (link == undefined) {
+        console.log('no link available')
+      } else {
+        $scope.finalURL = link;
+        ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+        window.open = cordova.InAppBrowser.open;
+      }
     }
-  }
 
 
 
 
 
-})
+  })
 
-.controller('DivisionsCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
+  .controller('DivisionsCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
 
-  $ionicLoading.show({
-    content: 'Loading',
-    animation: 'fade-in',
-    showBackdrop: true,
-    maxWidth: 200,
-    showDelay: 0
-  });
+    $ionicLoading.show({
+      content: 'Loading',
+      animation: 'fade-in',
+      showBackdrop: true,
+      maxWidth: 200,
+      showDelay: 0
+    });
 
-  MyServices.getAllCategories( function (data) {
-    // if (data.value) {
-    //   console.log("getallproduct", data.data);
-    //   $ionicLoading.hide()
-    //   $scope.allproduct = data.data;
-    //   $scope.chunckproduct = data.data
-    //   $scope.chunckproduct = _.chunk($scope.chunckproduct, 2)
-    //   console.log("showchunkchunckproduct",$scope.chunckproduct);
-    //    $scope.data=[];
-    //   $scope.data=_.groupBy($scope.allproduct, 'companyCategory.company.name');
-    //   console.log("hello",$scope.data)
-    //   $scope.dataprods = _.chunk($scope.data, 2);
-    //   _.each($scope.data,function(n,key){
-    //     $scope.data[key]=_.chunk($scope.data[key], 2);
-    //   });
-    //   console.log("hellodataprods",$scope.data)
-    //   console.log("$scope.------",$scope.data);
-    //   var keys=_.keysIn($scope.data);
-    //   console.log(_.keysIn($scope.data));
-    //  $scope.companyName=_.chunk(keys,2);
-    //  console.log("showchunk",$scope.companyName);
-    //   $scope.allproductData = _.chunk($scope.data, 2);
-    //   console.log("$chunck.------",$scope.allproductData);
-       MyServices.getAllCategories(function(data){
-    
-     $scope.getAllCategory = data.data;
-     console.log('getallcategories',$scope.getAllCategory)
-       $scope.order = _.orderBy($scope.getAllCategory, ['company.order'], ['asc', 'desc'])
-
+    MyServices.getAllCategories(function (data) {
+      MyServices.getAllCategories(function (data) {
+        $scope.getAllCategory = data.data;
+        $scope.order = _.orderBy($scope.getAllCategory, ['company.order'], ['asc', 'desc'])
         $scope.data = _.groupBy($scope.order, 'company.name');
-        // $scope.datachunk = _.chunk( $scope.data,2);
- _.each($scope.data,function(n,key){
-        $scope.data[key]=_.chunk($scope.data[key], 2);
-         console.log('getallcategorieshello',$scope.data)
-         $ionicLoading.hide()
-      });
+        _.each($scope.data, function (n, key) {
+          $scope.data[key] = _.chunk($scope.data[key], 2);
+          $ionicLoading.hide()
+        });
 
-    console.log('getallcategorieshello',$scope.datachunk)
-    
-   })
-      $scope.inapp=function(name){
-        console.log("nameproduct",name)
+      })
+      $scope.inapp = function (name) {
         var options = "location=no,toolbar=yes";
         var target = "_blank";
         $scope.finalURL = '';
 
         var ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-        if(name=='SOLID WOOD'){
+        if (name == 'SOLID WOOD') {
           $scope.finalURL = 'http://euroflooring.co.in/solid-wood/58edd69c1d42174d44801f5f';
-           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+          ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           window.open = cordova.InAppBrowser.open;
-        }else if(name=='ENGINEERED'){
+        } else if (name == 'ENGINEERED') {
           $scope.finalURL = 'http://euroflooring.co.in/engineered/58eddc351d42174d44802021';
-           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+          ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           window.open = cordova.InAppBrowser.open;
-        }else if(name=='LAMINATED FLOORING'){
+        } else if (name == 'LAMINATED FLOORING') {
           $scope.finalURL = 'http://euroflooring.co.in/laminated-flooring/58eddf0d1d42174d44802130';
-           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+          ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           window.open = cordova.InAppBrowser.open;
-        }else if(name=='EXOTIC BAMBOO'){
+        } else if (name == 'EXOTIC BAMBOO') {
           $scope.finalURL = 'http://euroflooring.co.in/exotic-bamboo/58ede7401d42174d44802328';
-           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+          ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           window.open = cordova.InAppBrowser.open;
-        }else if(name=='KAINDL VENEER'){
+        } else if (name == 'KAINDL VENEER') {
           $scope.finalURL = 'http://euroflooring.co.in/kaindl-veneer/58edf3b61d42174d448024b9';
-           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
+          ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
           window.open = cordova.InAppBrowser.open;
-        }else{
+        } else {
           $scope.finalURL = 'http://euroflooring.co.in/exterior-deck-tile/58ee2acc1d42174d448036e7';
           ref = cordova.InAppBrowser.open($scope.finalURL, target, options);
-         window.open = cordova.InAppBrowser.open;
+          window.open = cordova.InAppBrowser.open;
         }
       }
 
+    })
   })
-})
 
-.controller('SearchCtrl', function ($scope, $stateParams, MyServices) {
-  $scope.title='<img class="title-image" src="images/kidsintouchtext.png" />'
-  $scope.searchText = {};
-  $scope.search = function (value) {
-    // var length = 0;
-    $scope.companyCategory = [];
-    $scope.company1 = [];
-    $scope.companyProduct = [];
-    $scope.isText = true;
-    console.log("searchvalue",value)
-    if (value.searchText != "") {
-        console.log("searchvalue1",value)
+  .controller('SearchCtrl', function ($scope, $stateParams, MyServices) {
+    $scope.title = '<img class="title-image" src="images/kidsintouchtext.png" />'
+    $scope.searchText = {};
+    $scope.search = function (value) {
+      $scope.companyCategory = [];
+      $scope.company1 = [];
+      $scope.companyProduct = [];
+      $scope.isText = true;
+      if (value.searchText != "") {
         MyServices.search(value, function (data) {
-            console.log("searchvalue2",value,data)
-            if (data.value) {
-                console.log("Event data", data);
-                $scope.companyCategory = data.data.companyCategory;
-                $scope.company1 = data.data.company;
-                $scope.companyProduct = data.data.companyProduct;
-                console.log($scope.companyCategory ,$scope.company ,$scope.companyProduct );
-            } else {
-                console.log("Event data false");
-            }
-        // else{
-        //     console.log("not working")
-        // }
+          if (data.value) {
+            $scope.companyCategory = data.data.companyCategory;
+            $scope.company1 = data.data.company;
+            $scope.companyProduct = data.data.companyProduct;
+          } else {
+            console.log("Event data false");
+          }
+
         });
 
-    }
-};
-})
+      }
+    };
+  })
 
   .controller('GalleryCtrl', function ($scope, $stateParams) {})
 
   .controller('AboutUsCtrl', function ($scope, $stateParams, MyServices, $ionicLoading) {
-    MyServices.getAllCompany(function(data){
-      console.log("getAllCompany",data);
-      if(data.value == true){
+    MyServices.getAllCompany(function (data) {
+      if (data.value == true) {
         $scope.aboutProducts = data.data;
-        console.log("helloProduct", $scope.aboutProducts)
         $scope.data1 = _.orderBy($scope.aboutProducts, ['order'], ['asc', 'desc'])
-      } else {
-        console.log("ERROR. NO DATA");
-      }
+      } else {}
     })
   });
